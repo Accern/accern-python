@@ -217,10 +217,11 @@ class StreamClient(object):
             else:
                 new_data = data
 
-            if new_data['entity_competitors']:
+            if 'entity_competitors' in new_data:
                 new_data['entity_competitors'] = ' | '.join(new_data['entity_competitors'])
-            if new_data['entity_indices']:
+            if 'entity_indices' in new_data:
                 new_data['entity_indices'] = ' | '.join(new_data['entity_indices'])
+
             data_filtered.append(new_data)
         return util.json.dumps(data_filtered)
 

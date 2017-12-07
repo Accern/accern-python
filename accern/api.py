@@ -44,11 +44,43 @@ class API(object):
             query = '%s&%s' % (base_query, query)
         return urlunsplit((scheme, netloc, path, query, fragment))
 
+    def filter_resp(self, rbody):
+        fields = self.fields
+        data_json = util.json.loads(rbody)['signals']
+        # print dict(zip(fields, [data_json[0][key] for key in fields]))
+        data_filtered = []
+        for data in data_json:
+            if len(fields) > 0:
+                try:
+                    if isinstance(fields, list):
+                        new_data = dict(zip(fields, [data[key] for key in fields]))
+                    elif isinstance(fields, str):
+                        new_data = {fields: data[fields]}
+                except KeyError:
+                    raise error.AccernError('Invalid fields passed.')
+            else:
+                new_data = data
+
+            if 'entity_competitors' in new_data:
+                new_data['entity_competitors'] = ' | '.join(new_data['entity_competitors'])
+            if 'entity_indices' in new_data:
+                new_data['entity_indices'] = ' | '.join(new_data['entity_indices'])
+
+            data_filtered.append(new_data)
+        resp = {
+            'first_id': util.json.loads(rbody)['first_id'],
+            'last_id': util.json.loads(rbody)['last_id'],
+            'total': util.json.loads(rbody)['total'],
+            'signals': data_filtered
+        }
+        return resp
+
     def interpret_response(self, rbody, rcode, rheaders):
         try:
             if hasattr(rbody, 'decode'):
                 rbody = rbody.decode('utf-8')
-            resp = util.json.loads(rbody)
+            resp = self.filter_resp(rbody)
+
         except Exception:
             raise error.APIError(
                 "Invalid response body from API: %s "
@@ -56,15 +88,17 @@ class API(object):
                 rbody, rcode, rheaders)
         if not (200 <= rcode < 300):
             raise error.APIError('API request failed.')
+
         return resp
 
-    def request(self, method, params=None):
-        rbody, rcode, rheaders = self.request_raw(
-            method.lower(), params)
+    def request(self, method, **kwargs):
+        self.fields = kwargs.get('fields', [])
+        self.params = kwargs.get('params', {})
+        rbody, rcode, rheaders = self.request_raw(method.lower())
         resp = self.interpret_response(rbody, rcode, rheaders)
         return resp
 
-    def request_raw(self, method=None, params=None):
+    def request_raw(self, method=None):
         """Perform HTTP GET with credentials.
 
         :param method: HTTP method
@@ -81,14 +115,14 @@ class API(object):
             raise error.AuthenticationError('No token provided.')
 
         abs_url = self.api_base
-        if params is None:
+        if self.params is None:
             params = {'token': my_token}
         else:
-            params['token'] = my_token
-        encoded_params = urlencode(list(self._api_encode(params or {})))
+            self.params['token'] = my_token
+        encoded_params = urlencode(list(self._api_encode(self.params)))
 
         if method == 'get':
-            if params:
+            if self.params:
                 abs_url = self._build_api_url(abs_url, encoded_params)
         else:
             raise error.APIConnectionError('Unsupported HTTP method %r' % (method))

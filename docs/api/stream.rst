@@ -39,6 +39,6 @@ public areas like Github, client-side code, etc.
 
 .. code-block:: python
 
-    from accern import Stream
+    from accern import StreamClient
     token = 'YOUR TOKEN'
-    stream = Stream(myStreamListener, token)
+    stream = StreamClient(myStreamListener, token)
