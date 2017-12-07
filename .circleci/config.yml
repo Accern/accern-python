@@ -5,10 +5,17 @@
 version: 2
 workflows:
     version: 2
-    test:
+    build_and_deploy:
         jobs:
             - test-3.6
             - test-2.7
+            - deploy:
+                requires:
+                    - test-3.6
+                    - test-2.7
+                filters:
+                    tags:
+                        only: (\d+\.)(\d+\.)(\d+)
 jobs:
     test-3.6: &test-template
         docker:
@@ -49,10 +56,25 @@ jobs:
 
     deploy:
         docker:
-            - image: circleci/python:2.7
+            - image: circleci/python:3.6
         steps:
             - checkout
+            - restore_cache:
+                keys:
+                    - v1-dependencies-{{ checksum "test-requirements.txt" }}
+                    - v1-dependencies-
 
+            - run:
+                name: install dependencies
+                command: |
+                    python -m venv venv || virtualenv venv
+                    . venv/bin/activate
+                    pip install -r test-requirements.txt
+
+            - save_cache:
+                paths:
+                    - ./venv
+                key: v1-dependencies-{{ checksum "test-requirements.txt" }}
             - run:
                 name: init .pypirc
                 command: |
