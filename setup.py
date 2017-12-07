@@ -14,7 +14,6 @@ if sys.version_info <= (2, 7):
     print (sys.stderr, error)
     sys.exit(1)
 
-
 requirements = [
     'requests>=2.11.1'
 ]
@@ -48,16 +47,17 @@ setup(
     platforms='Posix; MacOS X; Windows',
     setup_requires=requirements,
     install_requires=requirements,
-    classifiers=['Development Status :: 3 - Alpha',
-                 'Intended Audience :: Developers',
-                 'Intended Audience :: Financial and Insurance Industry',
-                 'Topic :: Office/Business :: Financial :: Investment',
-                 'License :: OSI Approved :: MIT License',
-                 'Operating System :: OS Independent',
-                 'Programming Language :: Python',
-                 'Programming Language :: Python :: 2',
-                 'Programming Language :: Python :: 2.6',
-                 'Programming Language :: Python :: 2.7',
-                 'Programming Language :: Python :: 3.6',
-                 ]
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Intended Audience :: Developers',
+        'Intended Audience :: Financial and Insurance Industry',
+        'Topic :: Office/Business :: Financial :: Investment',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.6',
+    ]
 )
