@@ -11,6 +11,8 @@ workflows:
             - test-2.7
     build_and_deploy:
         jobs:
+            - test-3.6
+            - test-2.7
             - deploy:
                 requires:
                     - test-3.6
