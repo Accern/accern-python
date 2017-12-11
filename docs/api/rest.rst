@@ -50,7 +50,7 @@ To hide some fields from the response, pass the names of the fields you want to
 .. code-block:: python
 
     kwargs = {
-        'fields': ['entity_ticker', 'entity_relevance', 'entity_industry', 'entity_sentiment']
+        'select': ['entity_ticker', 'entity_relevance', 'entity_industry', 'entity_sentiment']
     }
 
     response = API.request(method='get', **kwargs)
@@ -67,7 +67,7 @@ Pass the query to ``kwargs``.
 .. code-block:: python
 
     kwargs = {
-        'params': {
+        'filter': {
             'entity_industry': ['Apparel', 'Food Chains'],
             'event': 'Accident'
         }

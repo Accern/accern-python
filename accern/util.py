@@ -1,3 +1,4 @@
+from datetime import datetime
 import logging
 import os
 import re
@@ -16,6 +17,7 @@ ACCERN_LOG = os.environ.get('ACCERN_LOG')
 logger = logging.getLogger('accern')
 
 __all__ = [
+    'datetime',
     'json',
     'log_debug',
     'log_info',
