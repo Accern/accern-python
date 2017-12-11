@@ -13,7 +13,7 @@ if sys.version_info <= (2, 7):
     sys.exit(1)
 
 requirements = [
-    'requests>=2.11.1',
+    'requests>=2.18.4',
     'six>=1.10.0'
 ]
 

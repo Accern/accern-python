@@ -4,7 +4,7 @@ Core client functionality, common across all API requests (including performing
 HTTP requests).
 """
 from accern import error, util
-from accern.util import six, urlsplit, urlunsplit, urlencode
+from accern.util import datetime, six, urlsplit, urlunsplit, urlencode
 import codecs
 
 import re
@@ -112,7 +112,8 @@ class StreamClient(object):
         self._listener = listener or StreamListener()
         self.new_session()
         # Any extra kwargs will be fed into the requests.get call later.
-        self.requests_kwargs = kwargs
+        self.requests_kwargs = kwargs.get("filter", {})
+        self.select = kwargs.get("select", None)
         self.retry = kwargs.get("retry", 3000)
         self.timeout = kwargs.get('timeout', 300.0)
         self.token = token
@@ -167,7 +168,7 @@ class StreamClient(object):
             if self._listener.on_data(data) is False:
                 return False
 
-        self.__next__()
+        return msg
 
     def _api_encode(self, data):
         for key, value in six.iteritems(data):
@@ -199,19 +200,20 @@ class StreamClient(object):
         # TODO(redirect): Ensure we're handling redirects.  Might also stick the 'origin'
         # attribute on Events like the Javascript spec requires.
         self.resp.raise_for_status()
-        self.__next__()
+        while next(self, None) is not None:
+            next(self, None)
 
     def filter_data(self, data):
-        kwargs = self.requests_kwargs
+        select = self.select
         data_json = util.json.loads(util.json.loads(data)['data'])['signals']
         data_filtered = []
         for data in data_json:
-            if 'fields' in kwargs:
+            if select is not None and len(select) > 0:
                 try:
-                    if isinstance(kwargs['field'], list):
-                        new_data = dict(zip(kwargs['field'], [data[key] for key in kwargs['field']]))
-                    if isinstance(kwargs['field'], str):
-                        new_data = {kwargs['field']: data[kwargs['field']]}
+                    if isinstance(select, list):
+                        new_data = dict(zip(select, [data[key] for key in select]))
+                    elif isinstance(select, str):
+                        new_data = {select: data[select]}
                 except KeyError:
                     raise error.AccernError('Invalid fields passed.')
             else:
@@ -223,6 +225,7 @@ class StreamClient(object):
                 new_data['entity_indices'] = ' | '.join(new_data['entity_indices'])
 
             data_filtered.append(new_data)
+
         return util.json.dumps(data_filtered)
 
     def new_session(self):
@@ -241,6 +244,7 @@ class StreamClient(object):
         :raises TransportError: when something went wrong while trying to
             exceute a request.
         """
+        print ("%s - Start streaming, use [Ctrl+C] to stop..." % (datetime.now()))
         if self.token:
             my_token = self.token
         else:
@@ -252,7 +256,7 @@ class StreamClient(object):
 
         abs_url = '%s' % (self.api_base)
 
-        params = self.requests_kwargs.get("params", None)
+        params = self.requests_kwargs
         if params is None:
             params = {'token': my_token}
         else:
@@ -260,8 +264,12 @@ class StreamClient(object):
         encoded_params = urlencode(list(self._api_encode(params or {})))
 
         self.url = self._build_api_url(abs_url, encoded_params)
-
-        self._run()
+        try:
+            self._run()
+        except KeyboardInterrupt:
+            print ("%s - Streaming stopped..." % (datetime.now()))
+        else:
+            pass
 
     if six.PY2:
         next = __next__

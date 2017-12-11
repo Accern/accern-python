@@ -15,9 +15,9 @@ workflows:
                     - test-2.7
                 filters:
                     tags:
-                        only: /[\d.]+/
+                        ignore: /^testing-.*/
                     branches:
-                        ignore: /.*/
+                        only: master
 
 jobs:
     test-3.6: &test-template

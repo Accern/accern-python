@@ -45,17 +45,16 @@ class API(object):
         return urlunsplit((scheme, netloc, path, query, fragment))
 
     def filter_resp(self, rbody):
-        fields = self.fields
+        select = self.select
         data_json = util.json.loads(rbody)['signals']
-        # print dict(zip(fields, [data_json[0][key] for key in fields]))
         data_filtered = []
         for data in data_json:
-            if len(fields) > 0:
+            if len(select) > 0:
                 try:
-                    if isinstance(fields, list):
-                        new_data = dict(zip(fields, [data[key] for key in fields]))
-                    elif isinstance(fields, str):
-                        new_data = {fields: data[fields]}
+                    if isinstance(select, list):
+                        new_data = dict(zip(select, [data[key] for key in select]))
+                    elif isinstance(select, str):
+                        new_data = {select: data[select]}
                 except KeyError:
                     raise error.AccernError('Invalid fields passed.')
             else:
@@ -92,8 +91,8 @@ class API(object):
         return resp
 
     def request(self, method, **kwargs):
-        self.fields = kwargs.get('fields', [])
-        self.params = kwargs.get('params', {})
+        self.select = kwargs.get('select', [])
+        self.params = kwargs.get('filter', {})
         rbody, rcode, rheaders = self.request_raw(method.lower())
         resp = self.interpret_response(rbody, rcode, rheaders)
         return resp
@@ -116,7 +115,7 @@ class API(object):
 
         abs_url = self.api_base
         if self.params is None:
-            params = {'token': my_token}
+            self.params = {'token': my_token}
         else:
             self.params['token'] = my_token
         encoded_params = urlencode(list(self._api_encode(self.params)))

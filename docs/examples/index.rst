@@ -33,8 +33,8 @@ REST: Get one week data for restaurants entities
     end_time = datetime(2017, 12, 7, 23, 59, 59, 999999)
 
     kwargs = {
-        'fields': ['entity_ticker', 'entity_sentiment', 'harvested_at', 'entity_relevance'],
-        'params': {
+        'select': ['entity_ticker', 'entity_sentiment', 'harvested_at', 'entity_relevance'],
+        'filter': {
             'entity_ticker': restaurants,
             'last_id': 0
         }
@@ -80,7 +80,6 @@ Streaming: Save to csv
             else:
                 df.to_csv('output.csv', mode='a', header=False, encoding='utf-8', index=False)
 
-    print ("%s - Start streaming..." % (datetime.now()))
     stream = StreamClient(MyStreamListener(), token)
     stream.performs()
 
@@ -105,6 +104,5 @@ Streaming: Save to mongo
             # Replace with your db, collection names
             self.db['accern']['stream'].insert_many(data_json)
 
-    print ("%s - Start streaming..." % (datetime.now()))
     stream = StreamClient(MyStreamListener(), token)
     stream.performs()
