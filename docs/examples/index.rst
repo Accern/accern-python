@@ -47,7 +47,6 @@ REST: Get one week data for restaurants entities
         'TACO', 'DENN', 'HABT', 'LOCO', 'WING', 'BLMN', 'PBPB', 'RRGB', 'FRGI',
         'FOGO', 'DRI'
     ]
-
     start_time = datetime(2017, 12, 1, 0, 0, 0, 000)
     end_time = datetime(2017, 12, 7, 23, 59, 59, 999999)
 
@@ -80,14 +79,6 @@ REST: Get one week data for restaurants entities
         result = result.append(df, ignore_index=True)
         schema['filters']['last_id'] = response['last_id']
         response = Client.request(schema)
-
-    result['harvested_at'] = pd.to_datetime(result['harvested_at'])
-    result = result[(result['harvested_at'] > start_time) & (result['harvested_at'] < end_time)].reset_index(drop=True)
-    result = result.drop_duplicates().reset_index(drop=True)
-    result.to_csv('restaurants.csv', index=False)
-
-
-
 
 Streaming: Save to csv
 --------------------------

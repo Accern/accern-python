@@ -55,7 +55,33 @@ param_values = [
     'story_group_exposure',
     'story_type'
 ]
+quant_variables=[
 
+    'event_impact_gt_mu_add_sigma',
+    'event_impact_gt_mu_pos_add_sigma_pos',
+    'event_impact_gt_mu_pos_add_2sigma_pos',
+    'event_impact_gt_1pct_pos',
+    'event_impact_lt_mu_sub_sigma',
+    'event_impact_lt_mu_neg_sub_sigma_neg',
+    'event_impact_lt_mu_neg_sub_2sigma_neg',
+    'event_impact_lt_1pct_neg',
+    'event_impact_neg',
+    'event_impact_pct_change_avg',
+    'event_impact_pct_change_stdev',
+    'event_impact_pos',
+    'event_relevance',
+    'event_sentiment',
+    'event_source_timeliness_score',
+    'entity_exchange',
+    'entity_relevance',
+    'entity_sentiment',
+    'story_group_exposure',
+    'story_group_sentiment_avg',
+    'story_group_sentiment_stdev',
+    'story_group_count',
+    'story_group_traffic_sum',
+    'story_sentiment',
+    'story_traffic']
 def new_http_client(*args, **kwargs):
     return RequestsClient(*args, **kwargs)
 
@@ -130,6 +156,22 @@ class AccernClient(object):
             data_selected.append(new_data)
 
         return data_selected
+    @staticmethod
+    def quant_filter(signals,filters):
+        filter_keys = filters.keys()
+        for filter_key in filter_keys:
+            if filter_key in quant_variables:
+                signals_filtered = []
+                list_filts = filters[filter_key]
+                for data in signals:
+                    for filt in list_filts:
+                        if data[filter_key]>filt[0] and data[filter_key]<filt[1]:
+                            signals_filtered.append(data)
+                            break
+            else:
+                signals_filtered = signals
+            signals = signals_filtered
+        return signals_filtered
 
 class Event(object):
     SSE_LINE_PATTERN = re.compile('(?P<name>[^:]*):?( ?(?P<value>.*))?')
@@ -191,6 +233,7 @@ class Event(object):
     def __str__(self):
         return self.data
 
+        return data_selected
 
 class HTTPClient(object):
     def request(self, method, url, headers, post_data=None):

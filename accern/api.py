@@ -32,6 +32,8 @@ class API(AccernClient):
             signals = parsed_rbody['signals']
             if parsed_rbody['total'] > 0:
                 parsed_rbody['signals'] = AccernClient.select_fields(schema, signals)
+                parsed_rbody['signals'] = AccernClient.quant_filter(parsed_rbody['signals'],schema['filters'])
+                parsed_rbody['total'] = len(parsed_rbody['signals'])
             resp = parsed_rbody
         except Exception:
             raise error.APIError(
