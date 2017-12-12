@@ -10,17 +10,28 @@ To start with, we import the following:
 
     from accern import API as AccernAPI
 
-Class Creation
-==============
+Create API Instance
+===================
 
-Create a API class
+Create a API instance
 
 .. code-block:: python
 
     API = AccernAPI()
 
 
-To authenticate, pass your secret token to a API class.
+Authenticate RESP API Client
+============================
+
+Authenticate your account when using the API token. Pass it into Stream Client
+and the library will pass it to every request. Stream request without token will
+fail.
+
+Your API tokens carry many privileges. Don't share your secret API tokens in any
+public areas like Github, client-side code, etc.
+
+
+To authenticate, assign your secret token to the API instance.
 
 .. code-block:: python
 
@@ -45,32 +56,60 @@ A response example.
     :end-before: .. snap
 
 To hide some fields from the response, pass the names of the fields you want to
-``kwargs``. All the available fields are shown in the above example.
+``schema``. All the available fields are shown in the above example.
 
 .. code-block:: python
 
-    kwargs = {
-        'select': ['entity_ticker', 'entity_relevance', 'entity_industry', 'entity_sentiment']
+    schema = {
+        'select': [
+            {
+                'field': 'entity_ticker',
+                'name': 'ticker'
+            }]
     }
 
-    response = API.request(method='get', **kwargs)
+    response = API.request(schema)
 
-If you want to filter the data, the available fields for querying are the
+The name for the selected fields is optional. Can select multiple fields.
+
+.. code-block:: python
+
+    schema = {
+        'select': [
+            {
+                'field': 'entity_ticker',
+                'name': 'ticker'
+            }, {
+                'field': 'harvested_at',
+                'name': 'ticker'
+            }
+        ]
+    }
+
+    response = API.request(schema)
+
+If you want to filter the data, the available fields to filter are the
 followings:
 
 .. include:: ../data/table_filter.rst
     :start-after: .. snip
     :end-before: .. snap
 
-Pass the query to ``kwargs``.
+Pass the query to ``schema``.
 
 .. code-block:: python
 
-    kwargs = {
-        'filter': {
+    schema = {
+        'filters': {
             'entity_industry': ['Apparel', 'Food Chains'],
             'event': 'Accident'
         }
     }
 
-    response = API.request(method='get', **kwargs)
+    response = API.request(schema)
+
+Cookbook
+========
+
+A list of examples of ``filters`` example is available at
+:ref:`Cookbook<Field Filter Cookbook>`
