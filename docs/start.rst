@@ -13,27 +13,37 @@ can see complex usage in :ref:`API<API>`.
 
 .. code-block:: python
 
-    from accern import API as AccernAPI
+    from accern import API
     token = 'YOUR TOKEN'
-    API = AccernAPI()
-    resp = API.request(method='get')
+    Client = API()
+    Client.token = token
+    schema = {}
+    resp = API.request(schema)
 
 3. Make a API request and pass params to get filtered data.
 
 .. code-block:: python
 
-    kwargs = {
-        'params': {
+    schema = {
+        'filters': {
             'entity_ticker': 'AAPL'
         }
     }
-    resp = API.request(method='get', **kwargs)
+    resp = API.request(schema)
 
 4. Specify the fields that your are looking from the data and filter the results.
 
 .. code-block:: python
 
-    kwargs = {
-        'fields': ['entity_industry', 'entity_ticker', 'entity_relevance']
+    schema = {
+        'select': [
+            {
+                'field': 'entity_industry'
+            }, {
+                'field': 'entity_ticker'
+            }, {
+                'field': 'entity_relevance'
+            }
+        ]
     }
-    resp = API.request(method='get', **kwargs)
+    resp = API.request(schema)

@@ -8,7 +8,7 @@ To start with, we import the following:
 
 .. code-block:: python
 
-    from accern import API as AccernAPI
+    from accern import API
 
 Create API Instance
 ===================
@@ -17,7 +17,7 @@ Create a API instance
 
 .. code-block:: python
 
-    API = AccernAPI()
+    Client = API()
 
 
 Authenticate RESP API Client
@@ -36,7 +36,7 @@ To authenticate, assign your secret token to the API instance.
 .. code-block:: python
 
     token = 'SECRET TOKEN'
-    API.token = token
+    Client.token = token
 
 If token is not passed or invalid, an ``AuthenticateError`` will be raised
 
@@ -47,7 +47,7 @@ Get Request to get data. The response return the most recent 100 documents.
 
 .. code-block:: python
 
-    response = API.request(method='get')
+    response = Client.request({})
 
 A response example.
 
@@ -68,7 +68,7 @@ To hide some fields from the response, pass the names of the fields you want to
             }]
     }
 
-    response = API.request(schema)
+    response = Client.request(schema)
 
 The name for the selected fields is optional. Can select multiple fields.
 
@@ -86,7 +86,7 @@ The name for the selected fields is optional. Can select multiple fields.
         ]
     }
 
-    response = API.request(schema)
+    response = Client.request(schema)
 
 If you want to filter the data, the available fields to filter are the
 followings:
@@ -106,7 +106,7 @@ Pass the query to ``schema``.
         }
     }
 
-    response = API.request(schema)
+    response = Client.request(schema)
 
 Cookbook
 ========
