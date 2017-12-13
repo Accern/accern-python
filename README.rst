@@ -1,12 +1,12 @@
 Accern for Python
 =================
 
-.. image:: https://raw.githubusercontent.com/Accern/accern-python/yz-docs/docs/_static/accern.png
+.. image:: https://raw.githubusercontent.com/Accern/accern-python/master/docs/_static/accern.png
   :target: _static/accern.png
 
 |pypi| |circleci| |sphinx|
 
-.. snig
+.. snip
 
 A python library to consume Accern Realtime Streaming API, REST API and get
 historical data.
@@ -32,6 +32,8 @@ Accern library for Python helps user to get fast, flexible data structures from
 Accern's Streaming, REST APIs and batch historical data.
 
 
+.. snap
+
 Install
 ------------
 
@@ -54,8 +56,6 @@ Quick Start
     stream = Stream(myStreamListener, token)
 
 3. Accern ``Historical API`` will be available in the future releases.
-
-.. snap
 
 For more information see the `full documentation
 <https://accern-python.readthedocs.io>`_ on Read The Docs.
