@@ -5,7 +5,7 @@ Installation
 ============
 
 
-Installation from PyPI
+Install from PyPI
 ~~~~~~~~~~~~~~~~~~~~~~
 
 Accern python can be installed via pip From PyPI.

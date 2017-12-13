@@ -30,15 +30,38 @@ By default, it's returning the raw data.
 Authenticate Stream Client
 ==========================
 
-Authenticate your account when using the API token. Pass it into Stream Client
-and the library will pass it to every request. Stream request without token will
-fail.
-
-Your API tokens carry many privileges. Don't share your secret API tokens in any
-public areas like Github, client-side code, etc.
-
 .. code-block:: python
 
     from accern import StreamClient
     token = 'YOUR TOKEN'
-    stream = StreamClient(myStreamListener, token)
+
+    schema = {}
+    stream = StreamClient(myStreamListener, token, **schema)
+
+
+Filter and select with schema
+=============================
+
+.. code-block:: python
+
+    from accern import StreamClient, StreamListener
+
+    schema = {
+        'select': [
+            {
+                'field': 'entity_ticker',
+                'name': 'ticker'
+            },
+            {
+                'field': 'harvested_at',
+                'name': 'hour'
+            }
+        ],
+        'filters': {
+            'entity_ticker': [
+                'AAPL', 'AMZN'
+            ]
+        }
+    }
+    stream = StreamClient(MyStreamListener(), token, **schema)
+    stream.performs()

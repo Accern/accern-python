@@ -6,18 +6,38 @@ Set token for all the examples.
 
 .. code-block:: python
 
-    token = 'YOUR TOKEN'
+    TOKEN = 'YOUR TOKEN'
 
 REST: Request with filters
 --------------------------
 
 .. code-block:: python
 
-    from accern import API as AccernAPI
-    API = AccernAPI()
-    API.token = token
-    response = API.request('get')
-    print (response['total'])
+    from accern import API
+
+    Client = API()
+    Client.token = TOKEN
+
+    schema = {
+        'select': [
+            {
+                'field': 'entity_ticker',
+                'name': 'ticker'
+            },
+            {
+                'field': 'harvested_at',
+                'name': 'hour'
+            }
+        ],
+        'filters': {
+            'entity_ticker': [
+                "AAPL", "GOOG"
+            ]
+        }
+    }
+
+    resp = Client.request(schema)
+
 
 REST: Get one week data for restaurants entities
 ------------------------------------------------
@@ -34,7 +54,7 @@ REST: Get one week data for restaurants entities
 
     kwargs = {
         'select': ['entity_ticker', 'entity_sentiment', 'harvested_at', 'entity_relevance'],
-        'filter': {
+        'filters': {
             'entity_ticker': restaurants,
             'last_id': 0
         }
@@ -80,7 +100,8 @@ Streaming: Save to csv
             else:
                 df.to_csv('output.csv', mode='a', header=False, encoding='utf-8', index=False)
 
-    stream = StreamClient(MyStreamListener(), token)
+    schema = {}
+    stream = StreamClient(MyStreamListener(), **schema)
     stream.performs()
 
 Streaming: Save to mongo
@@ -103,6 +124,6 @@ Streaming: Save to mongo
             print ("%s - Saving %s signals..." % (datetime.now(), len(data_json)))
             # Replace with your db, collection names
             self.db['accern']['stream'].insert_many(data_json)
-
-    stream = StreamClient(MyStreamListener(), token)
+    schema = {}
+    stream = StreamClient(MyStreamListener(), token, **schema)
     stream.performs()

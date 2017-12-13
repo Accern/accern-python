@@ -58,15 +58,13 @@ if not (json and hasattr(json, 'loads')):
 def utf8(value):
     if six.PY2 and isinstance(value, unicode):
         return value.encode('utf-8')
-    else:
-        return value
+    return value
 
 
 def _console_log_level():
     if ACCERN_LOG in ['debug', 'info']:
         return ACCERN_LOG
-    else:
-        return None
+    return None
 
 
 def log_debug(message, **params):
