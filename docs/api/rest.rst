@@ -13,37 +13,46 @@ To start with, we import the following:
 Create API Instance
 ===================
 
-Create a API instance
+Create an API instance
 
 .. code-block:: python
 
     Client = API()
 
 
-Authenticate RESP API Client
+Authenticate REST API Client
 ============================
 
-Authenticate your account when using the API token. Pass it into Stream Client
-and the library will pass it to every request. Stream request without token will
+Authenticate your account when using the API token. Pass it into the REST Client
+and the library will pass it to every request. An API request without a token will
 fail.
 
 Your API tokens carry many privileges. Don't share your secret API tokens in any
-public areas like Github, client-side code, etc.
+public spaces like Github, client-side code, etc.
 
+To authenticate, pass it through the constructor or assign your secret token to
+the API instance.
 
-To authenticate, assign your secret token to the API instance.
+.. code-block:: python
+
+    token = 'SECRET TOKEN'
+    Client = API(token)
+
+or
 
 .. code-block:: python
 
     token = 'SECRET TOKEN'
     Client.token = token
 
+
 If token is not passed or invalid, an ``AuthenticateError`` will be raised
 
 Request Data
 ============
 
-Get Request to get data. The response return the most recent 100 documents.
+The request method will send a ``GET`` request to retrieve data. The response
+will be the most recent 100 documents.
 
 .. code-block:: python
 
@@ -55,8 +64,8 @@ A response example.
     :start-after: .. snip
     :end-before: .. snap
 
-To hide some fields from the response, pass the names of the fields you want to
-``schema``. All the available fields are shown in the above example.
+To select only a few fields or rename the fields, pass the names of the fields
+you want to ``schema``. All the available fields are shown in the above example.
 
 .. code-block:: python
 
@@ -65,12 +74,13 @@ To hide some fields from the response, pass the names of the fields you want to
             {
                 'field': 'entity_ticker',
                 'name': 'ticker'
-            }]
+            }
+        ]
     }
 
     response = Client.request(schema)
 
-The name for the selected fields is optional. Can select multiple fields.
+The name for the selected fields is optional and you can select multiple fields.
 
 .. code-block:: python
 
@@ -80,22 +90,22 @@ The name for the selected fields is optional. Can select multiple fields.
                 'field': 'entity_ticker',
                 'name': 'ticker'
             }, {
-                'field': 'harvested_at',
-                'name': 'ticker'
+                'field': 'harvested_at'
             }
         ]
     }
 
     response = Client.request(schema)
 
-If you want to filter the data, the available fields to filter are the
-followings:
+If you want to filter the data, the available fields to filter by are the
+following:
 
 .. include:: ../data/table_filter.rst
     :start-after: .. snip
     :end-before: .. snap
 
-Pass the query to ``schema``.
+Pass the filters to ``schema``. The value can be a single value or an array of
+values.
 
 .. code-block:: python
 
@@ -111,5 +121,4 @@ Pass the query to ``schema``.
 Cookbook
 ========
 
-A list of examples of ``filters`` example is available at
-:ref:`Cookbook<Field Filter Cookbook>`
+A list of filter examples is available at :ref:`Cookbook<Field Filter Cookbook>`

@@ -7,7 +7,7 @@ Streaming API Client
 Stream Listener
 ===============
 
-Create StreamListener and to handle streaming data.
+Create a StreamListener and to handle streaming data.
 
 .. code-block:: python
 
@@ -15,9 +15,9 @@ Create StreamListener and to handle streaming data.
 
     myStreamListener = StreamListener()
 
-Override `on_data` function if you want to handle the data yourself.
+Override the ``on_data`` function if you want to handle the data yourself.
 
-By default, it's returning the raw data.
+By default, it returns the raw data.
 
 .. code-block:: python
 
