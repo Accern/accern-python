@@ -7,33 +7,31 @@
 +--------------------------------------+------------------------------------------------------------------------------+
 | entity_country                       | The parent country of the entity.                                            |
 +--------------------------------------+------------------------------------------------------------------------------+
-| entity_figi                          | The figi value of the entity.                                                |
+| entity_figi                          | The figi value of the entity (from openfigi.com).                            |
 +--------------------------------------+------------------------------------------------------------------------------+
-| entity_indices                       | A list of indices Where the entity is a constituent.                         |
+| entity_indices                       | A list of indices where the entity is a constituent.                         |
 +--------------------------------------+------------------------------------------------------------------------------+
-| :ref:`entity_industry`               | The industry within which the entity is listed.                              |
+| :ref:`entity_industry`               | The industry in which the entity is listed.                                  |
 +--------------------------------------+------------------------------------------------------------------------------+
-| entity_market_sector                 | The market sector that the entity belongs to. From openfigi.com              |
+| entity_market_sector                 | The market sector that the entity belongs to (from openfigi.com).            |
 +--------------------------------------+------------------------------------------------------------------------------+
 | entity_region                        | The region where the entity is traded.                                       |
 +--------------------------------------+------------------------------------------------------------------------------+
 | :ref:`entity_sector`                 | The sector that the entity belongs to.                                       |
-+                                      +------------------------------------------------------------------------------+
-|                                      | The sector that the entity belongs to.                                       |
 +--------------------------------------+------------------------------------------------------------------------------+
-| entity_security_type                 | The security type of the entity. From openfigi.com                           |
+| entity_security_type                 | The security type of the entity (from openfigi.com).                         |
 +--------------------------------------+------------------------------------------------------------------------------+
 | entity_ticker                        | The traded ticker symbols of the extracted entity.                           |
 +--------------------------------------+------------------------------------------------------------------------------+
-| entity_type                          | The type of entity, such as public equity, commodity, cryptocurrency.        |
+| entity_type                          | The type of entity, such as public equity, commodity, cryptocurrency, etc.   |
 +--------------------------------------+------------------------------------------------------------------------------+
-| :ref:`event`                         | These are financial events extracted from the stories.                       |
+| :ref:`event`                         | Financial events extracted from the stories.                                 |
 +--------------------------------------+------------------------------------------------------------------------------+
-| :ref:`event_group`                   | The broader financial events category that contains multiple related events. |
+| :ref:`event_group`                   | The broader financial events category.                                       |
 +--------------------------------------+------------------------------------------------------------------------------+
-| from                                 | Start timestamp of the query. Will return data start from this time.         |
+| from                                 | The eariliest timestamp allowed in the returned data.                        |
 +--------------------------------------+------------------------------------------------------------------------------+
-| last_id                              | Returns the latest documents that came after the provided id.                |
+| last_id                              | The last id before the return data.                                          |
 +--------------------------------------+------------------------------------------------------------------------------+
 | :ref:`story_type`                    | Where the stories are published and their mode of access.                    |
 +--------------------------------------+------------------------------------------------------------------------------+

@@ -8,7 +8,7 @@ Accern for Python
 
 .. snip
 
-A python library to consume Accern Realtime Streaming API, REST API and get
+A python library to consume Accern Realtime Streaming and REST API and get
 historical data.
 
 Overview
@@ -19,18 +19,17 @@ hedge funds can gain a competitive advantage using news and social media data.
 It currently has the world’s largest financial news coverage, covering over
 1 billion public news websites, blogs, financial documents, and social media
 websites. Furthermore, Accern derives proprietary analytics from each news
-stories to help quantitative hedge funds make accurate trading decisions.
+story to help quantitative hedge funds make accurate trading decisions.
 
-Accern consolidates multiple news data feeds into one to help both small and
-large funds reduce costs drastically. With Accern proprietary data filters, it
-is able to deliver relevant articles to clients with a 99 percent accuracy rate.
+Accern consolidates multiple news data feeds into one to help drastically reduce
+costs of both small and large hedge funds. With Accern proprietary data filters, we
+are able to deliver relevant articles to clients with a 99 percent accuracy rate.
 Accern’s delivery mechanism is a RESTful API where it delivers derived analytics
 from news articles, including the original article URLs so quantitative hedge
 funds can derive their own analytics in-house from the relevant articles.
 
-Accern library for Python helps user to get fast, flexible data structures from
-Accern's Streaming, REST APIs and batch historical data.
-
+The Accern library for Python helps users get fast, flexible data structures from
+Accern's Streaming and REST APIs and batch historical data.
 
 .. snap
 
@@ -44,7 +43,7 @@ Install
 Quick Start
 ---------------
 
-1. Contact `support@accern.com`. and inquire an Accern API token.
+1. Contact `support@accern.com`. and inquire about an Accern API token.
 
 2. To quickly start using Accern ``Stream API``, simply create ``Stream`` and  ``StreamListener`` clients:
 

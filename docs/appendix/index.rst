@@ -5,7 +5,7 @@ Appendix
 Field Filter Cookbook
 =====================
 
-Here is the cookbook of how to filter fields using REST api.
+Here is a cookbook of how to filter fields by using our REST API.
 
 .. code-block:: python
 
@@ -22,7 +22,7 @@ Filter by single event.
 
     schema = {
         'filters': {
-            'event': ['Analyst Ratings']
+            'event': 'Analyst Ratings'
         }
     }
 
@@ -38,13 +38,13 @@ Filter by a list of events.
         }
     }
 
-Get only ``entity_type = US_equity``.
+Get only ``entity_type = US_EQUITY``.
 
 .. code-block:: python
 
     schema = {
         'filters': {
-            'entity_type': ['US_EQUITY']
+            'entity_type': 'US_EQUITY'
         }
     }
 
@@ -54,7 +54,7 @@ Get only ``story_type = news``.
 
     schema = {
         'filters': {
-            'story_type': ['news']
+            'story_type': 'news'
         }
     }
 
@@ -65,7 +65,19 @@ Get articles with low ``story_group_exposure``.
 
     schema = {
         'filters': {
-            'story_group_exposure': ['low']
+            'story_group_exposure': 'low'
+        }
+    }
+
+You can provide multiple fields in the filter (they will be AND'd).
+
+.. code-block:: python
+
+    schema = {
+        'filters': {
+            'event': ['Analyst Ratings', 'Corporate Actions'],
+            'story_group_exposure': 'low',
+            'story_type': 'news'
         }
     }
 
@@ -97,4 +109,12 @@ event_group
 story_type
 ----------
 
-values: 'blog', 'feed', 'news', 'sec_filing'
++------------+
+| blog       |
++------------+
+| feed       |
++------------+
+| news       |
++------------+
+| sec_filing |
++------------+
