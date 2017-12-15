@@ -35,8 +35,7 @@ Authenticate Stream Client
     from accern import StreamClient
     token = 'YOUR TOKEN'
 
-    schema = {}
-    stream = StreamClient(myStreamListener, token, **schema)
+    stream = StreamClient(myStreamListener, token)
 
 
 Filter and select with schema
@@ -63,5 +62,5 @@ Filter and select with schema
             ]
         }
     }
-    stream = StreamClient(MyStreamListener(), token, **schema)
+    stream = StreamClient(MyStreamListener(), token, schema)
     stream.performs()

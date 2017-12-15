@@ -1,10 +1,9 @@
-from accern import API as AccernAPI
-from accern import error
+from accern import API, error
 import pytest
 
 
 def test_fails_without_token():
-    API = AccernAPI()
-    API.token = None
+    token = None
+    Client = API(token)
     with pytest.raises(error.AuthenticationError):
-        API.request({})
+        Client.request({})

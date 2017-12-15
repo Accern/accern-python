@@ -30,9 +30,31 @@ else:
 
 
 __all__ = [
+    'AccernClient',
+    'Event',
     'new_http_client'
 ]
 
+
+param_values = [
+    'entity_competitors',
+    'entity_country',
+    'entity_figi',
+    'entity_indices',
+    'entity_industry',
+    'entity_market_sector',
+    'entity_region',
+    'entity_sector',
+    'entity_security_type',
+    'entity_ticker',
+    'entity_type',
+    'event',
+    'event_group',
+    'from',
+    'last_id',
+    'story_group_exposure',
+    'story_type'
+]
 
 def new_http_client(*args, **kwargs):
     return RequestsClient(*args, **kwargs)
@@ -71,31 +93,28 @@ class AccernClient(object):
         return util.urlunsplit((scheme, netloc, path, query, fragment))
 
     @staticmethod
-    def get_params(filters):
-        param_values = [
-            'entity_competitors', 'entity_country', 'entity_figi',
-            'entity_indices', 'entity_industry', 'entity_market_sector',
-            'entity_region', 'entity_sector', 'entity_security_type',
-            'entity_ticker', 'entity_type', 'event', 'event_group', 'from',
-            'last_id', 'story_type', 'story_group_exposure'
-        ]
+    def get_params(schema):
+        if schema is None:
+            filters = {}
+        else:
+            filters = schema.get('filters', {})
         avail_params = [value for value in filters if value in param_values]
         return {key: filters[key] for key in avail_params}
 
     @staticmethod
-    def select_fields(options, raw_data):
-        data_filtered = []
-
-        names = [option['name'] if 'name' in option else option['field']for option in options]
-        fields = [option['field'] for option in options]
+    def select_fields(schema, raw_data):
+        if schema is None:
+            select = []
+        else:
+            select = schema.get('select', [])
+        names = [option['name'] if 'name' in option else option['field'] for option in select]
+        fields = [option['field'] for option in select]
+        data_selected = []
         for data in raw_data:
-            if bool(options) > 0:
+            if bool(select) > 0:
                 try:
-                    if isinstance(options, list):
-                        new_data = dict(zip(
-                            names,
-                            [data[field] for field in fields]
-                        ))
+                    if isinstance(select, list):
+                        new_data = dict(zip(names, [data[field] for field in fields]))
                     else:
                         raise error.AccernError('Invalid select values passed.')
                 except KeyError:
@@ -108,10 +127,9 @@ class AccernClient(object):
             if 'entity_indices' in new_data:
                 new_data['entity_indices'] = ' | '.join(new_data['entity_indices'])
 
-            data_filtered.append(new_data)
+            data_selected.append(new_data)
 
-        return data_filtered
-
+        return data_selected
 
 class Event(object):
     SSE_LINE_PATTERN = re.compile('(?P<name>[^:]*):?( ?(?P<value>.*))?')
