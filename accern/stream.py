@@ -3,16 +3,14 @@
 Core client functionality, common across all API requests (including performing
 HTTP requests).
 """
-from accern.default_client import AccernClient, Event
-
-from accern import util
 import codecs
-
 import re
 import requests
 import time
+from accern.default_client import AccernClient, Event
+from accern import util
 
-API_BASE = "https://feed.accern.com/v4/stream"
+API_BASE = 'https://feed.accern.com/v4/stream'
 END_OF_FIELD = re.compile(r'\r\n\r\n|\r\r|\n\n')
 
 
@@ -39,7 +37,7 @@ class StreamListener(AccernClient):
 class StreamClient(object):
     """Perform requests to the Accern API web services."""
 
-    def __init__(self, listener, token, **kwargs):
+    def __init__(self, listener, token=None, schema=None, **kwargs):
         """Intialize with params.
 
         :param client: default http client. Optional
@@ -49,17 +47,16 @@ class StreamClient(object):
         self.api_base = API_BASE
         # Keep data here as it streams in
         self.buf = u''
-        self.chunk_size = kwargs.get("chunk_size", 1024)
-        self.last_id = kwargs.get("last_id", None)
-        self.filters = kwargs.get("filters", {})
+        self.chunk_size = kwargs.get('chunk_size', 1024)
+        self.last_id = kwargs.get('last_id', None)
+        self.schema = schema or {}
         # Any extra kwargs will be fed into the requests.get call later.
         self.requests_kwargs = kwargs.get('request', {})
         self.resp = None
         self.resp_iterator = None
-        self.retry = kwargs.get("retry", 3000)
-        self.select = kwargs.get("select", None)
+        self.retry = kwargs.get('retry', 3000)
         self.timeout = kwargs.get('timeout', 300.0)
-        self.token = token
+        self.token = token or None
         self.url = None
 
         # The SSE spec requires making requests with Cache-Control: nocache
@@ -109,10 +106,9 @@ class StreamClient(object):
             self.last_id = msg.event_id
 
         if msg.data:
-            # print ("%s - Processing data..." % (util.datetime.now()))
             raw_data = util.json.loads(util.json.loads(msg.data)['data'])['signals']
 
-            data = AccernClient.select_fields(self.select, raw_data)
+            data = AccernClient.select_fields(self.schema, raw_data)
             if self._listener.on_data(data) is False:
                 return False
 
@@ -152,15 +148,15 @@ class StreamClient(object):
         :raises TransportError: when something went wrong while trying to
             exceute a request.
         """
-        print ("%s - Start streaming, use [Ctrl+C] to stop..." % (util.datetime.now()))
-        params = AccernClient.get_params(self.filters)
+        print ('%s - Start streaming, use [Ctrl+C] to stop...' % (util.datetime.now()))
+        params = AccernClient.get_params(self.schema)
         params['token'] = AccernClient.check_token(self.token)
         encoded_params = util.urlencode(list(AccernClient.api_encode(params or {})))
         self.url = AccernClient.build_api_url(self.api_base, encoded_params)
         try:
             self._run()
         except KeyboardInterrupt:
-            print ("%s - Streaming stopped..." % (util.datetime.now()))
+            print ('%s - Streaming stopped...' % (util.datetime.now()))
         else:
             pass
 

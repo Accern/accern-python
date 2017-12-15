@@ -45,14 +45,24 @@ Quick Start
 
 1. Contact `support@accern.com`. and inquire about an Accern API token.
 
-2. To quickly start using Accern ``Stream API``, simply create ``Stream`` and  ``StreamListener`` clients:
+2. To quickly start using the Accern API, create an API instance and pass your token:
 
 .. code-block:: python
 
-    from accern import Stream, StreamListener
+    from accern import API
     token = 'YOUR TOKEN'
-    myStreamListener = StreamListener()
-    stream = Stream(myStreamListener, token)
+    Client = API(token)
+
+3. Pass params to get filtered data and make an API request.
+
+.. code-block:: python
+
+    schema = {
+        'filters': {
+            'entity_ticker': 'AAPL'
+        }
+    }
+    resp = Client.request(schema)
 
 3. Accern ``Historical API`` will be available in the future releases.
 

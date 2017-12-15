@@ -56,7 +56,7 @@ will be the most recent 100 documents.
 
 .. code-block:: python
 
-    response = Client.request({})
+    response = Client.request()
 
 A response example.
 
