@@ -47,8 +47,6 @@ REST: Get one week data for restaurants entities
         'TACO', 'DENN', 'HABT', 'LOCO', 'WING', 'BLMN', 'PBPB', 'RRGB', 'FRGI',
         'FOGO', 'DRI'
     ]
-    start_time = datetime(2017, 12, 1, 0, 0, 0, 000)
-    end_time = datetime(2017, 12, 7, 23, 59, 59, 999999)
 
     schema = {
         'select': [
@@ -63,8 +61,9 @@ REST: Get one week data for restaurants entities
             }
         ],
         'filters': {
+            'entity_relevance': [70, 100],
             'entity_ticker': restaurants,
-            'last_id': 0
+            'harvested_at': ['2017-12-01 00:00:00', '2017-12-07 00:00:00']
         }
     }
 
@@ -80,6 +79,9 @@ REST: Get one week data for restaurants entities
         schema['filters']['last_id'] = response['last_id']
         response = Client.request(schema)
 
+    result = result.drop_duplicates().reset_index(drop=True)
+    result.to_csv('restaurants.csv', index=False)
+
 Streaming: Save to csv
 --------------------------
 
@@ -87,7 +89,6 @@ Streaming: Save to csv
 
     from accern import StreamClient, StreamListener
     from datetime import datetime
-    import json
     import os
     import pandas as pd
 
@@ -102,7 +103,7 @@ Streaming: Save to csv
                 df.to_csv('output.csv', mode='a', header=False, encoding='utf-8', index=False)
 
     TOKEN = 'YOUR TOKEN'
-    stream = StreamClient(MyStreamListener(), Token)
+    stream = StreamClient(MyStreamListener(), TOKEN)
     stream.performs()
 
 Streaming: Save to mongo

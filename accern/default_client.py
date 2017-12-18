@@ -1,4 +1,5 @@
 from accern import error, util
+from datetime import datetime
 import re
 import sys
 import textwrap
@@ -36,7 +37,7 @@ __all__ = [
 ]
 
 
-param_values = [
+PARAM = [
     'entity_competitors',
     'entity_country',
     'entity_figi',
@@ -55,8 +56,8 @@ param_values = [
     'story_group_exposure',
     'story_type'
 ]
-quant_variables=[
 
+QUANT = [
     'event_impact_gt_mu_add_sigma',
     'event_impact_gt_mu_pos_add_sigma_pos',
     'event_impact_gt_mu_pos_add_2sigma_pos',
@@ -75,13 +76,17 @@ quant_variables=[
     'entity_exchange',
     'entity_relevance',
     'entity_sentiment',
+    'harvested_at',
     'story_group_exposure',
     'story_group_sentiment_avg',
     'story_group_sentiment_stdev',
     'story_group_count',
     'story_group_traffic_sum',
     'story_sentiment',
-    'story_traffic']
+    'story_traffic'
+]
+
+
 def new_http_client(*args, **kwargs):
     return RequestsClient(*args, **kwargs)
 
@@ -118,14 +123,43 @@ class AccernClient(object):
             query = '%s&%s' % (base_query, query)
         return util.urlunsplit((scheme, netloc, path, query, fragment))
 
+    @classmethod
+    def check_values(cls, raw_data, f, f_values):
+        if f == 'harvested_at':
+            for data in raw_data:
+                if (datetime.strptime(data[f], '%Y-%m-%dT%H:%M:%S.%fZ') >= datetime.strptime(f_values[0], '%Y-%m-%d %H:%M:%S')) and \
+                   (datetime.strptime(data[f], '%Y-%m-%dT%H:%M:%S.%fZ') <= datetime.strptime(f_values[1], '%Y-%m-%d %H:%M:%S')):
+                    yield data
+        else:
+            for data in raw_data:
+                for value in f_values:
+                    if data[f] > value[0] and data[f] < value[1]:
+                        yield data
+
+    @staticmethod
+    def check_schema(schema):
+        if schema is None:
+            return
+        else:
+            filters = schema.get('filters', {})
+
+        all_fields = QUANT + PARAM
+        for f in filters:
+            if f not in all_fields:
+                raise error.AccernError('Invalid Schema (filters): %s' % (str(schema)))
+        return True
+
     @staticmethod
     def get_params(schema):
         if schema is None:
             filters = {}
         else:
             filters = schema.get('filters', {})
-        avail_params = [value for value in filters if value in param_values]
-        return {key: filters[key] for key in avail_params}
+        avail_params = [value for value in filters if value in PARAM]
+        params = {key: filters[key] for key in avail_params}
+        if 'harvested_at' in filters:
+            params['from'] = filters['harvested_at'][0]
+        return params
 
     @staticmethod
     def select_fields(schema, raw_data):
@@ -136,6 +170,7 @@ class AccernClient(object):
         names = [option['name'] if 'name' in option else option['field'] for option in select]
         fields = [option['field'] for option in select]
         data_selected = []
+
         for data in raw_data:
             if bool(select) > 0:
                 try:
@@ -156,22 +191,21 @@ class AccernClient(object):
             data_selected.append(new_data)
 
         return data_selected
-    @staticmethod
-    def quant_filter(signals,filters):
-        filter_keys = filters.keys()
-        for filter_key in filter_keys:
-            if filter_key in quant_variables:
-                signals_filtered = []
-                list_filts = filters[filter_key]
-                for data in signals:
-                    for filt in list_filts:
-                        if data[filter_key]>filt[0] and data[filter_key]<filt[1]:
-                            signals_filtered.append(data)
-                            break
-            else:
-                signals_filtered = signals
-            signals = signals_filtered
-        return signals_filtered
+
+    @classmethod
+    def quant_filter(cls, schema, raw_data):
+        if schema is None:
+            filters = {}
+        else:
+            filters = schema.get('filters', {})
+
+        for f in filters:
+            if f in QUANT:
+                data_filtered = list(cls.check_values(raw_data, f, filters[f]))
+                raw_data = data_filtered
+
+        return raw_data
+
 
 class Event(object):
     SSE_LINE_PATTERN = re.compile('(?P<name>[^:]*):?( ?(?P<value>.*))?')
