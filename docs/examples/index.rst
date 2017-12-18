@@ -129,3 +129,70 @@ Streaming: Save to mongo
     TOKEN = 'YOUR TOKEN'
     stream = StreamClient(MyStreamListener(), TOKEN)
     stream.performs()
+
+
+Historical Data: Create one historical job
+------------------------------------------
+
+.. code-block:: python
+
+    from accern import HistoricalClient
+
+    TOKEN = 'YOUR TOKEN'
+    Client = HistoricalClient(TOKEN)
+
+    schema = {
+        'name': 'Daily Sentiment',
+        'description': 'Get Daily Sentiment data',
+        "select": [
+            {
+                "field":"entity_ticker",
+                "name": "ticker"
+            }, {
+                "field": "harvested_at"
+            }
+        ],
+        "filters": [
+            {
+                "entity_ticker": ["AAPL", "GOOG","MSFT"]
+            }
+        ]
+    }
+    resp = Client.create_job(schema)
+
+
+Historical Data: Check the status of a historical job
+-----------------------------------------------------
+
+.. code-block:: python
+
+    from accern import HistoricalClient
+    import io
+    import requests
+    import pandas as pd
+
+    token = 'YOUR TOKEN'
+    Client = HistoricalClient(token)
+
+    resp = Client.get_jobs('YOUR JOB ID')
+    print resp['job']
+
+
+Historical Data: Read the csv from the job's download link
+----------------------------------------------------------
+
+.. code-block:: python
+
+    from accern import HistoricalClient
+    import io
+    import requests
+    import pandas as pd
+
+    token = 'YOUR TOKEN'
+    Client = HistoricalClient(token)
+
+    resp = Client.get_jobs('YOUR JOB ID')
+    link = resp['job']['link']
+    raw_data = requests.get(link).content
+    data = pd.read_csv(io.StringIO(raw_data.decode('utf-8')))
+    print data.head()

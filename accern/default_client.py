@@ -123,6 +123,19 @@ class AccernClient(object):
             query = '%s&%s' % (base_query, query)
         return util.urlunsplit((scheme, netloc, path, query, fragment))
 
+    @staticmethod
+    def build_api_headers(token, method):
+        if method == "POST":
+            return {
+                'Content-Type': 'application/json',
+                'IO-Authorization': token
+            }
+        elif method == "GET":
+            return {
+                'Content-Type': 'application/json',
+                'IO-Authorization': token
+            }
+
     @classmethod
     def check_values(cls, raw_data, f, f_values):
         if f == 'harvested_at':
@@ -160,6 +173,18 @@ class AccernClient(object):
         if 'harvested_at' in filters:
             params['from'] = filters['harvested_at'][0]
         return params
+
+    @staticmethod
+    def handle_error(rbody, rcode, resp):
+        try:
+            error_data = resp['error']
+        except (KeyError, TypeError):
+            raise error.APIError(
+                "Invalid response object from API: %r (HTTP response code "
+                "was %d)" % (rbody, rcode), rbody, rcode, resp)
+
+        if rcode == 400:
+            return error.AccernError(error_data, rbody, rcode)
 
     @staticmethod
     def select_fields(schema, raw_data):

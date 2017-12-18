@@ -30,19 +30,19 @@ fail.
 Your API tokens carry many privileges. Don't share your secret API tokens in any
 public spaces like Github, client-side code, etc.
 
-To authenticate, pass it through the constructor or assign your secret token to
+To authenticate, pass it through the constructor or assign your YOUR TOKEN to
 the API instance.
 
 .. code-block:: python
 
-    token = 'SECRET TOKEN'
+    token = 'YOUR TOKEN'
     Client = API(token)
 
 or
 
 .. code-block:: python
 
-    token = 'SECRET TOKEN'
+    token = 'YOUR TOKEN'
     Client.token = token
 
 
