@@ -81,6 +81,26 @@ You can provide multiple fields in the filter (they will be AND'd).
         }
     }
 
+You can filter date by either ``from`` or ``harvested_at``. The time is in UTC.
+
+.. code-block:: python
+
+    schema = {
+        'filters': {
+            'from': '2017-11-01'
+        }
+    }
+
+or
+
+.. code-block:: python
+
+    schema = {
+        'filters': {
+            'harvested_at': ['2017-11-01 00:00:00', '2017-11-31 00:00:00']
+        }
+    }
+
 Field Value List
 ================
 

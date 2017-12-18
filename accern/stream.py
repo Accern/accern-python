@@ -108,7 +108,9 @@ class StreamClient(object):
         if msg.data:
             raw_data = util.json.loads(util.json.loads(msg.data)['data'])['signals']
 
-            data = AccernClient.select_fields(self.schema, raw_data)
+            data = AccernClient.quant_filter(self.schema, raw_data)
+            data = AccernClient.select_fields(self.schema, data)
+
             if self._listener.on_data(data) is False:
                 return False
 
@@ -149,6 +151,7 @@ class StreamClient(object):
             exceute a request.
         """
         print ('%s - Start streaming, use [Ctrl+C] to stop...' % (util.datetime.now()))
+        AccernClient.check_schema(self.schema)
         params = AccernClient.get_params(self.schema)
         params['token'] = AccernClient.check_token(self.token)
         encoded_params = util.urlencode(list(AccernClient.api_encode(params or {})))

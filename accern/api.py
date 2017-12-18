@@ -28,18 +28,20 @@ class API(AccernClient):
         try:
             if hasattr(rbody, 'decode'):
                 rbody = rbody.decode('utf-8')
-            parsed_rbody = util.json.loads(rbody)
-            signals = parsed_rbody['signals']
-            if parsed_rbody['total'] > 0:
-                parsed_rbody['signals'] = AccernClient.select_fields(schema, signals)
-            resp = parsed_rbody
+            resp = util.json.loads(rbody)
         except Exception:
             raise error.APIError(
                 "Invalid response body from API: %s "
                 "(HTTP response code was %d)" % (rbody, rcode),
                 rbody, rcode, rheaders)
+
         if not 200 <= rcode < 300:
             raise error.APIError('API request failed.')
+
+        if resp['total'] > 0:
+            resp['signals'] = AccernClient.quant_filter(schema, resp['signals'])
+            resp['signals'] = AccernClient.select_fields(schema, resp['signals'])
+            resp['total'] = len(resp['signals'])
         return resp
 
     def request(self, schema=None):
@@ -52,6 +54,8 @@ class API(AccernClient):
 
         :raises AuthenticationError: when the token is invalid.
         """
+        AccernClient.check_schema(schema)
+
         params = AccernClient.get_params(schema)
         params['token'] = AccernClient.check_token(self.token)
         encoded_params = util.urlencode(list(AccernClient.api_encode(params)))
