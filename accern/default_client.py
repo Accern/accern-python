@@ -267,7 +267,6 @@ class Event(object):
     def __str__(self):
         return self.data
 
-        return data_selected
 
 class HTTPClient(object):
     def request(self, method, url, headers, post_data=None):
