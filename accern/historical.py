@@ -4,96 +4,81 @@ Core client functionality, common across all API requests (including performing
 HTTP requests).
 """
 
-try:
-    import requests
-except ImportError:
-    requests = None
+from accern import default_client, error, util
+from accern.default_client import AccernClient
 
-from accern import error, http_client, util
-from accern.util import six, urlsplit, urlunsplit, urlencode
-
-api_base = "htts://feed.accern.com/v4/stream"
+API_BASE = "https://admin-staging.accern.com/api/io/jobs"
 
 
-def _api_encode(data):
-    for key, value in six.iteritems(data):
-        key = util.utf8(key)
-        if value is None:
-            continue
-        elif isinstance(value, list):
-            yield (key, ",".join(value))
-        else:
-            yield (key, util.utf8(value))
-
-
-class Historical(object):
+class HistoricalClient(AccernClient):
     """Perform requests to the Accern API web services."""
 
-    def __init__(self, client=None, token=None):
+    def __init__(self, token=None, client=None):
         """Intialize with params.
 
         :param client: default http client. Optional
         :param token: Accern API token. Required.
         """
-        self.api_base = api_base
+        self.api_base = API_BASE
         self.token = token
-        self._client = client or http_client.new_default_http_client()
+        self._client = client or default_client.new_http_client()
 
-    def _build_api_headers(self, api_key, method):
-        headers = {
-            'Authorization': 'Token token=%s' % (api_key)
-        }
-        return headers
+    @staticmethod
+    def interpret_response(rbody, rcode, rheaders):
+        try:
+            if hasattr(rbody, 'decode'):
+                rbody = rbody.decode('utf-8')
+            resp = util.json.loads(rbody)
+        except Exception:
+            raise error.APIError(
+                "Invalid response body from API: %s "
+                "(HTTP response code was %d)" % (rbody, rcode),
+                rbody, rcode, rheaders)
 
-    def _build_api_url(self, url, query):
-        scheme, netloc, path, base_query, fragment = urlsplit(url)
-        if base_query:
-            query = '%s&%s' % (base_query, query)
-        return urlunsplit((scheme, netloc, path, query, fragment))
+        if not 200 <= rcode < 300:
+            raise AccernClient.handle_error(rbody, rcode, resp)
 
-    def request(self, method=None, params=None):
-        """Perform HTTP GET/POST with credentials.
+        return resp
 
-        :param url: URL path for the request. Should begin with a slash.
+    def create_job(self, schema):
+        """Create a job with schema.
 
-        :param params: HTTP GET parameters.
+        :param schema: job detail, will be added to payload
 
         :raises ApiError: when the API returns an error.
         :raises Timeout: if the request timed out.
         :raises TransportError: when something went wrong while trying to
             exceute a request.
         """
-        if self.token:
-            my_token = self.token
+
+        token = AccernClient.check_token(self.token)
+        method = 'POST'
+
+        headers = AccernClient.build_api_headers(token, method)
+
+        if method == 'POST':
+            post_data = util.json.dumps({'query': schema})
         else:
-            from accern import token
-            my_token = token
-
-        if my_token is None:
-            raise error.AuthenticationError('No Token provided')
-
-        abs_url = '%s' % (self.api_base)
-        if params is None:
-            params = {'token': my_token}
-        else:
-            params['token'] = my_token
-        encoded_params = urlencode(list(_api_encode(params or {})))
-
-        if method == 'get':
-            if params:
-                abs_url = self._build_api_url(abs_url, encoded_params)
             post_data = None
-        elif method == 'post':
-            return 'post not implemented yet'
+
+        rbody, rcode, rheaders = self._client.request(method, self.api_base, headers, post_data)
+        resp = self.interpret_response(rbody, rcode, rheaders)
+        return resp
+
+    def get_jobs(self, job_id=None):
+        """Get the user's job history.
+
+        :param job_id: if job_id is valid, will return the job related
+        """
+
+        token = AccernClient.check_token(self.token)
+        method = 'GET'
+        headers = AccernClient.build_api_headers(token, method)
+        if job_id is None:
+            rbody, rcode, rheaders = self._client.request(method, self.api_base, headers, post_data=None)
+            resp = self.interpret_response(rbody, rcode, rheaders)
         else:
-            raise error.APIConnectionError('Unrecognized HTTP method %r' % (method))
+            rbody, rcode, rheaders = self._client.request(method, '%s/%s' % (self.api_base, job_id), headers, post_data=None)
+            resp = self.interpret_response(rbody, rcode, rheaders)
 
-        headers = self._build_api_headers(my_token, method)
-        rbody, rcode, rheaders = self._client.request(method, abs_url, headers, post_data)
-        return rbody, rcode, rheaders
-
-    def save(self, method, output):
-        resp = self.request_raw(method)
-        jsonData = util.json.loads(resp.text)
-        with open(output, 'w') as outfile:
-            util.json.dump(jsonData, outfile)
+        return resp
