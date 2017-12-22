@@ -146,7 +146,7 @@ class AccernClient(object):
         else:
             for data in raw_data:
                 for value in f_values:
-                    if data[f] > value[0] and data[f] < value[1]:
+                    if data[f] >= value[0] and data[f] <= value[1]:
                         yield data
 
     @staticmethod
