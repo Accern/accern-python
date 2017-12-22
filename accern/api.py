@@ -6,7 +6,7 @@ HTTP requests).
 
 from accern import default_client, error, util
 from accern.default_client import AccernClient
-
+import json
 API_BASE = "https://feed.accern.com/v4/alphas"
 
 
@@ -63,3 +63,25 @@ class API(AccernClient):
 
         rbody, rcode, rheaders = self._client.request('GET', abs_url, headers=None, post_data=None)
         return rbody, rcode, rheaders
+
+    def get_options(self, filters, check_opt=[]):
+        options = json.load(open("docs/options.json"))
+        if filters in list(options.keys()):
+            if len(check_opt) == 0 or options[filters]['type'] == 'range':
+                return options[filters]
+            else:       
+                valid_opt = []
+                options_filt = options[filters]['value']
+                for opt in check_opt:
+                    if opt in options_filt:
+                        valid_opt.append(opt)
+                    else:
+                        print (opt+" is not a valid option")
+                print (str(len(valid_opt))+" valid options out of "+str(len(check_opt)))
+                options[filters]['value'] = valid_opt
+                return options[filters]
+        else:
+            print ("invalid option, please choose one from the list")
+            return options.keys()
+
+    
