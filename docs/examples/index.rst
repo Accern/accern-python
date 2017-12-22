@@ -134,6 +134,9 @@ Streaming: Save to mongo
 Historical Data: Create one historical job
 ------------------------------------------
 
+A full example can be found at
+`Historical Job Example <https://raw.githubusercontent.com/Accern/accern-python/master/docs/_static/historical_job.html>`_
+
 .. code-block:: python
 
     from accern import HistoricalClient

@@ -63,3 +63,67 @@ of that job.
 
     job_id = 'YOUR JOB ID'
     resp = Client.get_jobs(job_id)
+
+Add datetime aggregations
+-------------------------
+
+You can add ``minute``, ``hour``, ``day``, ``week``, or ``month``
+aggregation function to the field ``harvested_at``. The ``alias`` field should
+match the function name you choose.
+
+.. code-block:: python
+
+    schema = {
+        'name': 'Month',
+        'description': 'Month Sentiment data',
+        'select': [
+            {
+                'field': 'harvested_at',
+                'alias': 'month',
+                'function': 'month'
+            }
+        ]
+    }
+
+The aggregation function will group signals based on the time interval you choose.
+If your data will contain other fields, an aggregation function should be given.
+Otherwise, an API error will occur.
+
+.. code-block:: python
+
+    schema = {
+        'name': 'Month',
+        'description': 'Month Sentiment data',
+        'filters': [
+            {
+                'harvested_at': [
+                    ['2012-08-01 00:00:00', '2017-11-30 00:00:00']
+                ],
+                'entity_sentiment': [
+                    [-100, 50]
+                ],
+                'entity_ticker': [
+                    'AAPL',
+                    'AMZN'
+                ]
+            }
+        ],
+        'select': [
+            {
+                'field': 'entity_sentiment',
+                'function': 'sum'
+            },
+            {
+                'field': 'entity_ticker',
+                'function': 'group'
+            },
+            {
+                'field': 'harvested_at',
+                'alias': 'month',
+                'function': 'month'
+            }
+        ]
+    }
+
+
+A full list of the available aggregation functions can be found at :ref:`Aggregation function<Field Aggregate Function>`
