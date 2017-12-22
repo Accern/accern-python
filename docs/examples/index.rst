@@ -135,7 +135,7 @@ Historical Data: Create one historical job
 ------------------------------------------
 
 A full example can be found at
-`Historical Job Example <https://raw.githubusercontent.com/Accern/accern-python/master/docs/examples/historical_job.ipynb>`_
+`Historical Job Example <https://github.com/Accern/accern-python/blob/master/docs/examples/historical_job.ipynb>`_
 
 .. code-block:: python
 
