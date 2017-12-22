@@ -25,6 +25,7 @@ dist
 .coverage
 .coverage.*
 *,cover
+.ipynb_checkpoints
 
 # OS generated files #
 ######################
