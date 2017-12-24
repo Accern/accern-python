@@ -2,7 +2,6 @@ import six
 
 
 class AccernError(Exception):
-
     def __init__(self, message=None, http_body=None, http_status=None,
                  json_body=None, headers=None):
         super(AccernError, self).__init__(message)
@@ -25,8 +24,7 @@ class AccernError(Exception):
         if self.request_id is not None:
             msg = self._message or "<empty message>"
             return u"Request {0}: {1}".format(self.request_id, msg)
-        else:
-            return self._message
+        return self._message
 
     if six.PY3:
         def __str__(self):
@@ -49,7 +47,6 @@ class APIError(AccernError):
 
 
 class InvalidRequestError(AccernError):
-
     def __init__(self, message, param, code=None, http_body=None,
                  http_status=None, json_body=None, headers=None):
         super(InvalidRequestError, self).__init__(
@@ -57,3 +54,7 @@ class InvalidRequestError(AccernError):
             headers)
         self.param = param
         self.code = code
+
+
+class SchemaError(AccernError):
+    pass

@@ -77,7 +77,6 @@ QUANT = [
     'entity_relevance',
     'entity_sentiment',
     'harvested_at',
-    'story_group_exposure',
     'story_group_sentiment_avg',
     'story_group_sentiment_stdev',
     'story_group_count',
@@ -92,18 +91,6 @@ def new_http_client(*args, **kwargs):
 
 
 class AccernClient(object):
-    @staticmethod
-    def check_token(token):
-        if token:
-            my_token = token
-        else:
-            from accern import token
-            my_token = token
-
-        if my_token is None:
-            raise error.AuthenticationError('No token provided.')
-        return my_token
-
     @staticmethod
     def api_encode(params):
         if isinstance(params, object):
@@ -136,6 +123,18 @@ class AccernClient(object):
                 'IO-Authorization': token
             }
 
+    @staticmethod
+    def build_api_params(schema):
+        if schema is None:
+            filters = {}
+        else:
+            filters = schema.get('filters', {})
+        avail_params = [value for value in filters if value in PARAM]
+        params = {key: filters[key] for key in avail_params}
+        if 'harvested_at' in filters:
+            params['from'] = filters['harvested_at'][0]
+        return params
+
     @classmethod
     def check_values(cls, raw_data, f, f_values):
         if f == 'harvested_at':
@@ -150,29 +149,16 @@ class AccernClient(object):
                         yield data
 
     @staticmethod
-    def check_schema(schema):
-        if schema is None:
-            return
+    def check_token(token):
+        if token:
+            my_token = token
         else:
-            filters = schema.get('filters', {})
+            from accern import token
+            my_token = token
 
-        all_fields = QUANT + PARAM
-        for f in filters:
-            if f not in all_fields:
-                raise error.AccernError('Invalid Schema (filters): %s' % (str(schema)))
-        return True
-
-    @staticmethod
-    def get_params(schema):
-        if schema is None:
-            filters = {}
-        else:
-            filters = schema.get('filters', {})
-        avail_params = [value for value in filters if value in PARAM]
-        params = {key: filters[key] for key in avail_params}
-        if 'harvested_at' in filters:
-            params['from'] = filters['harvested_at'][0]
-        return params
+        if my_token is None:
+            raise error.AuthenticationError('No token provided.')
+        return my_token
 
     @staticmethod
     def handle_error(rbody, rcode, resp):

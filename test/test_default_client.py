@@ -2,28 +2,7 @@ from accern import AccernClient, error
 import pytest
 
 
-def test_fails_with_invalid_schema():
-    schema = {
-        'select': [
-            {
-                'field': 'entity_ticker',
-                'name': 'ticker'
-            },
-            {
-                'field': 'harvested_at',
-                'name': 'time'
-            }
-        ],
-        'filters': {
-            'entity': [
-                "AAPL", "GOOG"
-            ],
-            'entity_sentiment':[
-                [0, 25],
-                [50, 75]
-            ]
-        }
-    }
-
-    with pytest.raises(error.AccernError):
-        AccernClient.check_schema(schema)
+def test_fails_without_token():
+    with pytest.raises(error.AccernError) as exc_info:
+        AccernClient.check_token(token=None)
+    assert exc_info.value.args[0] == 'No token provided.'

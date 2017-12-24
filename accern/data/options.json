@@ -1,9 +1,9 @@
 {
-    "entity_author_timeliness_score": {
+    "entity_author_republish_score": {
         "type": "range",
         "value": [0, 100]
     },
-    "entity_author_republish_score": {
+    "entity_author_timeliness_score": {
         "type": "range",
         "value": [0, 100]
     },
@@ -419,11 +419,11 @@
         "type": "range",
         "value": [-100, 100]
     },
-    "entity_source_timeliness_score": {
+    "entity_source_republish_score": {
         "type": "range",
         "value": [0, 100]
     },
-    "entity_source_republish_score": {
+    "entity_source_timeliness_score": {
         "type": "range",
         "value": [0, 100]
     },
@@ -10240,11 +10240,11 @@
             "US_EQUITY"
         ]
     },
-    "event_author_timeliness_score": {
+    "event_author_republish_score": {
         "type": "range",
         "value": [0, 100]
     },
-    "event_author_republish_score": {
+    "event_author_timeliness_score": {
         "type": "range",
         "value": [0, 100]
     },
@@ -10765,19 +10765,19 @@
     "harvested_at": {
         "type": "norange"
     },
-    "overall_author_timeliness_score": {
-        "type": "range",
-        "value": [0, 100]
-    },
     "overall_author_republish_score": {
         "type": "range",
         "value": [0, 100]
     },
-    "overall_source_timeliness_score": {
+    "overall_author_timeliness_score": {
         "type": "range",
         "value": [0, 100]
     },
     "overall_source_republish_score": {
+        "type": "range",
+        "value": [0, 100]
+    },
+    "overall_source_timeliness_score": {
         "type": "range",
         "value": [0, 100]
     },
@@ -10792,8 +10792,19 @@
             "medium"
         ]
     },
+    "story_group_sentiment_avg": {
+        "type": "type",
+        "value": [-100, 100]
+    },
+    "story_group_sentiment_stdev": {
+        "type": "norange"
+    },
     "story_group_traffic_sum": {
         "type": "norange"
+    },
+    "story_sentiment": {
+        "type": "range",
+        "value": [-100, 100]
     },
     "story_traffic": {
         "type": "norange"

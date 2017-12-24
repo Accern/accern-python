@@ -4,9 +4,9 @@ Core client functionality, common across all API requests (including performing
 HTTP requests).
 """
 
-from accern import default_client, error, util
-from accern.default_client import AccernClient
-import json
+from accern import error, util
+from accern.schema import Schema
+from accern.default_client import AccernClient, new_http_client
 API_BASE = "https://feed.accern.com/v4/alphas"
 
 
@@ -21,7 +21,7 @@ class API(AccernClient):
         """
         self.api_base = API_BASE
         self.token = token
-        self._client = client or default_client.new_http_client()
+        self._client = client or new_http_client()
 
     @staticmethod
     def interpret_response(rbody, rcode, rheaders, schema):
@@ -54,34 +54,12 @@ class API(AccernClient):
 
         :raises AuthenticationError: when the token is invalid.
         """
-        AccernClient.check_schema(schema)
+        Schema.validate_schema({'method': 'api', 'schema': schema})
 
-        params = AccernClient.get_params(schema)
+        params = AccernClient.build_api_params(schema)
         params['token'] = AccernClient.check_token(self.token)
         encoded_params = util.urlencode(list(AccernClient.api_encode(params)))
         abs_url = AccernClient.build_api_url(self.api_base, encoded_params)
 
         rbody, rcode, rheaders = self._client.request('GET', abs_url, headers=None, post_data=None)
         return rbody, rcode, rheaders
-
-    def get_options(self, filters, check_opt=[]):
-        options = json.load(open("docs/options.json"))
-        if filters in list(options.keys()):
-            if len(check_opt) == 0 or options[filters]['type'] == 'range':
-                return options[filters]
-            else:       
-                valid_opt = []
-                options_filt = options[filters]['value']
-                for opt in check_opt:
-                    if opt in options_filt:
-                        valid_opt.append(opt)
-                    else:
-                        print (opt+" is not a valid option")
-                print (str(len(valid_opt))+" valid options out of "+str(len(check_opt)))
-                options[filters]['value'] = valid_opt
-                return options[filters]
-        else:
-            print ("invalid option, please choose one from the list")
-            return options.keys()
-
-    
