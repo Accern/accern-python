@@ -8,6 +8,7 @@ import re
 import requests
 import time
 from accern.default_client import AccernClient, Event
+from accern.schema import Schema
 from accern import util
 
 API_BASE = 'https://feed.accern.com/v4/stream'
@@ -151,8 +152,8 @@ class StreamClient(object):
             exceute a request.
         """
         print ('%s - Start streaming, use [Ctrl+C] to stop...' % (util.datetime.now()))
-        AccernClient.check_schema(self.schema)
-        params = AccernClient.get_params(self.schema)
+        Schema.validate_schema(self.schema)
+        params = AccernClient.build_api_params(self.schema)
         params['token'] = AccernClient.check_token(self.token)
         encoded_params = util.urlencode(list(AccernClient.api_encode(params or {})))
         self.url = AccernClient.build_api_url(self.api_base, encoded_params)
