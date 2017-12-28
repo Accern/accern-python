@@ -208,5 +208,4 @@ class Schema(object):
             raise error.SchemaError('Illegal usage of validate schema function.')
         schema['select'] = select
 
-        print schema
         return schema
