@@ -35,7 +35,7 @@ All Accern wheels from PyPI are MIT licensed.
 
 """
 
-VERSION = '0.1.6-dev3'
+VERSION = '0.1.6-dev4'
 
 setup(
     name='Accern',
@@ -45,6 +45,7 @@ setup(
     license='MIT License',
     url="https://github.com/Accern/accern-python",
     packages=['accern'],
+    package_data={"accern": ['data/*.json']},
     platforms='Posix; MacOS X; Windows',
     setup_requires=requirements,
     include_package_data=True,
