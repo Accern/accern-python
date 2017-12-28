@@ -5,6 +5,7 @@ HTTP requests).
 """
 
 from accern import default_client, error, util
+from accern.schema import Schema
 from accern.default_client import AccernClient
 
 API_BASE = "https://admin-staging.accern.com/api/io/jobs"
@@ -51,6 +52,7 @@ class HistoricalClient(AccernClient):
             exceute a request.
         """
 
+        schema = Schema.validate_schema(method='historical', schema=schema)
         token = AccernClient.check_token(self.token)
         method = 'POST'
 

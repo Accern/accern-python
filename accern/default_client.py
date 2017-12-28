@@ -1,4 +1,5 @@
 from accern import error, util
+from accern.schema import Schema
 from datetime import datetime
 import re
 import sys
@@ -36,26 +37,6 @@ __all__ = [
     'new_http_client'
 ]
 
-
-PARAM = [
-    'entity_competitors',
-    'entity_country',
-    'entity_figi',
-    'entity_indices',
-    'entity_industry',
-    'entity_market_sector',
-    'entity_region',
-    'entity_sector',
-    'entity_security_type',
-    'entity_ticker',
-    'entity_type',
-    'event',
-    'event_group',
-    'from',
-    'last_id',
-    'story_group_exposure',
-    'story_type'
-]
 
 QUANT = [
     'event_impact_gt_mu_add_sigma',
@@ -129,9 +110,10 @@ class AccernClient(object):
             filters = {}
         else:
             filters = schema.get('filters', {})
-        avail_params = [value for value in filters if value in PARAM]
+        avail_params = [value for value in filters if value in Schema.get_url_params()]
         params = {key: filters[key] for key in avail_params}
         if 'harvested_at' in filters:
+            del params['harvested_at']
             params['from'] = filters['harvested_at'][0]
         return params
 
@@ -178,7 +160,7 @@ class AccernClient(object):
             select = []
         else:
             select = schema.get('select', [])
-        names = [option['name'] if 'name' in option else option['field'] for option in select]
+        names = [option['alias'] if 'alias' in option else option['field'] for option in select]
         fields = [option['field'] for option in select]
         data_selected = []
 
@@ -188,7 +170,7 @@ class AccernClient(object):
                     if isinstance(select, list):
                         new_data = dict(zip(names, [data[field] for field in fields]))
                     else:
-                        raise error.AccernError('Invalid select values passed.')
+                        raise error.AccernError('Select field should be a list.')
                 except KeyError:
                     raise error.AccernError('Invalid select values passed.')
             else:
