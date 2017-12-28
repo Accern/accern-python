@@ -10959,7 +10959,8 @@
         ]
     },
     "from": {
-        "method": ["url_param"]
+        "method": ["url_param"],
+        "type": "other"
     },
     "harvested_at": {
         "function": ["day", "hour", "minute", "month", "week"],
@@ -10967,7 +10968,8 @@
         "type": "norange"
     },
     "last_id": {
-        "method": ["url_param"]
+        "method": ["url_param"],
+        "type": "other"
     },
     "overall_author_republish_score": {
         "function": ["avg", "min", "max", "sum"],

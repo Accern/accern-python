@@ -106,7 +106,8 @@ class Schema(object):
         types = {
             'categorical': cls._validate_categorical,
             'norange': cls._validate_norange,
-            'range': cls._validate_range
+            'range': cls._validate_range,
+            'other': lambda x: x
         }
         return types[FIELD_OPTIONS[field]['type']]({
             'field': field,
@@ -124,7 +125,7 @@ class Schema(object):
                 cls.validate_schema_filters(method=method, filters=f)
             return
         for f in filters:
-            if any(isinstance(el, list) for el in filters[f]):
+            if isinstance(filters[f], list) and any(isinstance(el, list) for el in filters[f]):
                 for el in filters[f]:
                     resp = cls.validate_options(field=f, value=el)
                     if 'error' in resp:
