@@ -54,7 +54,7 @@ class API(AccernClient):
 
         :raises AuthenticationError: when the token is invalid.
         """
-        Schema.validate_schema({'method': 'api', 'schema': schema})
+        schema = Schema.validate_schema(method='api', schema=schema)
 
         params = AccernClient.build_api_params(schema)
         params['token'] = AccernClient.check_token(self.token)

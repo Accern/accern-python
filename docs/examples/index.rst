@@ -150,7 +150,7 @@ A full example can be found at
         "select": [
             {
                 "field":"entity_ticker",
-                "name": "ticker"
+                "alias": "ticker"
             }, {
                 "field": "harvested_at"
             }

@@ -152,8 +152,8 @@ class StreamClient(object):
             exceute a request.
         """
         print ('%s - Start streaming, use [Ctrl+C] to stop...' % (util.datetime.now()))
-        Schema.validate_schema(self.schema)
-        params = AccernClient.build_api_params(self.schema)
+        schema = Schema.validate_schema(method='stream', schema=self.schema)
+        params = AccernClient.build_api_params(schema)
         params['token'] = AccernClient.check_token(self.token)
         encoded_params = util.urlencode(list(AccernClient.api_encode(params or {})))
         self.url = AccernClient.build_api_url(self.api_base, encoded_params)
