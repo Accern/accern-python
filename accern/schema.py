@@ -93,7 +93,7 @@ class Schema(object):
 
     @classmethod
     def get_url_params(cls):
-        return [k for k, v in FIELD_OPTIONS.iteritems() if 'url_param' in v['method']]
+        return [k for k, v in FIELD_OPTIONS.items() if 'url_param' in v['method']]
     @classmethod
     def validate_options(cls, **kwargs):
         field = kwargs.get('field', None)
