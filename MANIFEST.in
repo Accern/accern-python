@@ -1,1 +1,1 @@
-include LICENSE test-requirements.txt Makefile docs/
+include LICENSE test-requirements.txt Makefile docs/ accern/data/
