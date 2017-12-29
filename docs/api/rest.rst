@@ -64,8 +64,8 @@ A response example.
     :start-after: .. snip
     :end-before: .. snap
 
-To select only a few fields or rename the fields, pass the names of the fields
-you want to ``schema``. All the available fields are shown in the above example.
+To select only a few fields or filter some fields, build your schema and pass it
+to the function.
 
 .. code-block:: python
 
@@ -73,52 +73,9 @@ you want to ``schema``. All the available fields are shown in the above example.
         'select': [
             {
                 'field': 'entity_ticker',
-                'name': 'ticker'
+                'alias': 'ticker'
             }
         ]
     }
 
     response = Client.request(schema)
-
-The name for the selected fields is optional and you can select multiple fields.
-
-.. code-block:: python
-
-    schema = {
-        'select': [
-            {
-                'field': 'entity_ticker',
-                'name': 'ticker'
-            }, {
-                'field': 'harvested_at'
-            }
-        ]
-    }
-
-    response = Client.request(schema)
-
-If you want to filter the data, the available fields to filter by are the
-following:
-
-.. include:: ../data/table_filter.rst
-    :start-after: .. snip
-    :end-before: .. snap
-
-Pass the filters to ``schema``. The value can be a single value or an array of
-values.
-
-.. code-block:: python
-
-    schema = {
-        'filters': {
-            'entity_industry': ['Apparel', 'Food Chains'],
-            'event': 'Accident'
-        }
-    }
-
-    response = Client.request(schema)
-
-Cookbook
-========
-
-A list of filter examples is available at :ref:`Cookbook<Field Filter Cookbook>`
