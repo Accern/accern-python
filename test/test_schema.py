@@ -59,10 +59,9 @@ def test_fails_without_method():
         Schema.validate_schema(schema=schema)
     assert exc_info.value.args[0] == 'Method is missing.'
 
-def test_fails_without_schema():
-    with pytest.raises(error.SchemaError) as exc_info:
-        Schema.validate_schema(method='api')
-    assert exc_info.value.args[0] == 'Schema is missing.'
+def test_with_empty_schema():
+    schema = Schema.validate_schema(method='api')
+    assert schema is None
 
 ################################################################
 ### Test cases for func: validate_schema, method: api        ###

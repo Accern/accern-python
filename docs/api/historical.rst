@@ -22,9 +22,9 @@ Create an Historical instance
 Set up a job
 ------------
 
-``name``, ``descriptions``, ``filters`` and ``select`` are required field to
-create a job schema. For the detail of how to work with ``filters`` and
-``select``, please refer to the Cookbook :ref:`Cookbook<Field Filter Cookbook>`.
+``name``, ``description``, ``filters`` and ``select`` are required field to
+create a job schema. For more detail of how to work with ``filters`` and
+``select``, please refer to the :ref:`Schema<Schema Class>`.
 
 .. code-block:: python
 
@@ -64,7 +64,7 @@ of that job.
     job_id = 'YOUR JOB ID'
     resp = Client.get_jobs(job_id)
 
-Add datetime aggregations
+Select and Aggregations
 -------------------------
 
 You can add ``minute``, ``hour``, ``day``, ``week``, or ``month``

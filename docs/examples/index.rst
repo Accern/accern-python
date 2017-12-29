@@ -83,7 +83,7 @@ REST: Get one week data for restaurants entities
     result.to_csv('restaurants.csv', index=False)
 
 Streaming: Save to csv
---------------------------
+----------------------
 
 .. code-block:: python
 
@@ -105,6 +105,47 @@ Streaming: Save to csv
     TOKEN = 'YOUR TOKEN'
     stream = StreamClient(MyStreamListener(), TOKEN)
     stream.performs()
+
+Streaming: Create output csv structure and seperate by hour
+-----------------------------------------------------------
+.. code-block:: python
+
+    from accern import StreamListener, StreamClient
+    from datetime import datetime, timedelta
+    import os
+    import pandas as pd
+    from pymongo import MongoClient
+
+    record = datetime.now()
+    record_time = datetime(year=record.year, month=record.month, day=record.day, hour=record.hour - 1, minute=0, second=0, microsecond=0)
+
+    class MyStreamListener(StreamListener):
+        def __init__(self):
+            self.db = MongoClient().accern
+
+        def on_data(self, raw_data):
+            global record_time
+            df = pd.DataFrame.from_dict(raw_data, orient='columns')
+            time = datetime.now()
+            if (time - record_time).seconds / 60 > 60:
+                record_time = record_time + timedelta(hours=1)
+                df.to_csv('./accern_stream/2017-12-01/%s.csv' % (record_time.strftime('%Y-%m-%dT%H:%M:%S')), index=False, encoding='utf-8')
+                print ('Appended %s signals' % (len(df)))
+            else:
+                df.to_csv('./accern_stream/2017-12-01/%s.csv' % (record_time.strftime('%Y-%m-%dT%H:%M:%S')), index=False, mode='a', header=False, encoding='utf-8')
+                print ('Appended %s signals' % (len(df)))
+    myStreamListener = MyStreamListener()
+
+    TOKEN = 'YOUR TOKEN'
+    Streamer = StreamClient(MyStreamListener(), TOKEN)
+
+    if not os.path.exists('./accern_stream'):
+        os.mkdir('./accern_stream')
+    if not os.path.exists('./accern_stream/2017-12-01'):
+        os.mkdir('./accern_stream/2017-12-01')
+
+    Streamer.performs()
+
 
 Streaming: Save to mongo
 ------------------------
@@ -149,7 +190,7 @@ A full example can be found at
         'description': 'Get Daily Sentiment data',
         "select": [
             {
-                "field":"entity_ticker",
+                "field": "entity_ticker",
                 "alias": "ticker"
             }, {
                 "field": "harvested_at"
