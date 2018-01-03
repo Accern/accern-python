@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import accern
 import sys
 
 try:
@@ -12,13 +13,7 @@ if sys.version_info <= (2, 7):
     print (sys.stderr, error)
     sys.exit(1)
 
-requirements = [
-    'requests>=2.18.4',
-    'six>=1.10.0'
-]
-
-
-LONG_DESCRIPTION = """
+__long_description__ = """
 *Accern*: A Python library for Accern's API.
 
 Accern primarily serves institutional investors. The majority of our current
@@ -35,21 +30,24 @@ All Accern wheels from PyPI are MIT licensed.
 
 """
 
-VERSION = '0.1.8'
+__requirements__ = [
+    'requests>=2.18.4',
+    'six>=1.10.0'
+]
 
 setup(
     name='Accern',
-    version=VERSION,
+    version=accern.__version__,
     description="A python library for Accern Data API",
-    long_description=LONG_DESCRIPTION,
+    long_description=__long_description__,
     license='MIT License',
     url="https://github.com/Accern/accern-python",
     packages=['accern'],
     package_data={"accern": ['data/*.json']},
     platforms='Posix; MacOS X; Windows',
-    setup_requires=requirements,
+    setup_requires=__requirements__,
     include_package_data=True,
-    install_requires=requirements,
+    install_requires=__requirements__,
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',

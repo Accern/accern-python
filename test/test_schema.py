@@ -27,7 +27,7 @@ def test_fails_without_value():
 
 def test_fails_range_malformed_value():
     resp = Schema.validate_options(field='entity_sentiment', value=[0, -5])
-    assert resp['error'] == 'Malformed filter option value for "entity_sentiment".'
+    assert resp['error'] == '"entity_sentiment" has malformed filter option value.'
 
 def test_fails_range_with_more_argument_value():
     resp = Schema.validate_options(field='entity_sentiment', value=[0, -5, 11])
@@ -39,7 +39,7 @@ def test_fails_range_with_less_argument_value():
 
 def test_fails_no_range_malformed_value():
     resp = Schema.validate_options(field='story_traffic', value=[0, -5])
-    assert resp['error'] == 'Malformed filter option value for "story_traffic".'
+    assert resp['error'] == '"story_traffic" has malformed filter option value.'
 
 def test_fails_no_range_with_more_argument_value():
     resp = Schema.validate_options(field='story_traffic', value=[0, -5, 11])
@@ -62,6 +62,23 @@ def test_fails_without_method():
 def test_with_empty_schema():
     schema = Schema.validate_schema(method='api')
     assert schema is None
+
+def test_uppercase_schema():
+    schema = {
+        'FILTERS': {
+            'entity_sentiment': [0, 10]
+        },
+        'SELECT': [
+            {
+                'field': 'entity_sentiment'
+            }
+        ]
+    }
+    schema = Schema.validate_schema(method='api', schema=schema)
+    assert schema == {
+        'filters': {'entity_sentiment': [0, 10]},
+        'select': [{'alias': 'entity_sentiment', 'field': 'entity_sentiment'}]
+    }
 
 ################################################################
 ### Test cases for func: validate_schema, method: api        ###
@@ -196,6 +213,7 @@ def test_fails_with_missing_field_in_select_function_in_stream_schema():
         }
         Schema.validate_schema(method='stream', schema=schema)
     assert exc_info.value.args[0] == 'Missing "field" in select option.'
+
 ################################################################
 ### Test cases for func: validate_schema, method: historical ###
 ################################################################
