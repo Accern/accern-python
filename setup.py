@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import accern
+import os
 import sys
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'accern'))
+from version import __version__
 
 try:
     from setuptools import setup
@@ -37,7 +39,7 @@ __requirements__ = [
 
 setup(
     name='Accern',
-    version=accern.__version__,
+    version=__version__,
     description="A python library for Accern Data API",
     long_description=__long_description__,
     license='MIT License',

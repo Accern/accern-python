@@ -11,8 +11,6 @@ from accern.default_client import AccernClient
 
 token = None
 
-__version__ = '0.1.8.dev0'
-
 __all__ = [
     '__version__',
     'API',
