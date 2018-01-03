@@ -35,7 +35,7 @@ class Schema(object):
             return {
                 'field': field,
                 'type': 'range',
-                'error': 'Malformed filter option value for "%s".' % (field)
+                'error': '"%s" has malformed filter option value.' % (field)
             }
         if value[0] >= RANGE[0] and value[1] <= RANGE[1]:
             return {
@@ -67,7 +67,7 @@ class Schema(object):
             return {
                 'field': field,
                 'type': 'range',
-                'error': 'Malformed filter option value for "%s".' % (field)
+                'error': '"%s" has malformed filter option value.' % (field)
             }
         return {
             'field': field,
@@ -76,15 +76,17 @@ class Schema(object):
 
     @classmethod
     def get_fields(cls):
-        return sorted(FIELD_OPTIONS.keys())
+        return [v for v in sorted(FIELD_OPTIONS.keys()) if 'filter' in FIELD_OPTIONS[v]['method'] or 'url_param' in FIELD_OPTIONS[v]['method']]
 
     @classmethod
     def get_options(cls, field):
-        if field in FIELD_OPTIONS:
-            options = FIELD_OPTIONS[field]
-            del options['method']
-            return options
-        raise error.SchemaError('Invalid field (%s) in filter option.' % field)
+        try:
+            if 'filter' in FIELD_OPTIONS[field]['method'] or 'url_param' in FIELD_OPTIONS[field]['method']:
+                options = FIELD_OPTIONS[field]
+                del options['method']
+                return options
+        except KeyError:
+            raise error.SchemaError('Invalid field (%s) in filter option.' % field)
 
     @classmethod
     def get_url_params(cls):

@@ -18,7 +18,7 @@
     },
     "entity_country": {
         "function": ["group"],
-        "method": ["url_param", "select"],
+        "method": ["select", "url_param"],
         "type": "categorical",
         "value": [
             "Africa",
@@ -63,7 +63,7 @@
     },
     "entity_exch_code": {
         "function": ["group"],
-        "method": ["url_param", "select"],
+        "method": ["select", "url_param"],
         "type": "categorical",
         "value": [
             "AT",
@@ -100,7 +100,7 @@
     },
     "entity_exchange": {
         "function": ["group"],
-        "method": ["url_param", "select"],
+        "method": ["select", "url_param"],
         "type": "categorical",
         "value": [
             "AMEX",
@@ -150,7 +150,7 @@
     },
     "entity_industry": {
         "function": ["group"],
-        "method": ["url_param", "select"],
+        "method": ["select", "url_param"],
         "type": "categorical",
         "value": [
             "Accident &Health Insurance",
@@ -445,7 +445,7 @@
     },
     "entity_region": {
         "function": ["group"],
-        "method": ["url_param", "select"],
+        "method": ["select", "url_param"],
         "type": "categorical",
         "value": [
             "Africa",
@@ -467,7 +467,7 @@
     },
     "entity_sector": {
         "function": ["group"],
-        "method": ["url_param", "select"],
+        "method": ["select", "url_param"],
         "type": "categorical",
         "value": [
             "Agricultural",
@@ -582,7 +582,7 @@
     },
     "entity_ticker": {
         "function": ["group"],
-        "method": ["url_param", "select"],
+        "method": ["select", "url_param"],
         "type": "categorical",
         "value": [
             "1333",
@@ -10387,7 +10387,7 @@
     },
     "entity_type": {
         "function": ["group"],
-        "method": ["url_param", "select"],
+        "method": ["select", "url_param"],
         "type": "categorical",
         "value": [
             "COMMODITY",
@@ -10411,7 +10411,7 @@
     },
     "event_group": {
         "function": ["group"],
-        "method": ["url_param", "select"],
+        "method": ["select", "url_param"],
         "type": "categorical",
         "value": [
             "Analyst Ratings",
@@ -10964,7 +10964,7 @@
     },
     "harvested_at": {
         "function": ["day", "hour", "minute", "month", "week"],
-        "method": ["filter", "url_param", "select"],
+        "method": ["filter", "select", "url_param"],
         "type": "norange"
     },
     "last_id": {
@@ -11002,7 +11002,7 @@
     },
     "story_group_exposure": {
         "function": ["group"],
-        "method": ["url_param", "select"],
+        "method": ["select", "url_param"],
         "type": "categorical",
         "value": [
             "high",
@@ -11037,11 +11037,6 @@
         "method": ["select"],
         "type": "categorical"
     },
-    "story_type": {
-        "function": ["group"],
-        "method": ["select"],
-        "type": "categorical"
-    },
     "story_traffic": {
         "function": ["avg", "min", "max", "sum"],
         "method": ["filter", "select"],
@@ -11049,11 +11044,13 @@
     },
     "story_type": {
         "function": ["group"],
-        "method": ["url_param", "select"],
+        "method": ["select", "url_param"],
         "type": "categorical",
         "value": [
             "blog",
-            "news"
+            "feed",
+            "news",
+            "sec_filing"
         ]
     },
     "templated_story_score": {
