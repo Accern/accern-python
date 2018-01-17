@@ -1,12 +1,17 @@
 {
+    "author_id": {
+        "function": ["group"],
+        "method": ["select"],
+        "type": "categorical"
+    },
     "entity_author_republish_score": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
     },
     "entity_author_timeliness_score": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
@@ -460,7 +465,7 @@
         ]
     },
     "entity_relevance": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
@@ -558,7 +563,7 @@
         "type": "categorical"
     },
     "entity_sentiment": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [-100, 100]
@@ -569,13 +574,13 @@
         "type": "categorical"
     },
     "entity_source_republish_score": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
     },
     "entity_source_timeliness_score": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
@@ -10398,13 +10403,13 @@
         ]
     },
     "event_author_republish_score": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
     },
     "event_author_timeliness_score": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
@@ -10446,95 +10451,95 @@
         ]
     },
     "event_impact_gt_1pct_pos": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
     },
     "event_impact_gt_mu_add_sigma": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
     },
     "event_impact_gt_mu_pos_add_2sigma_pos": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
     },
     "event_impact_gt_mu_pos_add_sigma_pos": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
     },
     "event_impact_lt_1pct_neg": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
     },
     "event_impact_lt_mu_sub_sigma": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
     },
     "event_impact_lt_mu_sub_add_2sigma_pos": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
     },
     "event_impact_lt_mu_sub_add_sigma_pos": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
     },
     "event_impact_neg": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
     },
     "event_impact_pct_change_avg": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "norange"
     },
     "event_impact_pct_change_stdev": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "norange"
     },
     "event_impact_pos": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
     },
     "event_relevance": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
     },
     "event_sentiment": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [-100, 100]
     },
     "event_source_republish_score": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
     },
     "event_source_timeliness_score": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
@@ -10972,31 +10977,36 @@
         "type": "other"
     },
     "overall_author_republish_score": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
     },
     "overall_author_timeliness_score": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
     },
     "overall_source_republish_score": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
     },
     "overall_source_timeliness_score": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 100]
     },
+    "source_id": {
+        "function": ["group"],
+        "method": ["select"],
+        "type": "categorical"
+    },
     "story_group_count": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "norange"
     },
@@ -11011,23 +11021,23 @@
         ]
     },
     "story_group_sentiment_avg": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "type",
         "value": [-100, 100]
     },
     "story_group_sentiment_stdev": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "norange"
     },
     "story_group_traffic_sum": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "norange"
     },
     "story_sentiment": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [-100, 100]
@@ -11038,7 +11048,7 @@
         "type": "categorical"
     },
     "story_traffic": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "norange"
     },
@@ -11054,7 +11064,7 @@
         ]
     },
     "templated_story_score": {
-        "function": ["avg", "min", "max", "sum"],
+        "function": ["average", "count", "min", "max", "sum"],
         "method": ["filter", "select"],
         "type": "range",
         "value": [0, 1]

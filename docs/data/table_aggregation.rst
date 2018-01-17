@@ -3,9 +3,11 @@
 +---------------------------------------+--------------------------------+
 | Field                                 | Functions                      |
 +=======================================+================================+
-| entity_author_timeliness_score        | min, max, avg, sum             |
+| author_id                             | count                          |
 +---------------------------------------+--------------------------------+
-| entity_author_republish_score         | min, max, avg, sum             |
+| entity_author_republish_score         | average, count, max, min, sum  |
++---------------------------------------+--------------------------------+
+| entity_author_timeliness_score        | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
 | entity_country                        | group                          |
 +---------------------------------------+--------------------------------+
@@ -15,79 +17,79 @@
 +---------------------------------------+--------------------------------+
 | entity_industry                       | group                          |
 +---------------------------------------+--------------------------------+
-| entity_relevance                      | min, max, avg, sum             |
+| entity_relevance                      | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| entity_sentiment                      | min, max, avg, sum             |
+| entity_sentiment                      | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| entity_source_timeliness_score        | min, max, avg, sum             |
+| entity_source_timeliness_score        | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| entity_source_republish_score         | min, max, avg, sum             |
+| entity_source_republish_score         | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
 | entity_ticker                         | group                          |
 +---------------------------------------+--------------------------------+
 | entity_type                           | group                          |
 +---------------------------------------+--------------------------------+
-| event_author_timeliness_score         | min, max, avg, sum             |
+| event_author_timeliness_score         | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| event_author_republish_score          | min, max, avg, sum             |
+| event_author_republish_score          | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
 | event_group                           | group                          |
 +---------------------------------------+--------------------------------+
 | event_source_timeliness_score         | min,  max, avg, sum            |
 +---------------------------------------+--------------------------------+
-| event_source_republish_score          | min, max, avg, sum             |
+| event_source_republish_score          | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
 | event_impact_gt_1pct_pos              | group                          |
 +---------------------------------------+--------------------------------+
 | event_impact_gt_mu_add_sigma          | group                          |
 +---------------------------------------+--------------------------------+
-| event_impact_gt_mu_pos_add_2sigma_pos | min, max, avg, sum             |
+| event_impact_gt_mu_pos_add_2sigma_pos | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| event_impact_gt_mu_pos_add_sigma_pos  | min, max, avg, sum             |
+| event_impact_gt_mu_pos_add_sigma_pos  | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| event_impact_lt_1pct_neg              | min, max, avg, sum             |
+| event_impact_lt_1pct_neg              | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| event_impact_lt_mu_sub_sigma          | min, max, avg, sum             |
+| event_impact_lt_mu_sub_sigma          | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| event_impact_lt_mu_sub_add_2sigma_pos | min, max, avg, sum             |
+| event_impact_lt_mu_sub_add_2sigma_pos | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| event_impact_lt_mu_sub_add_sigma_pos  | min, max, avg, sum             |
+| event_impact_lt_mu_sub_add_sigma_pos  | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| event_impact_neg                      | min, max, avg, sum             |
+| event_impact_neg                      | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| event_impact_pct_change_avg           | min, max, avg, sum             |
+| event_impact_pct_change_avg           | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| event_impact_pct_change_stdev         | min, max, avg, sum             |
+| event_impact_pct_change_stdev         | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| event_impact_pos                      | min, max, avg, sum             |
+| event_impact_pos                      | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| event_relevance                       | min, max, avg, sum             |
+| event_relevance                       | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| event_sentiment                       | min, max, avg, sum             |
+| event_sentiment                       | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
 | event                                 | group                          |
 +---------------------------------------+--------------------------------+
 | harvested_at                          | minute, hour, day, week, month |
 +---------------------------------------+--------------------------------+
-| overall_author_timeliness_score       | min, max, avg, sum             |
+| overall_author_timeliness_score       | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| overall_author_republish_score        | min, max, avg, sum             |
+| overall_author_republish_score        | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| overall_source_timeliness_score       | min, max, avg, sum             |
+| overall_source_timeliness_score       | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| overall_source_republish_score        | min, max, avg, sum             |
+| overall_source_republish_score        | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| story_group_count                     | min, max, avg, sum             |
+| story_group_count                     | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
 | story_group_exposure                  | group                          |
 +---------------------------------------+--------------------------------+
-| story_group_traffic_sum               | min, max, avg, sum             |
+| story_group_traffic_sum               | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
-| story_traffic                         | min, max, avg, sum             |
+| story_traffic                         | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
 | story_type                            | group                          |
 +---------------------------------------+--------------------------------+
-| templated_story_score                 | min, max, avg, sum             |
+| templated_story_score                 | average, count, max, min, sum  |
 +---------------------------------------+--------------------------------+
 
 .. snap
