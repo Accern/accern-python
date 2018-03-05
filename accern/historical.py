@@ -24,7 +24,7 @@ class HistoricalClient(AccernClient):
         :param token: Accern API token. Required.
         """
         self.env = "staging" if env is None else env
-        self.api_base = API_MAP[self.env]
+        self.api_base = API_MAP.get(self.env, "https://admin-staging.accern.com/api/io/jobs")
         self.token = token
         self._client = client or default_client.new_http_client()
 
