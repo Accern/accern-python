@@ -8,6 +8,7 @@ from accern.historical import HistoricalClient
 from accern.schema import Schema
 from accern.stream import StreamClient, StreamListener
 from accern.default_client import AccernClient
+from accern.version import __version__
 
 token = None
 
