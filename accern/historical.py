@@ -8,19 +8,23 @@ from accern import default_client, error, util
 from accern.schema import Schema
 from accern.default_client import AccernClient
 
-API_BASE = "https://admin-staging.accern.com/api/io/jobs"
+API_MAP = {
+    "prod": "https://admin.accern.com/api/io/jobs",
+    "staging": "https://admin-staging.accern.com/api/io/jobs"
+}
 
 
 class HistoricalClient(AccernClient):
     """Perform requests to the Accern API web services."""
 
-    def __init__(self, token=None, client=None):
+    def __init__(self, token=None, client=None, env=None):
         """Intialize with params.
 
         :param client: default http client. Optional
         :param token: Accern API token. Required.
         """
-        self.api_base = API_BASE
+        self.env = "prod" if env is None else env
+        self.api_base = API_MAP[self.env]
         self.token = token
         self._client = client or default_client.new_http_client()
 
