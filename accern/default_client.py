@@ -152,7 +152,7 @@ class AccernClient(object):
                 "was %d)" % (rbody, rcode), rbody, rcode, resp)
 
         if rcode == 400:
-            return error.AccernError(error_data, rbody, rcode)
+            raise error.AccernError(error_data, rbody, rcode)
 
     @staticmethod
     def select_fields(schema, raw_data):
