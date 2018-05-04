@@ -1,20 +1,14 @@
-"""Python library for Accern API.
-
-Core client functionality, common across all API requests (including performing
-HTTP requests).
-"""
-
 from accern import default_client, error, util
 from accern.schema import Schema
 from accern.default_client import AccernClient
 
 API_MAP = {
     "prod": "https://admin.accern.com/api/io/jobs",
-    "staging": "https://admin-staging.accern.com/api/io/jobs"
-}
+    "staging": "https://admin-staging.accern.com/api/io/jobs"}
 
 
 class HistoricalClient(AccernClient):
+
     """Perform requests to the Accern API web services."""
 
     def __init__(self, token=None, client=None, env=None):
@@ -42,7 +36,7 @@ class HistoricalClient(AccernClient):
                 rbody, rcode, rheaders)
 
         if not 200 <= rcode < 300:
-            raise AccernClient.handle_error(rbody, rcode, resp)
+            AccernClient.handle_error(rbody, rcode, resp)
 
         return resp
 
