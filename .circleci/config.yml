@@ -9,15 +9,6 @@ workflows:
         jobs:
             - test-3.6
             - test-2.7
-            - deploy:
-                requires:
-                    - test-3.6
-                    - test-2.7
-                filters:
-                    tags:
-                        only: /[\d.]+/
-                    branches:
-                        only: master
 
 jobs:
     test-3.6: &test-template
@@ -29,14 +20,13 @@ jobs:
             - restore_cache:
                 keys:
                     - v1-dependencies-{{ checksum "test-requirements.txt" }}
-                    - v1-dependencies-
 
             - run:
                 name: install dependencies
                 command: |
-                    python -m venv venv || virtualenv venv
+                    python -m venv venv
                     . venv/bin/activate
-                    pip install -r test-requirements.txt
+                    pip install --upgrade -r test-requirements.txt | cat
 
             - save_cache:
                 paths:
@@ -48,36 +38,6 @@ jobs:
                 command: |
                     . venv/bin/activate
                     py.test
-
-            - store_artifacts:
-                path: test-reports
-                destination: test-reports
-    test-2.7:
-        <<: *test-template
-        docker:
-          - image: circleci/python:2.7
-
-    deploy:
-        docker:
-            - image: circleci/python:3.6
-        steps:
-            - checkout
-            - restore_cache:
-                keys:
-                    - v1-dependencies-{{ checksum "test-requirements.txt" }}
-                    - v1-dependencies-
-
-            - run:
-                name: install dependencies
-                command: |
-                    python -m venv venv || virtualenv venv
-                    . venv/bin/activate
-                    pip install -r test-requirements.txt
-
-            - save_cache:
-                paths:
-                    - ./venv
-                key: v1-dependencies-{{ checksum "test-requirements.txt" }}
 
             - run:
                 name: lint code (use uppercase TODO, XXX, FIXME, NOTE and explain nopep8)
@@ -99,3 +59,11 @@ jobs:
             - store_artifacts:
                 path: test-reports
                 destination: test-reports
+
+            - store_artifacts:
+                path: test-reports
+                destination: test-reports
+    test-2.7:
+        <<: *test-template
+        docker:
+          - image: circleci/python:2.7
