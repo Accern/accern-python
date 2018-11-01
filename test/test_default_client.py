@@ -7,6 +7,7 @@ def test_fails_without_token():
         AccernClient.check_token(token=None)
     assert exc_info.value.args[0] == 'No token provided.'
 
+
 def test_build_api_param_no_harvested_at():
     schema = {
         'filters': {

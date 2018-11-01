@@ -18,7 +18,7 @@ else:
         # Probably some new-fangled version, so it should support verify
         pass
     else:
-        if (major, minor, patch) < (0, 8, 8):
+        if (major, minor, patch) < (2, 20, 0):
             sys.stderr.write(
                 'Warning: the Accern library requires that your Python '
                 '"requests" library be newer than version 0.8.8, but your '
@@ -98,11 +98,12 @@ class AccernClient(object):
                 'Content-Type': 'application/json',
                 'IO-Authorization': token
             }
-        elif method == "GET":
+        if method == "GET":
             return {
                 'Content-Type': 'application/json',
                 'IO-Authorization': token
             }
+        raise ValueError("Unknown API method")
 
     @staticmethod
     def build_api_params(schema):

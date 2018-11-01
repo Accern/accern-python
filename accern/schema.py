@@ -4,6 +4,7 @@ from os.path import dirname
 MODULE_PATH = dirname(__file__)
 FIELD_OPTIONS = util.json.load(open("%s/data/options.json" % MODULE_PATH))
 
+
 class Schema(object):
     @staticmethod
     def _validate_categorical(field, value):
