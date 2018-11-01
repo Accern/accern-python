@@ -24,7 +24,7 @@ jobs:
             - run:
                 name: install dependencies
                 command: |
-                    python -m venv venv
+                    python3 -m venv venv
                     . venv/bin/activate
                     pip install --upgrade -r test-requirements.txt | cat
 
@@ -64,6 +64,54 @@ jobs:
                 path: test-reports
                 destination: test-reports
     test-2.7:
-        <<: *test-template
         docker:
-          - image: circleci/python:2.7
+            - image: circleci/python:2.7.4
+        working_directory: ~/repo
+        steps:
+            - checkout
+            - restore_cache:
+                keys:
+                    - v1-dependencies-{{ checksum "test-requirements.txt" }}
+
+            - run:
+                name: install dependencies
+                command: |
+                    python -m venv venv || virtualenv venv
+                    . venv/bin/activate
+                    pip install --upgrade -r test-requirements.txt | cat
+
+            - save_cache:
+                paths:
+                    - ./venv
+                key: v1-dependencies-{{ checksum "test-requirements.txt" }}
+
+            - run:
+                name: run tests
+                command: |
+                    . venv/bin/activate
+                    py.test
+
+            - run:
+                name: lint code (use uppercase TODO, XXX, FIXME, NOTE and explain nopep8)
+                command: |
+                  ! find . -name '*.py' -and -not -path './venv/*' | xargs grep -nE '#.*(todo|xxx|fixme|n[oO][tT][eE]:|Note:|nopep8\s*$)'
+
+            - run:
+                name: lint code (pycodestyle)
+                command: |
+                  . venv/bin/activate
+                  pycodestyle --exclude=venv .
+
+            - run:
+                name: lint code (pylint)
+                command: |
+                  . venv/bin/activate
+                  find . -name '*.py' -and -not -path './venv/*' | sort | tee /dev/tty | xargs pylint -j 6
+
+            - store_artifacts:
+                path: test-reports
+                destination: test-reports
+
+            - store_artifacts:
+                path: test-reports
+                destination: test-reports
