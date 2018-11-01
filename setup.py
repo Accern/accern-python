@@ -2,8 +2,13 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'accern'))
-from version import __version__
+
+
+def load_version():
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'accern'))
+    from version import __version__
+    return __version__
+
 
 try:
     from setuptools import setup
@@ -12,7 +17,7 @@ except ImportError:
 
 if sys.version_info <= (2, 7):
     error = 'Requires Python Version 2.7 or above... exiting.'
-    print (sys.stderr, error)
+    print(sys.stderr, error)
     sys.exit(1)
 
 __long_description__ = """
@@ -33,13 +38,14 @@ All Accern wheels from PyPI are MIT licensed.
 """
 
 __requirements__ = [
-    'requests>=2.18.4',
+    'requests>=2.20.0',
     'six>=1.10.0'
 ]
 
+
 setup(
     name='Accern',
-    version=__version__,
+    version=load_version(),
     description="A python library for Accern Data API",
     long_description=__long_description__,
     license='MIT License',

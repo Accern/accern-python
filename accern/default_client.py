@@ -21,7 +21,7 @@ else:
         if (major, minor, patch) < (2, 20, 0):
             sys.stderr.write(
                 'Warning: the Accern library requires that your Python '
-                '"requests" library be newer than version 0.8.8, but your '
+                '"requests" library be newer than version 2.20.0, but your '
                 '"requests" library is version %s. Accern will fall back to '
                 'an alternate HTTP library so everything should work. We '
                 'recommend upgrading your "requests" library. If you have any '
@@ -103,7 +103,7 @@ class AccernClient(object):
                 'Content-Type': 'application/json',
                 'IO-Authorization': token
             }
-        raise ValueError("Unknown API method")
+        raise ValueError("Unknown API method: {0}".format(method))
 
     @staticmethod
     def build_api_params(schema):
