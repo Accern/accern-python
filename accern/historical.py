@@ -25,7 +25,7 @@ class HistoricalClient(AccernClient):
         :param token: Accern API token. Required.
         """
 
-        self.env = "production" if env is None else env
+        self.env = "prod" if env is None else env
         self.api_base = get_api_base(self.env)
         self.token = token
         self._client = client or default_client.new_http_client()
