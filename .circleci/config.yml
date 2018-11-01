@@ -78,20 +78,24 @@ jobs:
                 paths:
                     - ./venv
                 key: v1-dependencies-{{ checksum "test-requirements.txt" }}
-            - run:
-                name: init .pypirc
-                command: |
-                    echo -e "[pypi]" >> ~/.pypirc
-                    echo -e "username = $PYPI_USERNAME" >> ~/.pypirc
-                    echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
 
             - run:
-                name: create packages
+                name: lint code (use uppercase TODO, XXX, FIXME, NOTE and explain nopep8)
                 command: |
-                    make package
+                  ! find . -name '*.py' -and -not -path './venv/*' | xargs grep -nE '#.*(todo|xxx|fixme|n[oO][tT][eE]:|Note:|nopep8\s*$)'
 
             - run:
-                name: upload to pypi
+                name: lint code (pycodestyle)
                 command: |
-                    . venv/bin/activate
-                    twine upload dist/*
+                  . venv/bin/activate
+                  pycodestyle --exclude=venv .
+
+            - run:
+                name: lint code (pylint)
+                command: |
+                  . venv/bin/activate
+                  find . -name '*.py' -and -not -path './venv/*' | sort | tee /dev/tty | xargs pylint -j 6
+
+            - store_artifacts:
+                path: test-reports
+                destination: test-reports
