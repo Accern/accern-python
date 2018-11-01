@@ -17,6 +17,15 @@ dev:
 docs:
 	$(MAKE) -C docs html
 
+lint-comment:
+	! find . -name '*.py' -and -not -path './venv/*' | xargs grep -nE '#.*(todo|xxx|fixme|n[oO][tT][eE]:|Note:|nopep8\s*$)'
+
+lint-pycodestyle:
+	pycodestyle --exclude=venv --exclude=E501 . 
+
+lint-pylint:
+	find . -name '*.py' -and -not -path './venv/*' | sort | tee /dev/tty | xargs pylint -j 6
+
 package:
 	python setup.py sdist
 	python setup.py bdist_wheel

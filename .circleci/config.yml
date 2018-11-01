@@ -1,17 +1,13 @@
-# Python CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-python/ for more details
-#
 version: 2
 workflows:
     version: 2
     test_deploy:
         jobs:
-            - test-3.6
-            - test-2.7
+            - python-2
+            - python-3
 
 jobs:
-    test-3.6:
+    python-3:
         docker:
             - image: circleci/python:3.6.1
         working_directory: ~/repo
@@ -24,7 +20,7 @@ jobs:
             - run:
                 name: install dependencies
                 command: |
-                    python -m venv venv || virtualenv venv
+                    python3 -m venv venv
                     . venv/bin/activate
                     pip install --upgrade -r test-requirements.txt | cat
 
@@ -42,28 +38,25 @@ jobs:
             - run:
                 name: lint code (use uppercase TODO, XXX, FIXME, NOTE and explain nopep8)
                 command: |
-                  ! find . -name '*.py' -and -not -path './venv/*' | xargs grep -nE '#.*(todo|xxx|fixme|n[oO][tT][eE]:|Note:|nopep8\s*$)'
+                  make lint-comment
 
             - run:
                 name: lint code (pycodestyle)
                 command: |
                   . venv/bin/activate
-                  pycodestyle --exclude=venv .
+                  make lint-pycodestyle
 
             - run:
                 name: lint code (pylint)
                 command: |
                   . venv/bin/activate
-                  find . -name '*.py' -and -not -path './venv/*' | sort | tee /dev/tty | xargs pylint -j 6
+                  make lint-pylint
 
             - store_artifacts:
                 path: test-reports
                 destination: test-reports
 
-            - store_artifacts:
-                path: test-reports
-                destination: test-reports
-    test-2.7:
+    python-2:
         docker:
             - image: circleci/python:2.7
         working_directory: ~/repo
@@ -94,23 +87,19 @@ jobs:
             - run:
                 name: lint code (use uppercase TODO, XXX, FIXME, NOTE and explain nopep8)
                 command: |
-                  ! find . -name '*.py' -and -not -path './venv/*' | xargs grep -nE '#.*(todo|xxx|fixme|n[oO][tT][eE]:|Note:|nopep8\s*$)'
+                  make lint-comment
 
             - run:
                 name: lint code (pycodestyle)
                 command: |
                   . venv/bin/activate
-                  pycodestyle --exclude=venv .
+                  make lint-pycodestyle
 
             - run:
                 name: lint code (pylint)
                 command: |
                   . venv/bin/activate
-                  find . -name '*.py' -and -not -path './venv/*' | sort | tee /dev/tty | xargs pylint -j 6
-
-            - store_artifacts:
-                path: test-reports
-                destination: test-reports
+                  make lint-pylint
 
             - store_artifacts:
                 path: test-reports
