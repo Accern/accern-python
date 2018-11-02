@@ -9,7 +9,7 @@ workflows:
 jobs:
     python-3:
         docker:
-            - image: circleci/python:3.6.2-stretch-browsers
+            - image: circleci/python:3.6.1
         working_directory: ~/repo
         steps:
             - checkout
@@ -39,19 +39,19 @@ jobs:
             - run:
                 name: lint code (use uppercase TODO, XXX, FIXME, NOTE and explain nopep8)
                 command: |
-                  make lint-comment
+                    make lint-comment
 
             - run:
                 name: lint code (pycodestyle)
                 command: |
-                  . venv/bin/activate
-                  make lint-pycodestyle
+                    . venv/bin/activate
+                    make lint-pycodestyle
 
             - run:
                 name: lint code (pylint)
                 command: |
-                  . venv/bin/activate
-                  make lint-pylint
+                    . venv/bin/activate
+                    make lint-pylint
 
             - store_artifacts:
                 path: test-reports
@@ -89,19 +89,19 @@ jobs:
             - run:
                 name: lint code (use uppercase TODO, XXX, FIXME, NOTE and explain nopep8)
                 command: |
-                  make lint-comment
+                    make lint-comment
 
             - run:
                 name: lint code (pycodestyle)
                 command: |
-                  . venv/bin/activate
-                  make lint-pycodestyle
+                    . venv/bin/activate
+                    make lint-pycodestyle
 
             - run:
                 name: lint code (pylint)
                 command: |
-                  . venv/bin/activate
-                  make lint-pylint
+                    . venv/bin/activate
+                    make lint-pylint
 
             - store_artifacts:
                 path: test-reports
