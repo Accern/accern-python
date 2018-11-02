@@ -20,7 +20,8 @@ jobs:
             - run:
                 name: install dependencies
                 command: |
-                    python3 -m venv venv || virtualenv venv
+                    apt-get install python3.6-venv
+                    python3.6 -m venv venv
                     . venv/bin/activate
                     pip install --upgrade -r test-requirements.txt | cat
 
