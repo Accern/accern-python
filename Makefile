@@ -34,7 +34,8 @@ publish:
 	@test `git rev-parse --abbrev-ref HEAD` = "master" || (echo "not on master" && exit 1)
 	python setup.py sdist bdist_wheel
 	twine upload dist/Accern-$(VERSION)-py2.py3-none-any.whl dist/Accern-$(VERSION).tar.gz
-	git push --tag $(VERSION)
+	git tag "v$(VERSION)"
+	git push origin "v$(VERSION)"
 	@echo "succesfully deployed $(VERSION)"
 
 test:
