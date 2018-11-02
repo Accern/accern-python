@@ -1,9 +1,9 @@
-from accern import error, util
-from accern.schema import Schema
 from datetime import datetime
 import re
 import sys
 import textwrap
+from accern import error, util
+from accern.schema import Schema
 
 try:
     import requests
@@ -14,6 +14,7 @@ else:
         # Require version 0.8.8, but don't want to depend on distutils
         version = requests.__version__
         major, minor, patch = [int(i) for i in version.split('.')]
+    # pylint: disable=broad-except
     except Exception:
         # Probably some new-fangled version, so it should support verify
         pass
@@ -293,6 +294,7 @@ class RequestsClient(HTTPClient):
                     'The underlying error was: %s' % (e))
             content = result.content
             status_code = result.status_code
+        # pylint: disable=broad-except
         except Exception as e:
             # Would catch just requests.exceptions.RequestException, but can
             # also raise ValueError, RuntimeError, etc.

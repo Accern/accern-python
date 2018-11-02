@@ -3,13 +3,16 @@
 Core client functionality, common across all API requests (including performing
 HTTP requests).
 """
+
+from __future__ import print_function
 import codecs
 import re
-import requests
 import time
+import requests
 from accern.default_client import AccernClient, Event
 from accern.schema import Schema
 from accern import util
+
 
 API_BASE = 'https://feed.accern.com/v4/stream'
 END_OF_FIELD = re.compile(r'\r\n\r\n|\r\r|\n\n')

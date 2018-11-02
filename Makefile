@@ -24,7 +24,7 @@ lint-pycodestyle:
 	pycodestyle --exclude=venv --ignore=E266,E501,W503 .
 
 lint-pylint:
-	find . -name '*.py' -and -not -path './venv/*' | sort | tee /dev/tty | xargs pylint -j 6 -d E0602,W0511,R0205
+	find . -name '*.py' -and -not -path './venv/*' | sort | tee /dev/tty | xargs pylint -j 6 -d E0602,W0511,R0205,C0111,C0103,C0301,R0913,R0902,R0903
 
 package:
 	python setup.py sdist

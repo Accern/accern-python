@@ -1,5 +1,5 @@
-from accern import error, util
 from os.path import dirname
+from accern import error, util
 
 MODULE_PATH = dirname(__file__)
 FIELD_OPTIONS = util.json.load(open("%s/data/options.json" % MODULE_PATH))

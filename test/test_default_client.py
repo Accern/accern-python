@@ -1,5 +1,5 @@
-from accern import AccernClient, error
 import pytest
+from accern import AccernClient, error
 
 
 def test_fails_without_token():

@@ -6,6 +6,7 @@ import sys
 
 def load_version():
     sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'accern'))
+    # pylint: disable=no-name-in-module,import-error
     from version import __version__
     return __version__
 
