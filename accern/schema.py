@@ -140,7 +140,6 @@ class Schema(object):
                     raise error.SchemaError(resp['error'])
 
     @classmethod
-    # noqa
     def validate_schema_select(cls, method, select):
         if not select:
             return None
