@@ -31,7 +31,7 @@ VERSION=`echo "import accern;print(accern.__version__)" | python 2>/dev/null`
 publish:
 	@git diff --exit-code && git diff --cached --exit-code || (echo "working copy is not clean" && exit 1)
 	@test -z $(git ls-files --other --exclude-standard --directory) || (echo "there are untracked files" && exit 1)
-	@test $(git rev-parse --abbrev-ref HEAD) = "master" || (echo "not on master" && exit 1)
+	@test $(git rev-parse --abbrev-ref HEAD) = "yz-update" || (echo "not on master" && exit 1)
 	# python setup.py sdist bdist_wheel
 	# twine upload dist/Accern-${VERSION}-py2.py3-none-any.whl dist/Accern-${VERSION}.tar.gz
 	# git push --tag ${VERSION}
