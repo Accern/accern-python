@@ -24,9 +24,6 @@ lint-pycodestyle:
 	pycodestyle --exclude=venv --ignore=E266,E501,W503 .
 
 lint-pylint:
-	pylint -E -j 6 -d E0602,W0511,R0205 -v accern/
-
-lint-pylint1:
 	find . -name '*.py' -and -not -path './venv/*' | sort | tee /dev/tty | xargs pylint -j 6 -d E0602,W0511,R0205
 
 package:
