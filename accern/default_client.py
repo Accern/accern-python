@@ -1,9 +1,9 @@
-from accern import error, util
-from accern.schema import Schema
 from datetime import datetime
 import re
 import sys
 import textwrap
+from accern import error, util
+from accern.schema import Schema
 
 try:
     import requests
@@ -14,14 +14,15 @@ else:
         # Require version 0.8.8, but don't want to depend on distutils
         version = requests.__version__
         major, minor, patch = [int(i) for i in version.split('.')]
+    # pylint: disable=broad-except
     except Exception:
         # Probably some new-fangled version, so it should support verify
         pass
     else:
-        if (major, minor, patch) < (0, 8, 8):
+        if (major, minor, patch) < (2, 20, 0):
             sys.stderr.write(
                 'Warning: the Accern library requires that your Python '
-                '"requests" library be newer than version 0.8.8, but your '
+                '"requests" library be newer than version 2.20.0, but your '
                 '"requests" library is version %s. Accern will fall back to '
                 'an alternate HTTP library so everything should work. We '
                 'recommend upgrading your "requests" library. If you have any '
@@ -98,11 +99,12 @@ class AccernClient(object):
                 'Content-Type': 'application/json',
                 'IO-Authorization': token
             }
-        elif method == "GET":
+        if method == "GET":
             return {
                 'Content-Type': 'application/json',
                 'IO-Authorization': token
             }
+        raise ValueError("Unknown API method: {0}".format(method))
 
     @staticmethod
     def build_api_params(schema):
@@ -292,6 +294,7 @@ class RequestsClient(HTTPClient):
                     'The underlying error was: %s' % (e))
             content = result.content
             status_code = result.status_code
+        # pylint: disable=broad-except
         except Exception as e:
             # Would catch just requests.exceptions.RequestException, but can
             # also raise ValueError, RuntimeError, etc.

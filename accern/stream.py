@@ -3,13 +3,16 @@
 Core client functionality, common across all API requests (including performing
 HTTP requests).
 """
+
+from __future__ import print_function
 import codecs
 import re
-import requests
 import time
+import requests
 from accern.default_client import AccernClient, Event
 from accern.schema import Schema
 from accern import util
+
 
 API_BASE = 'https://feed.accern.com/v4/stream'
 END_OF_FIELD = re.compile(r'\r\n\r\n|\r\r|\n\n')
@@ -128,12 +131,11 @@ class StreamClient(object):
         self.resp = requester.get(self.url, stream=True)
         self.resp_iterator = self.resp.iter_content(chunk_size=self.chunk_size)
 
-        # todo: Ensure we're handling redirects.  Might also stick the 'origin'
+        # TODO: Ensure we're handling redirects.  Might also stick the 'origin'
         # attribute on Events like the Javascript spec requires.
         self.resp.raise_for_status()
         while next(self, None) is not None:
             next(self, None)
-
 
     def new_session(self):
         self.session = requests.Session()
@@ -151,7 +153,7 @@ class StreamClient(object):
         :raises TransportError: when something went wrong while trying to
             exceute a request.
         """
-        print ('%s - Start streaming, use [Ctrl+C] to stop...' % (util.datetime.now()))
+        print('%s - Start streaming, use [Ctrl+C] to stop...' % (util.datetime.now()))
         schema = Schema.validate_schema(method='stream', schema=self.schema)
         params = AccernClient.build_api_params(schema)
         params['token'] = AccernClient.check_token(self.token)
@@ -160,7 +162,7 @@ class StreamClient(object):
         try:
             self._run()
         except KeyboardInterrupt:
-            print ('%s - Streaming stopped...' % (util.datetime.now()))
+            print('%s - Streaming stopped...' % (util.datetime.now()))
         else:
             pass
 

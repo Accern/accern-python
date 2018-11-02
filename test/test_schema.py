@@ -1,5 +1,5 @@
-from accern import Schema, error
 import pytest
+from accern import Schema, error
 
 
 def test_fails_get_options_with_invalid_field_name():

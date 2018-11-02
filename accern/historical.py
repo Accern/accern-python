@@ -2,9 +2,16 @@ from accern import default_client, error, util
 from accern.schema import Schema
 from accern.default_client import AccernClient
 
-API_MAP = {
-    "prod": "https://admin.accern.com/api/io/jobs",
-    "staging": "https://admin-staging.accern.com/api/io/jobs"}
+
+def get_api_base(env):
+    try:
+        API_MAP = {
+            "prod": "https://admin.accern.com/api/io/jobs",
+            "staging": "https://admin-staging.accern.com/api/io/jobs"
+        }
+        return API_MAP[env]
+    except KeyError:
+        raise ValueError("Unknown env type: {0}".format(env))
 
 
 class HistoricalClient(AccernClient):
@@ -19,7 +26,7 @@ class HistoricalClient(AccernClient):
         """
 
         self.env = "prod" if env is None else env
-        self.api_base = API_MAP.get(self.env, "https://admin.accern.com/api/io/jobs")
+        self.api_base = get_api_base(self.env)
         self.token = token
         self._client = client or default_client.new_http_client()
 

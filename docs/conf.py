@@ -8,7 +8,8 @@ master_doc = 'index'
 project = u'Accern Python'
 
 # The release process is documented at https://xtools.readthedocs.io/en/latest/development.html#releases
-copyright = u'2017, Accern Corp.'
+# pylint: disable=redefined-builtin
+copyright = u'2018, Accern Corp.'
 version = '0.1.0'
 release = '0.1.0'
 

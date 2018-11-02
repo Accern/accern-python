@@ -2,8 +2,8 @@ from datetime import datetime
 import logging
 import os
 import re
-import six
 import sys
+import six
 try:
     from urlparse import urlsplit, urlunsplit
 except ImportError:
@@ -14,7 +14,6 @@ except ImportError:
     from urllib.parse import urlencode
 
 ACCERN_LOG = os.environ.get('ACCERN_LOG')
-logger = logging.getLogger('accern')
 
 __all__ = [
     'datetime',
@@ -71,6 +70,7 @@ def log_debug(message, **params):
     msg = logfmt(dict(message=message, **params))
     if _console_log_level() == 'debug':
         print(msg, sys.stderr)
+    logger = logging.getLogger('accern')
     logger.debug(msg)
 
 
@@ -78,6 +78,7 @@ def log_info(message, **params):
     msg = logfmt(dict(message=message, **params))
     if _console_log_level() in ['debug', 'info']:
         print(msg, sys.stderr)
+    logger = logging.getLogger('accern')
     logger.info(msg)
 
 
