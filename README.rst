@@ -8,7 +8,7 @@ Accern for Python
 
 .. snip
 
-A python library to consume Accern's REST API for Titan streaming/historical data.
+A python library to consume Accern's V4 REST API for Titan streaming/historical data.
 
 Overview
 --------
@@ -28,7 +28,7 @@ from news articles, including the original article URLs so quantitative hedge
 funds can derive their own analytics in-house from the relevant articles.
 
 The Accern library for Python helps users get fast, flexible data structures from
-Accern's Titan streaming/historical data.
+Accern's V4 Titan streaming/historical data.
 
 .. snap
 
