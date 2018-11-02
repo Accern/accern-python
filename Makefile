@@ -29,7 +29,7 @@ lint-pylint:
 VERSION=`echo "import accern;print(accern.__version__)" | python 2>/dev/null`
 
 publish:
-	@git diff --exit-code 2>&1 >/dev/null && @git diff --cached --exit-code 2>&1 >/dev/null || (echo "working copy is not clean" && exit 1)
+	@git diff --exit-code 2>&1 >/dev/null && git diff --cached --exit-code 2>&1 >/dev/null || (echo "working copy is not clean" && exit 1)
 	@test -z `git ls-files --other --exclude-standard --directory` || (echo "there are untracked files" && exit 1)
 	@test `git rev-parse --abbrev-ref HEAD` = "master" || (echo "not on master" && exit 1)
 	# python setup.py sdist bdist_wheel
