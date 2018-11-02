@@ -32,10 +32,10 @@ publish:
 	@git diff --exit-code 2>&1 >/dev/null && git diff --cached --exit-code 2>&1 >/dev/null || (echo "working copy is not clean" && exit 1)
 	@test -z `git ls-files --other --exclude-standard --directory` || (echo "there are untracked files" && exit 1)
 	@test `git rev-parse --abbrev-ref HEAD` = "master" || (echo "not on master" && exit 1)
-	# python setup.py sdist bdist_wheel
-	# twine upload dist/Accern-${VERSION}-py2.py3-none-any.whl dist/Accern-${VERSION}.tar.gz
-	# git push --tag ${VERSION}
-
+	python setup.py sdist bdist_wheel
+	# twine upload dist/Accern-$(VERSION)-py2.py3-none-any.whl dist/Accern-$(VERSION).tar.gz
+	# git push --tag $(VERSION)
+	@echo "succesfully deployed $(VERSION)"
 
 test:
 	coverage run -m unittest discover
