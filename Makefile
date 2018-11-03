@@ -19,7 +19,7 @@ docs:
 
 lint-comment:
 	! find . -name '*.py' -and -not -path './venv/*' \
-	| xargs grep -nE '\#.*(todo|xxx|fixme|n[oO][tT][eE]:|Note:|nopep8\\s*$\)'
+	| xargs grep -nE '\#.*(todo|xxx|fixme|n[oO][tT][eE]:|Note:|nopep8\s*$\)'
 	
 lint-pycodestyle:
 	pycodestyle --exclude=venv --ignore=E266,E501,W503 .
