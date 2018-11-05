@@ -18,13 +18,15 @@ docs:
 	$(MAKE) -C docs html
 
 lint-comment:
-	! find . -name '*.py' -and -not -path './venv/*' | xargs grep -nE '#.*(todo|xxx|fixme|n[oO][tT][eE]:|Note:|nopep8\s*$)'
-
+	! find . -name '*.py' -and -not -path './venv/*' \
+	| xargs grep -nE '#.*(todo|xxx|fixme|n[oO][tT][eE]:|Note:|nopep8\s*$$)'
+	
 lint-pycodestyle:
 	pycodestyle --exclude=venv --ignore=E266,E501,W503 .
 
 lint-pylint:
-	find . -name '*.py' -and -not -path './venv/*' | sort | tee /dev/tty | xargs pylint -j 6 -d E0602,W0511,R0205,C0111,C0103,C0301,R0913,R0902,R0903
+	find . -name '*.py' -and -not -path './venv/*' \
+	| sort | tee /dev/tty | xargs pylint -j 6 -d E0602,W0511,R0205,C0111,C0103,C0301,R0913,R0902,R0903
 
 VERSION=`echo "import accern;print(accern.__version__)" | python 2>/dev/null`
 
