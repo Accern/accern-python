@@ -6,7 +6,7 @@ from accern.default_client import AccernClient
 def get_api_base(env):
     try:
         API_MAP = {
-            "prod": "https://admin.accern.com/api/io/jobs",
+            "production": "https://admin.accern.com/api/io/jobs",
             "staging": "https://admin-staging.accern.com/api/io/jobs"
         }
         return API_MAP[env]
@@ -25,7 +25,7 @@ class HistoricalClient(AccernClient):
         :param token: Accern API token. Required.
         """
 
-        self.env = "prod" if env is None else env
+        self.env = "production" if env is None else env
         self.api_base = get_api_base(self.env)
         self.token = token
         self._client = client or default_client.new_http_client()
