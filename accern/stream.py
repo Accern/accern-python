@@ -5,14 +5,15 @@ HTTP requests).
 """
 
 from __future__ import print_function
-from accern import util
-from accern.default_client import AccernClient, Event
-from accern.schema import Schema
-from accern.config import get_config
 import codecs
 import re
 import requests
 import time
+
+from accern import util
+from accern.default_client import AccernClient, Event
+from accern.schema import Schema
+from accern.config import get_config
 
 END_OF_FIELD = re.compile(r'\r\n\r\n|\r\r|\n\n')
 

@@ -28,10 +28,13 @@ def get_config_file():
 
 
 def get_config():
-    if CONFIG["content"] is None:
+    # type: () -> dict
+    res = CONFIG["content"]
+    if res is None:
         if CONFIG["file"] is None:
-            CONFIG["content"] = copy.deepcopy(CONFIG_DEFAULT)
+            res = copy.deepcopy(CONFIG_DEFAULT)
         else:
             with open(CONFIG["file"], "r") as f_in:
-                CONFIG["content"] = json.load(f_in)
-    return CONFIG["content"]
+                res = json.load(f_in)
+        CONFIG["content"] = res  # type: ignore
+    return res  # type: ignore
