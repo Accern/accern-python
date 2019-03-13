@@ -7,8 +7,8 @@ HTTP requests).
 from __future__ import print_function
 import codecs
 import re
-import requests
 import time
+import requests
 
 from accern import util
 from accern.default_client import AccernClient, Event
