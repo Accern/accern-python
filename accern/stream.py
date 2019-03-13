@@ -9,12 +9,12 @@ import codecs
 import re
 import time
 import requests
+
+from accern import util
 from accern.default_client import AccernClient, Event
 from accern.schema import Schema
-from accern import util
+from accern.config import get_config
 
-
-API_BASE = 'https://feed.accern.com/v4/stream'
 END_OF_FIELD = re.compile(r'\r\n\r\n|\r\r|\n\n')
 
 
@@ -48,7 +48,7 @@ class StreamClient(object):
         :param token: Accern API token. Required.
         """
         self._listener = listener or StreamListener()
-        self.api_base = API_BASE
+        self.api_base = get_config()["v4_stream"]
         # Keep data here as it streams in
         self.buf = u''
         self.chunk_size = kwargs.get('chunk_size', 1024)
