@@ -9,6 +9,7 @@ from accern.schema import Schema
 from accern.stream import StreamClient, StreamListener
 from accern.default_client import AccernClient
 from accern.version import __version__
+from accern.config import set_config_file
 
 token = None
 
@@ -19,5 +20,7 @@ __all__ = [
     'HistoricalClient',
     'Schema',
     'StreamClient',
-    'StreamListener'
+    'StreamListener',
+    'set_config_file',
+    'get_config_file',
 ]

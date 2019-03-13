@@ -5,9 +5,9 @@ HTTP requests).
 """
 
 from accern import error, util
-from accern.schema import Schema
 from accern.default_client import AccernClient, new_http_client
-API_BASE = "https://feed.accern.com/v4/alphas"
+from accern.schema import Schema
+from accern.config import get_config
 
 
 class API(AccernClient):
@@ -19,7 +19,7 @@ class API(AccernClient):
         :param client: default http client. Optional
         :param token: Accern API token. Required.
         """
-        self.api_base = API_BASE
+        self.api_base = get_config()["v4_api"]
         self.token = token
         self._client = client or new_http_client()
 
@@ -39,8 +39,10 @@ class API(AccernClient):
             raise error.APIError('API request failed.')
 
         if resp['total'] > 0:
-            resp['signals'] = AccernClient.quant_filter(schema, resp['signals'])
-            resp['signals'] = AccernClient.select_fields(schema, resp['signals'])
+            resp['signals'] = AccernClient.quant_filter(
+                schema, resp['signals'])
+            resp['signals'] = AccernClient.select_fields(
+                schema, resp['signals'])
             resp['total'] = len(resp['signals'])
         return resp
 
@@ -61,5 +63,6 @@ class API(AccernClient):
         encoded_params = util.urlencode(list(AccernClient.api_encode(params)))
         abs_url = AccernClient.build_api_url(self.api_base, encoded_params)
 
-        rbody, rcode, rheaders = self._client.request('GET', abs_url, headers=None, post_data=None)
+        rbody, rcode, rheaders = self._client.request(
+            'GET', abs_url, headers=None, post_data=None)
         return rbody, rcode, rheaders

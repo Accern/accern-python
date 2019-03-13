@@ -68,6 +68,20 @@ Quick Start
 For more information see the `full documentation
 <https://accern-python.readthedocs.io>`_ on Read The Docs.
 
+Non default I/O urls
+---------------------
+
+The I/O urls can be changed by defining a config file:
+
+.. code-block:: python
+
+    from accern import set_config_file
+
+    set_config_file("new-config-file.json")
+
+The expected content of the config file can be found in `accern/config.py`
+under `CONFIG_DEFAULT`.
+
 
 .. |circleci| image:: https://circleci.com/gh/Accern/accern-python.svg?style=shield&circle-token=4a51eaa89bd79c92bb9df0e48642146ad7091afc
    :target: https://circleci.com/gh/Accern/accern-python

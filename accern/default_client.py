@@ -101,7 +101,6 @@ class AccernClient(object):
             }
         if method == "GET":
             return {
-                'Content-Type': 'application/json',
                 'IO-Authorization': token
             }
         raise ValueError("Unknown API method: {0}".format(method))
