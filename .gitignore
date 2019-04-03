@@ -10,8 +10,6 @@ env*
 
 # Python files #
 ################
-# sphinx build directory
-docs/_build
 # setup.py working directory
 build
 # setup.py dist directory
