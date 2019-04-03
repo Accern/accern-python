@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Field Aggregate Function &mdash; Accern Python 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'0.1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Field Value List" href="values.html" />
+    <link rel="prev" title="Field Filter Cookbook" href="cookbook.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Accern Python
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../start.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Appendix</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cookbook.html">Field Filter Cookbook</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Field Aggregate Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="values.html">Field Value List</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Accern Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Appendix</a> &raquo;</li>
+        
+      <li>Field Aggregate Function</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/appendix/aggregations.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="field-aggregate-function">
+<span id="aggregations"></span><h1>Field Aggregate Function<a class="headerlink" href="#field-aggregate-function" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Functions</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>author_id</td>
+<td>count</td>
+</tr>
+<tr class="row-odd"><td>entity_author_republish_score</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-even"><td>entity_author_timeliness_score</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-odd"><td>entity_country</td>
+<td>group</td>
+</tr>
+<tr class="row-even"><td>entity_exch_code</td>
+<td>group</td>
+</tr>
+<tr class="row-odd"><td>entity_exchange</td>
+<td>group</td>
+</tr>
+<tr class="row-even"><td>entity_industry</td>
+<td>group</td>
+</tr>
+<tr class="row-odd"><td>entity_relevance</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-even"><td>entity_sentiment</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-odd"><td>entity_source_timeliness_score</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-even"><td>entity_source_republish_score</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-odd"><td>entity_ticker</td>
+<td>group</td>
+</tr>
+<tr class="row-even"><td>entity_type</td>
+<td>group</td>
+</tr>
+<tr class="row-odd"><td>event_author_timeliness_score</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-even"><td>event_author_republish_score</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-odd"><td>event_group</td>
+<td>group</td>
+</tr>
+<tr class="row-even"><td>event_source_timeliness_score</td>
+<td>min,  max, avg, sum</td>
+</tr>
+<tr class="row-odd"><td>event_source_republish_score</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-even"><td>event_impact_gt_1pct_pos</td>
+<td>group</td>
+</tr>
+<tr class="row-odd"><td>event_impact_gt_mu_add_sigma</td>
+<td>group</td>
+</tr>
+<tr class="row-even"><td>event_impact_gt_mu_pos_add_2sigma_pos</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-odd"><td>event_impact_gt_mu_pos_add_sigma_pos</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-even"><td>event_impact_lt_1pct_neg</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-odd"><td>event_impact_lt_mu_sub_sigma</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-even"><td>event_impact_lt_mu_sub_add_2sigma_pos</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-odd"><td>event_impact_lt_mu_sub_add_sigma_pos</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-even"><td>event_impact_neg</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-odd"><td>event_impact_pct_change_avg</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-even"><td>event_impact_pct_change_stdev</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-odd"><td>event_impact_pos</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-even"><td>event_relevance</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-odd"><td>event_sentiment</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-even"><td>event</td>
+<td>group</td>
+</tr>
+<tr class="row-odd"><td>harvested_at</td>
+<td>minute, hour, day, week, month</td>
+</tr>
+<tr class="row-even"><td>overall_author_timeliness_score</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-odd"><td>overall_author_republish_score</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-even"><td>overall_source_timeliness_score</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-odd"><td>overall_source_republish_score</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-even"><td>story_group_count</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-odd"><td>story_group_exposure</td>
+<td>group</td>
+</tr>
+<tr class="row-even"><td>story_group_traffic_sum</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-odd"><td>story_traffic</td>
+<td>average, count, max, min, sum</td>
+</tr>
+<tr class="row-even"><td>story_type</td>
+<td>group</td>
+</tr>
+<tr class="row-odd"><td>templated_story_score</td>
+<td>average, count, max, min, sum</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="values.html" class="btn btn-neutral float-right" title="Field Value List" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cookbook.html" class="btn btn-neutral float-left" title="Field Filter Cookbook" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Accern Corp.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

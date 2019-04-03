@@ -1,0 +1,2461 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Field Value List &mdash; Accern Python 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'0.1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Field Aggregate Function" href="aggregations.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Accern Python
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../start.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Appendix</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cookbook.html">Field Filter Cookbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aggregations.html">Field Aggregate Function</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Field Value List</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#entity-sector">entity_sector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#entity-industry">entity_industry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#event">event</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#event-group">event_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#story-type">story_type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Accern Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Appendix</a> &raquo;</li>
+        
+      <li>Field Value List</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/appendix/values.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="field-value-list">
+<span id="values"></span><h1>Field Value List<a class="headerlink" href="#field-value-list" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="entity-sector">
+<h2>entity_sector<a class="headerlink" href="#entity-sector" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="entity-industry">
+<h2>entity_industry<a class="headerlink" href="#entity-industry" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">entity_sector</th>
+<th class="head">entity_industry</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Basic Industries</td>
+<td>Agricultural Chemicals</td>
+</tr>
+<tr class="row-odd"><td>Basic Industries</td>
+<td>Aluminum</td>
+</tr>
+<tr class="row-even"><td>Basic Industries</td>
+<td>Containers/Packaging</td>
+</tr>
+<tr class="row-odd"><td>Basic Industries</td>
+<td>Electric Utilities: Central</td>
+</tr>
+<tr class="row-even"><td>Basic Industries</td>
+<td>Engineering &amp; Construction</td>
+</tr>
+<tr class="row-odd"><td>Basic Industries</td>
+<td>Environmental Services</td>
+</tr>
+<tr class="row-even"><td>Basic Industries</td>
+<td>Forest Products</td>
+</tr>
+<tr class="row-odd"><td>Basic Industries</td>
+<td>General Bldg Contractors - Nonresidential Bldgs</td>
+</tr>
+<tr class="row-even"><td>Basic Industries</td>
+<td>Home Furnishings</td>
+</tr>
+<tr class="row-odd"><td>Basic Industries</td>
+<td>Homebuilding</td>
+</tr>
+<tr class="row-even"><td>Basic Industries</td>
+<td>Major Chemicals</td>
+</tr>
+<tr class="row-odd"><td>Basic Industries</td>
+<td>Metal Fabrications</td>
+</tr>
+<tr class="row-even"><td>Basic Industries</td>
+<td>Military/Government/Technical</td>
+</tr>
+<tr class="row-odd"><td>Basic Industries</td>
+<td>Mining &amp; Quarrying of Nonmetallic Minerals (No Fuels)</td>
+</tr>
+<tr class="row-even"><td>Basic Industries</td>
+<td>Miscellaneous</td>
+</tr>
+<tr class="row-odd"><td>Basic Industries</td>
+<td>Other Specialty Stores</td>
+</tr>
+<tr class="row-even"><td>Basic Industries</td>
+<td>Package Goods/Cosmetics</td>
+</tr>
+<tr class="row-odd"><td>Basic Industries</td>
+<td>Paints/Coatings</td>
+</tr>
+<tr class="row-even"><td>Basic Industries</td>
+<td>Paper</td>
+</tr>
+<tr class="row-odd"><td>Basic Industries</td>
+<td>Precious Metals</td>
+</tr>
+<tr class="row-even"><td>Basic Industries</td>
+<td>Specialty Chemicals</td>
+</tr>
+<tr class="row-odd"><td>Basic Industries</td>
+<td>Steel/Iron Ore</td>
+</tr>
+<tr class="row-even"><td>Basic Industries</td>
+<td>Telecommunications Equipment</td>
+</tr>
+<tr class="row-odd"><td>Basic Industries</td>
+<td>Textiles</td>
+</tr>
+<tr class="row-even"><td>Basic Industries</td>
+<td>Water Supply</td>
+</tr>
+<tr class="row-odd"><td>Capital Goods</td>
+<td>Aerospace</td>
+</tr>
+<tr class="row-even"><td>Capital Goods</td>
+<td>Auto Manufacturing</td>
+</tr>
+<tr class="row-odd"><td>Capital Goods</td>
+<td>Auto Parts:O.E.M.</td>
+</tr>
+<tr class="row-even"><td>Capital Goods</td>
+<td>Automotive Aftermarket</td>
+</tr>
+<tr class="row-odd"><td>Capital Goods</td>
+<td>Biotechnology: Laboratory Analytical Instruments</td>
+</tr>
+<tr class="row-even"><td>Capital Goods</td>
+<td>Building Materials</td>
+</tr>
+<tr class="row-odd"><td>Capital Goods</td>
+<td>Building Products</td>
+</tr>
+<tr class="row-even"><td>Capital Goods</td>
+<td>Construction/Ag Equipment/Trucks</td>
+</tr>
+<tr class="row-odd"><td>Capital Goods</td>
+<td>Containers/Packaging</td>
+</tr>
+<tr class="row-even"><td>Capital Goods</td>
+<td>Electrical Products</td>
+</tr>
+<tr class="row-odd"><td>Capital Goods</td>
+<td>Electronic Components</td>
+</tr>
+<tr class="row-even"><td>Capital Goods</td>
+<td>Engineering &amp; Construction</td>
+</tr>
+<tr class="row-odd"><td>Capital Goods</td>
+<td>Fluid Controls</td>
+</tr>
+<tr class="row-even"><td>Capital Goods</td>
+<td>Homebuilding</td>
+</tr>
+<tr class="row-odd"><td>Capital Goods</td>
+<td>Industrial Machinery/Components</td>
+</tr>
+<tr class="row-even"><td>Capital Goods</td>
+<td>Industrial Specialties</td>
+</tr>
+<tr class="row-odd"><td>Capital Goods</td>
+<td>Marine Transportation</td>
+</tr>
+<tr class="row-even"><td>Capital Goods</td>
+<td>Medical Specialities</td>
+</tr>
+<tr class="row-odd"><td>Capital Goods</td>
+<td>Metal Fabrications</td>
+</tr>
+<tr class="row-even"><td>Capital Goods</td>
+<td>Military/Government/Technical</td>
+</tr>
+<tr class="row-odd"><td>Capital Goods</td>
+<td>Miscellaneous</td>
+</tr>
+<tr class="row-even"><td>Capital Goods</td>
+<td>Ordnance And Accessories</td>
+</tr>
+<tr class="row-odd"><td>Capital Goods</td>
+<td>Pollution Control Equipment</td>
+</tr>
+<tr class="row-even"><td>Capital Goods</td>
+<td>Railroads</td>
+</tr>
+<tr class="row-odd"><td>Capital Goods</td>
+<td>Specialty Chemicals</td>
+</tr>
+<tr class="row-even"><td>Capital Goods</td>
+<td>Steel/Iron Ore</td>
+</tr>
+<tr class="row-odd"><td>Capital Goods</td>
+<td>Tools/Hardware</td>
+</tr>
+<tr class="row-even"><td>Capital Goods</td>
+<td>Wholesale Distributors</td>
+</tr>
+<tr class="row-odd"><td>Consumer Durables</td>
+<td>Automotive Aftermarket</td>
+</tr>
+<tr class="row-even"><td>Consumer Durables</td>
+<td>Building Products</td>
+</tr>
+<tr class="row-odd"><td>Consumer Durables</td>
+<td>Consumer Electronics/Appliances</td>
+</tr>
+<tr class="row-even"><td>Consumer Durables</td>
+<td>Consumer Specialties</td>
+</tr>
+<tr class="row-odd"><td>Consumer Durables</td>
+<td>Containers/Packaging</td>
+</tr>
+<tr class="row-even"><td>Consumer Durables</td>
+<td>Diversified Electronic Products</td>
+</tr>
+<tr class="row-odd"><td>Consumer Durables</td>
+<td>Electrical Products</td>
+</tr>
+<tr class="row-even"><td>Consumer Durables</td>
+<td>Electronic Components</td>
+</tr>
+<tr class="row-odd"><td>Consumer Durables</td>
+<td>Home Furnishings</td>
+</tr>
+<tr class="row-even"><td>Consumer Durables</td>
+<td>Industrial Machinery/Components</td>
+</tr>
+<tr class="row-odd"><td>Consumer Durables</td>
+<td>Industrial Specialties</td>
+</tr>
+<tr class="row-even"><td>Consumer Durables</td>
+<td>Metal Fabrications</td>
+</tr>
+<tr class="row-odd"><td>Consumer Durables</td>
+<td>Miscellaneous manufacturing industries</td>
+</tr>
+<tr class="row-even"><td>Consumer Durables</td>
+<td>Office Equipment/Supplies/Services</td>
+</tr>
+<tr class="row-odd"><td>Consumer Durables</td>
+<td>Publishing</td>
+</tr>
+<tr class="row-even"><td>Consumer Durables</td>
+<td>Specialty Chemicals</td>
+</tr>
+<tr class="row-odd"><td>Consumer Durables</td>
+<td>Telecommunications Equipment</td>
+</tr>
+<tr class="row-even"><td>Consumer Non-Durables</td>
+<td>Apparel</td>
+</tr>
+<tr class="row-odd"><td>Consumer Non-Durables</td>
+<td>Beverages (Production/Distribution)</td>
+</tr>
+<tr class="row-even"><td>Consumer Non-Durables</td>
+<td>Consumer Electronics/Appliances</td>
+</tr>
+<tr class="row-odd"><td>Consumer Non-Durables</td>
+<td>Consumer Specialties</td>
+</tr>
+<tr class="row-even"><td>Consumer Non-Durables</td>
+<td>Electronic Components</td>
+</tr>
+<tr class="row-odd"><td>Consumer Non-Durables</td>
+<td>Environmental Services</td>
+</tr>
+<tr class="row-even"><td>Consumer Non-Durables</td>
+<td>Farming/Seeds/Milling</td>
+</tr>
+<tr class="row-odd"><td>Consumer Non-Durables</td>
+<td>Food Chains</td>
+</tr>
+<tr class="row-even"><td>Consumer Non-Durables</td>
+<td>Food Distributors</td>
+</tr>
+<tr class="row-odd"><td>Consumer Non-Durables</td>
+<td>Homebuilding</td>
+</tr>
+<tr class="row-even"><td>Consumer Non-Durables</td>
+<td>Meat/Poultry/Fish</td>
+</tr>
+<tr class="row-odd"><td>Consumer Non-Durables</td>
+<td>Motor Vehicles</td>
+</tr>
+<tr class="row-even"><td>Consumer Non-Durables</td>
+<td>Package Goods/Cosmetics</td>
+</tr>
+<tr class="row-odd"><td>Consumer Non-Durables</td>
+<td>Packaged Foods</td>
+</tr>
+<tr class="row-even"><td>Consumer Non-Durables</td>
+<td>Plastic Products</td>
+</tr>
+<tr class="row-odd"><td>Consumer Non-Durables</td>
+<td>Recreational Products/Toys</td>
+</tr>
+<tr class="row-even"><td>Consumer Non-Durables</td>
+<td>Shoe Manufacturing</td>
+</tr>
+<tr class="row-odd"><td>Consumer Non-Durables</td>
+<td>Specialty Foods</td>
+</tr>
+<tr class="row-even"><td>Consumer Non-Durables</td>
+<td>Telecommunications Equipment</td>
+</tr>
+<tr class="row-odd"><td>Consumer Non-Durables</td>
+<td>Textiles</td>
+</tr>
+<tr class="row-even"><td>Consumer Non-Durables</td>
+<td>Tobacco</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>Advertising</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Automotive Aftermarket</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>Books</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Broadcasting</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>Building operators</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Catalog/Specialty Distribution</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>Clothing/Shoe/Accessory Stores</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Consumer Electronics/Video Chains</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>Consumer Specialties</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Consumer: Greeting Cards</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>Department/Specialty Retail Stores</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Diversified Commercial Services</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>Electronics Distribution</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Farming/Seeds/Milling</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>Food Chains</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Home Furnishings</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>Homebuilding</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Hotels/Resorts</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>Marine Transportation</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Military/Government/Technical</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>Miscellaneous</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Motor Vehicles</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>Movies/Entertainment</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Newspapers/Magazines</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>Office Equipment/Supplies/Services</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Other Consumer Services</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>Other Specialty Stores</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Paper</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>Professional Services</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Publishing</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>RETAIL: Building Materials</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Real Estate</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>Real Estate Investment Trusts</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Recreational Products/Toys</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>Rental/Leasing Companies</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Restaurants</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>Services-Misc. Amusement &amp; Recreation</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Telecommunications Equipment</td>
+</tr>
+<tr class="row-odd"><td>Consumer Services</td>
+<td>Television Services</td>
+</tr>
+<tr class="row-even"><td>Consumer Services</td>
+<td>Transportation Services</td>
+</tr>
+<tr class="row-odd"><td>Energy</td>
+<td>Coal Mining</td>
+</tr>
+<tr class="row-even"><td>Energy</td>
+<td>Consumer Electronics/Appliances</td>
+</tr>
+<tr class="row-odd"><td>Energy</td>
+<td>Electric Utilities: Central</td>
+</tr>
+<tr class="row-even"><td>Energy</td>
+<td>Industrial Machinery/Components</td>
+</tr>
+<tr class="row-odd"><td>Energy</td>
+<td>Integrated oil Companies</td>
+</tr>
+<tr class="row-even"><td>Energy</td>
+<td>Metal Fabrications</td>
+</tr>
+<tr class="row-odd"><td>Energy</td>
+<td>Natural Gas Distribution</td>
+</tr>
+<tr class="row-even"><td>Energy</td>
+<td>Oil &amp; Gas Production</td>
+</tr>
+<tr class="row-odd"><td>Energy</td>
+<td>Oil Refining/Marketing</td>
+</tr>
+<tr class="row-even"><td>Energy</td>
+<td>Oilfield Services/Equipment</td>
+</tr>
+<tr class="row-odd"><td>Finance</td>
+<td>Accident &amp;Health Insurance</td>
+</tr>
+<tr class="row-even"><td>Finance</td>
+<td>Banks</td>
+</tr>
+<tr class="row-odd"><td>Finance</td>
+<td>Business Services</td>
+</tr>
+<tr class="row-even"><td>Finance</td>
+<td>Commercial Banks</td>
+</tr>
+<tr class="row-odd"><td>Finance</td>
+<td>Diversified Commercial Services</td>
+</tr>
+<tr class="row-even"><td>Finance</td>
+<td>Diversified Financial Services</td>
+</tr>
+<tr class="row-odd"><td>Finance</td>
+<td>Finance Companies</td>
+</tr>
+<tr class="row-even"><td>Finance</td>
+<td>Finance/Investors Services</td>
+</tr>
+<tr class="row-odd"><td>Finance</td>
+<td>Finance: Consumer Services</td>
+</tr>
+<tr class="row-even"><td>Finance</td>
+<td>Investment Bankers/Brokers/Service</td>
+</tr>
+<tr class="row-odd"><td>Finance</td>
+<td>Investment Managers</td>
+</tr>
+<tr class="row-even"><td>Finance</td>
+<td>Life Insurance</td>
+</tr>
+<tr class="row-odd"><td>Finance</td>
+<td>Major Banks</td>
+</tr>
+<tr class="row-even"><td>Finance</td>
+<td>Property-Casualty Insurers</td>
+</tr>
+<tr class="row-odd"><td>Finance</td>
+<td>Real Estate</td>
+</tr>
+<tr class="row-even"><td>Finance</td>
+<td>Savings Institutions</td>
+</tr>
+<tr class="row-odd"><td>Finance</td>
+<td>Specialty Insurers</td>
+</tr>
+<tr class="row-even"><td>Health Care</td>
+<td>Biotechnology: Biological Products (No Diagnostic Substances)</td>
+</tr>
+<tr class="row-odd"><td>Health Care</td>
+<td>Biotechnology: Commercial Physical &amp; Biological Resarch</td>
+</tr>
+<tr class="row-even"><td>Health Care</td>
+<td>Biotechnology: Electromedical &amp; Electrotherapeutic Apparatus</td>
+</tr>
+<tr class="row-odd"><td>Health Care</td>
+<td>Biotechnology: In Vitro &amp; In Vivo Diagnostic Substances</td>
+</tr>
+<tr class="row-even"><td>Health Care</td>
+<td>Hospital/Nursing Management</td>
+</tr>
+<tr class="row-odd"><td>Health Care</td>
+<td>Industrial Specialties</td>
+</tr>
+<tr class="row-even"><td>Health Care</td>
+<td>Major Pharmaceuticals</td>
+</tr>
+<tr class="row-odd"><td>Health Care</td>
+<td>Medical Electronics</td>
+</tr>
+<tr class="row-even"><td>Health Care</td>
+<td>Medical Specialities</td>
+</tr>
+<tr class="row-odd"><td>Health Care</td>
+<td>Medical/Dental Instruments</td>
+</tr>
+<tr class="row-even"><td>Health Care</td>
+<td>Medical/Nursing Services</td>
+</tr>
+<tr class="row-odd"><td>Health Care</td>
+<td>Ophthalmic Goods</td>
+</tr>
+<tr class="row-even"><td>Health Care</td>
+<td>Other Pharmaceuticals</td>
+</tr>
+<tr class="row-odd"><td>Health Care</td>
+<td>Precision Instruments</td>
+</tr>
+<tr class="row-even"><td>Miscellaneous</td>
+<td>Business Services</td>
+</tr>
+<tr class="row-odd"><td>Miscellaneous</td>
+<td>Industrial Machinery/Components</td>
+</tr>
+<tr class="row-even"><td>Miscellaneous</td>
+<td>Multi-Sector Companies</td>
+</tr>
+<tr class="row-odd"><td>Miscellaneous</td>
+<td>Office Equipment/Supplies/Services</td>
+</tr>
+<tr class="row-even"><td>Miscellaneous</td>
+<td>Other Consumer Services</td>
+</tr>
+<tr class="row-odd"><td>Miscellaneous</td>
+<td>Publishing</td>
+</tr>
+<tr class="row-even"><td>Public Utilities</td>
+<td>Electric Utilities: Central</td>
+</tr>
+<tr class="row-odd"><td>Public Utilities</td>
+<td>Environmental Services</td>
+</tr>
+<tr class="row-even"><td>Public Utilities</td>
+<td>Natural Gas Distribution</td>
+</tr>
+<tr class="row-odd"><td>Public Utilities</td>
+<td>Oil &amp; Gas Production</td>
+</tr>
+<tr class="row-even"><td>Public Utilities</td>
+<td>Oil/Gas Transmission</td>
+</tr>
+<tr class="row-odd"><td>Public Utilities</td>
+<td>Power Generation</td>
+</tr>
+<tr class="row-even"><td>Public Utilities</td>
+<td>Telecommunications Equipment</td>
+</tr>
+<tr class="row-odd"><td>Public Utilities</td>
+<td>Water Supply</td>
+</tr>
+<tr class="row-even"><td>Technology</td>
+<td>Advertising</td>
+</tr>
+<tr class="row-odd"><td>Technology</td>
+<td>Computer Communications Equipment</td>
+</tr>
+<tr class="row-even"><td>Technology</td>
+<td>Computer Manufacturing</td>
+</tr>
+<tr class="row-odd"><td>Technology</td>
+<td>Computer Software: Prepackaged Software</td>
+</tr>
+<tr class="row-even"><td>Technology</td>
+<td>Computer Software: Programming, Data Processing</td>
+</tr>
+<tr class="row-odd"><td>Technology</td>
+<td>Computer peripheral equipment</td>
+</tr>
+<tr class="row-even"><td>Technology</td>
+<td>Diversified Commercial Services</td>
+</tr>
+<tr class="row-odd"><td>Technology</td>
+<td>EDP Services</td>
+</tr>
+<tr class="row-even"><td>Technology</td>
+<td>Electrical Products</td>
+</tr>
+<tr class="row-odd"><td>Technology</td>
+<td>Electronic Components</td>
+</tr>
+<tr class="row-even"><td>Technology</td>
+<td>Industrial Machinery/Components</td>
+</tr>
+<tr class="row-odd"><td>Technology</td>
+<td>Professional Services</td>
+</tr>
+<tr class="row-even"><td>Technology</td>
+<td>Radio And Television Broadcasting And Communications Equipment</td>
+</tr>
+<tr class="row-odd"><td>Technology</td>
+<td>Retail: Computer Software &amp; Peripheral Equipment</td>
+</tr>
+<tr class="row-even"><td>Technology</td>
+<td>Semiconductors</td>
+</tr>
+<tr class="row-odd"><td>Technology</td>
+<td>Telecommunications Equipment</td>
+</tr>
+<tr class="row-even"><td>Transportation</td>
+<td>Aerospace</td>
+</tr>
+<tr class="row-odd"><td>Transportation</td>
+<td>Air Freight/Delivery Services</td>
+</tr>
+<tr class="row-even"><td>Transportation</td>
+<td>Marine Transportation</td>
+</tr>
+<tr class="row-odd"><td>Transportation</td>
+<td>Oil Refining/Marketing</td>
+</tr>
+<tr class="row-even"><td>Transportation</td>
+<td>Other Transportation</td>
+</tr>
+<tr class="row-odd"><td>Transportation</td>
+<td>Railroads</td>
+</tr>
+<tr class="row-even"><td>Transportation</td>
+<td>Transportation Services</td>
+</tr>
+<tr class="row-odd"><td>Transportation</td>
+<td>Trucking Freight/Courier Services</td>
+</tr>
+<tr class="row-even"><td>n/a</td>
+<td>n/a</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="event">
+<h2>event<a class="headerlink" href="#event" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="event-group">
+<h2>event_group<a class="headerlink" href="#event-group" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">event_group</th>
+<th class="head">event</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Disaster</td>
+<td>Accident</td>
+</tr>
+<tr class="row-odd"><td>General Business Actions</td>
+<td>Accomplishment</td>
+</tr>
+<tr class="row-even"><td>Real Estate</td>
+<td>Account</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Company Financials - Accounting</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Economy - Accounting</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Accounting Procedures</td>
+</tr>
+<tr class="row-even"><td>Mergers And Acquisitions</td>
+<td>Mergers And Acquisitions - Acquisition</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Act</td>
+</tr>
+<tr class="row-even"><td>Contracts</td>
+<td>Contracts - Action</td>
+</tr>
+<tr class="row-odd"><td>Legal Actions</td>
+<td>Legal Actions - Action</td>
+</tr>
+<tr class="row-even"><td>Corporate Governance</td>
+<td>Corporate Governance - Action Plan</td>
+</tr>
+<tr class="row-odd"><td>General Business Actions</td>
+<td>General Business Actions - Action Plan</td>
+</tr>
+<tr class="row-even"><td>Market Performance</td>
+<td>Activity</td>
+</tr>
+<tr class="row-odd"><td>General Business Actions</td>
+<td>Adverse</td>
+</tr>
+<tr class="row-even"><td>Product Development</td>
+<td>Aerospace</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Agency</td>
+</tr>
+<tr class="row-even"><td>Disaster</td>
+<td>Aggression</td>
+</tr>
+<tr class="row-odd"><td>Contracts</td>
+<td>Contracts - Agreement</td>
+</tr>
+<tr class="row-even"><td>Legal Actions</td>
+<td>Allegation</td>
+</tr>
+<tr class="row-odd"><td>General Business Actions</td>
+<td>General Business Actions - Announcement</td>
+</tr>
+<tr class="row-even"><td>Rumors</td>
+<td>Rumors - Announcement</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Annual</td>
+</tr>
+<tr class="row-even"><td>Legal Actions</td>
+<td>Antitrust</td>
+</tr>
+<tr class="row-odd"><td>Real Estate</td>
+<td>Arrangement</td>
+</tr>
+<tr class="row-even"><td>Insurance</td>
+<td>Auto Insurance</td>
+</tr>
+<tr class="row-odd"><td>Product Development</td>
+<td>Automotive</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Awards</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Bailout</td>
+</tr>
+<tr class="row-even"><td>Financial Securities</td>
+<td>Balloon Payment</td>
+</tr>
+<tr class="row-odd"><td>Bankruptcy</td>
+<td>Bankruptcy - Bank</td>
+</tr>
+<tr class="row-even"><td>Financing Actions</td>
+<td>Financing Actions - Bank</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Bills</td>
+</tr>
+<tr class="row-even"><td>Criminal Actions</td>
+<td>Blackmail</td>
+</tr>
+<tr class="row-odd"><td>Financial Securities</td>
+<td>Financial Securities - Bond Agreement</td>
+</tr>
+<tr class="row-even"><td>Financial Securities</td>
+<td>Financial Securities - Bond Agreement</td>
+</tr>
+<tr class="row-odd"><td>Financial Securities</td>
+<td>Bond Computation</td>
+</tr>
+<tr class="row-even"><td>Financial Securities</td>
+<td>Bond Individual</td>
+</tr>
+<tr class="row-odd"><td>Financial Securities</td>
+<td>Bond Method</td>
+</tr>
+<tr class="row-even"><td>Financial Securities</td>
+<td>Bond Price</td>
+</tr>
+<tr class="row-odd"><td>Financial Securities</td>
+<td>Bond Process</td>
+</tr>
+<tr class="row-even"><td>Financial Securities</td>
+<td>Bond Return</td>
+</tr>
+<tr class="row-odd"><td>Financial Securities</td>
+<td>Bond Status</td>
+</tr>
+<tr class="row-even"><td>Financial Securities</td>
+<td>Bond Systems</td>
+</tr>
+<tr class="row-odd"><td>Financial Securities</td>
+<td>Bond Theory</td>
+</tr>
+<tr class="row-even"><td>Financial Securities</td>
+<td>Bond Type</td>
+</tr>
+<tr class="row-odd"><td>Financial Securities</td>
+<td>Bonds</td>
+</tr>
+<tr class="row-even"><td>Financial Securities</td>
+<td>Bondspayment</td>
+</tr>
+<tr class="row-odd"><td>Criminal Actions</td>
+<td>Breach</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Budget</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Bureau</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Cabinet Department</td>
+</tr>
+<tr class="row-odd"><td>Financial Securities</td>
+<td>Call</td>
+</tr>
+<tr class="row-even"><td>Corporate Action</td>
+<td>Corporate Action - Capital Expenditure</td>
+</tr>
+<tr class="row-odd"><td>Financing Activities</td>
+<td>Financing Activities - Capital Expenditure</td>
+</tr>
+<tr class="row-even"><td>Insurance</td>
+<td>Car Insurance</td>
+</tr>
+<tr class="row-odd"><td>Financing Actions</td>
+<td>Charging</td>
+</tr>
+<tr class="row-even"><td>Corporate Governance</td>
+<td>Chronology</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Claim</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Clause</td>
+</tr>
+<tr class="row-odd"><td>Collaborations</td>
+<td>Collaborations Entity</td>
+</tr>
+<tr class="row-even"><td>Bankruptcy</td>
+<td>Collateral</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Commitee</td>
+</tr>
+<tr class="row-even"><td>Bankruptcy</td>
+<td>Bankruptcy - Company</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Economy - Company</td>
+</tr>
+<tr class="row-even"><td>Financing Actions</td>
+<td>Financing Actions - Company</td>
+</tr>
+<tr class="row-odd"><td>Corporate Governance</td>
+<td>Company Change</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Company Earnings</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Company Earnings Delay</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Company Expenses</td>
+</tr>
+<tr class="row-odd"><td>Insurance</td>
+<td>Insurance - Company Security</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Company Security</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Concurrent Resolution</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Congress</td>
+</tr>
+<tr class="row-odd"><td>Criminal Actions</td>
+<td>Conspiracy</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Economy - Consumer</td>
+</tr>
+<tr class="row-odd"><td>Real Estate</td>
+<td>Real Estate - Consumer</td>
+</tr>
+<tr class="row-even"><td>Product Development</td>
+<td>Product Development - Consumer Goods</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Contract Law</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Contractual Provision</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Corporate Bankruptcy</td>
+</tr>
+<tr class="row-even"><td>Financial Securities</td>
+<td>Coupon</td>
+</tr>
+<tr class="row-odd"><td>Legal Actions</td>
+<td>Court</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Court Order</td>
+</tr>
+<tr class="row-odd"><td>Insurance</td>
+<td>Coverage</td>
+</tr>
+<tr class="row-even"><td>Insurance</td>
+<td>Coverage Gap</td>
+</tr>
+<tr class="row-odd"><td>Financing Activities</td>
+<td>Credit</td>
+</tr>
+<tr class="row-even"><td>Criminal Actions</td>
+<td>Criminal Actions - Crime</td>
+</tr>
+<tr class="row-odd"><td>Criminal Actions</td>
+<td>Crimes</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Currency</td>
+</tr>
+<tr class="row-odd"><td>Security</td>
+<td>Cyber Security</td>
+</tr>
+<tr class="row-even"><td>Criminal Actions</td>
+<td>Cybercrime</td>
+</tr>
+<tr class="row-odd"><td>Collaborations</td>
+<td>Deals</td>
+</tr>
+<tr class="row-even"><td>Insurance</td>
+<td>Death Rate</td>
+</tr>
+<tr class="row-odd"><td>Bankruptcy</td>
+<td>Bankruptcy - Debt</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Economy - Debt</td>
+</tr>
+<tr class="row-odd"><td>Financial Securities</td>
+<td>Financial Securities - Debt</td>
+</tr>
+<tr class="row-even"><td>Financing Actions</td>
+<td>Financing Actions - Debt</td>
+</tr>
+<tr class="row-odd"><td>Financing Activities</td>
+<td>Financing Activities - Debt</td>
+</tr>
+<tr class="row-even"><td>Financial Securities</td>
+<td>Debt Secutiy</td>
+</tr>
+<tr class="row-odd"><td>Real Estate</td>
+<td>Deed</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Default Rule</td>
+</tr>
+<tr class="row-odd"><td>Bankruptcy</td>
+<td>Bankruptcy - Defaults</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Degree</td>
+</tr>
+<tr class="row-odd"><td>Business Concerns</td>
+<td>Delays</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Department Of Justice</td>
+</tr>
+<tr class="row-odd"><td>Business Concerns</td>
+<td>Departure</td>
+</tr>
+<tr class="row-even"><td>Insurance</td>
+<td>Deposit Insurance</td>
+</tr>
+<tr class="row-odd"><td>Legal Actions</td>
+<td>Detention</td>
+</tr>
+<tr class="row-even"><td>Product Development</td>
+<td>Development</td>
+</tr>
+<tr class="row-odd"><td>Business Concerns</td>
+<td>Disagreements</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Disclaimer</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Disclosure</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Dispute</td>
+</tr>
+<tr class="row-odd"><td>Real Estate</td>
+<td>Real Estate - Dispute</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Distribution</td>
+</tr>
+<tr class="row-odd"><td>Business Concerns</td>
+<td>Disturbance</td>
+</tr>
+<tr class="row-even"><td>Mergers And Acquisitions</td>
+<td>Divestiture</td>
+</tr>
+<tr class="row-odd"><td>Collaborations</td>
+<td>Collaborations - Document</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Document</td>
+</tr>
+<tr class="row-odd"><td>Legal Actions</td>
+<td>Legal Actions - Document</td>
+</tr>
+<tr class="row-even"><td>Real Estate</td>
+<td>Real Estate - Document</td>
+</tr>
+<tr class="row-odd"><td>Security</td>
+<td>Domestic Security</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Donation</td>
+</tr>
+<tr class="row-odd"><td>Analyst Ratings</td>
+<td>Downgrade</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Earnings Forecast</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Economic</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Economic Analysis</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Economic Cycle</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Economic Situation</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Economic Theory</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Economist</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Education</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Education Foundation</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Elasticity</td>
+</tr>
+<tr class="row-even"><td>Product Development</td>
+<td>Electronic</td>
+</tr>
+<tr class="row-odd"><td>Corporate Governance</td>
+<td>Employee</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Employment</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Economy - Energy</td>
+</tr>
+<tr class="row-even"><td>Product Development</td>
+<td>Product Development - Energy</td>
+</tr>
+<tr class="row-odd"><td>Product Development</td>
+<td>Entertainment</td>
+</tr>
+<tr class="row-even"><td>Legal Actions</td>
+<td>Entity</td>
+</tr>
+<tr class="row-odd"><td>Corporate Action</td>
+<td>Corporate Action - Environmental Issue</td>
+</tr>
+<tr class="row-even"><td>Disaster</td>
+<td>Disaster - Environmental Issue</td>
+</tr>
+<tr class="row-odd"><td>Financial Securities</td>
+<td>Financial Securities - Equity</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Equity</td>
+</tr>
+<tr class="row-odd"><td>Stock Valuation</td>
+<td>Equity Value</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Errors</td>
+</tr>
+<tr class="row-odd"><td>Corporate Governance</td>
+<td>Event</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Exam</td>
+</tr>
+<tr class="row-odd"><td>Corporate Governance</td>
+<td>Expansion</td>
+</tr>
+<tr class="row-even"><td>Real Estate</td>
+<td>Expenses</td>
+</tr>
+<tr class="row-odd"><td>Insurance</td>
+<td>Expire</td>
+</tr>
+<tr class="row-even"><td>Insurance</td>
+<td>Extra Liability Insurance</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Federal</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Federal Agency</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Federal Communications Commission</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Federal Reserve Bank</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Fiduciary</td>
+</tr>
+<tr class="row-even"><td>Corporate Action</td>
+<td>Corporate Action - Finance</td>
+</tr>
+<tr class="row-odd"><td>Insurance</td>
+<td>Insurance - Finance</td>
+</tr>
+<tr class="row-even"><td>Stock Valuation</td>
+<td>Stock Valuation - Finance</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Financial</td>
+</tr>
+<tr class="row-even"><td>Product Development</td>
+<td>Product Development - Financial</td>
+</tr>
+<tr class="row-odd"><td>Corporate Governance</td>
+<td>Financial Change</td>
+</tr>
+<tr class="row-even"><td>Financing Activities</td>
+<td>Financial Investments</td>
+</tr>
+<tr class="row-odd"><td>Financing Activities</td>
+<td>Financial Recovery</td>
+</tr>
+<tr class="row-even"><td>Corporate Action</td>
+<td>Financial Reports</td>
+</tr>
+<tr class="row-odd"><td>Financing Activities</td>
+<td>Financial Risk</td>
+</tr>
+<tr class="row-even"><td>Legal Actions</td>
+<td>Fines</td>
+</tr>
+<tr class="row-odd"><td>Government</td>
+<td>Food And Drug Administration</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Economy - Forecast</td>
+</tr>
+<tr class="row-odd"><td>Mergers And Acquisitions</td>
+<td>Mergers And Acquisitions - Forecast</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Form</td>
+</tr>
+<tr class="row-odd"><td>Criminal Actions</td>
+<td>Criminal Actions - Fraud</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Fraud</td>
+</tr>
+<tr class="row-odd"><td>Legal Actions</td>
+<td>Legal Actions - Fraud</td>
+</tr>
+<tr class="row-even"><td>Real Estate</td>
+<td>Real Estate - Fraud</td>
+</tr>
+<tr class="row-odd"><td>Financial Securities</td>
+<td>Fund</td>
+</tr>
+<tr class="row-even"><td>Corporate Governance</td>
+<td>Funding</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Game Theory</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Gdp Movement</td>
+</tr>
+<tr class="row-odd"><td>Analyst Ratings</td>
+<td>Analyst Ratings - General</td>
+</tr>
+<tr class="row-even"><td>Collaborations</td>
+<td>Collaborations - General</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Company Financials - General</td>
+</tr>
+<tr class="row-even"><td>Criminal Actions</td>
+<td>Criminal Actions - General</td>
+</tr>
+<tr class="row-odd"><td>Disaster</td>
+<td>Disaster - General</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Economy - General</td>
+</tr>
+<tr class="row-odd"><td>Employment Actions</td>
+<td>Employment Actions - General</td>
+</tr>
+<tr class="row-even"><td>Financing Activities</td>
+<td>Financing Activities - General</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Laws And Regulations - General</td>
+</tr>
+<tr class="row-even"><td>Legal Actions</td>
+<td>Legal Actions - General</td>
+</tr>
+<tr class="row-odd"><td>Market Performance</td>
+<td>Market Performance - General</td>
+</tr>
+<tr class="row-even"><td>Mergers And Acquisitions</td>
+<td>Mergers And Acquisitions - General</td>
+</tr>
+<tr class="row-odd"><td>Product Development</td>
+<td>Product Development - General</td>
+</tr>
+<tr class="row-even"><td>Real Estate</td>
+<td>Real Estate - General</td>
+</tr>
+<tr class="row-odd"><td>Retirement Planning</td>
+<td>Retirement Planning - General</td>
+</tr>
+<tr class="row-even"><td>Rumors</td>
+<td>Rumors - General</td>
+</tr>
+<tr class="row-odd"><td>Stock Valuation</td>
+<td>Stock Valuation - General</td>
+</tr>
+<tr class="row-even"><td>General Business Actions</td>
+<td>Goal</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Economy - Government</td>
+</tr>
+<tr class="row-even"><td>Insurance</td>
+<td>Insurance - Government</td>
+</tr>
+<tr class="row-odd"><td>Bankruptcy</td>
+<td>Bankruptcy - Government Agency</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Economy - Government Agency</td>
+</tr>
+<tr class="row-odd"><td>Financing Actions</td>
+<td>Financing Actions - Government Agency</td>
+</tr>
+<tr class="row-even"><td>Government</td>
+<td>Government - Government Agency</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Government Policy</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Government Spending</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Graph</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Guarantee</td>
+</tr>
+<tr class="row-odd"><td>Corporate Action</td>
+<td>Headquarters-Change</td>
+</tr>
+<tr class="row-even"><td>Insurance</td>
+<td>Health Insurance</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Health Insurance Security</td>
+</tr>
+<tr class="row-even"><td>Insurance</td>
+<td>Insurance - Healthcare</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Healthcare</td>
+</tr>
+<tr class="row-even"><td>Financial Securities</td>
+<td>High Yield</td>
+</tr>
+<tr class="row-odd"><td>Insurance</td>
+<td>Homeowners Insurance</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Identity</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Illegal</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Illegal Trade</td>
+</tr>
+<tr class="row-odd"><td>General Business Actions</td>
+<td>Improvement</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Indicatiors</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Indicators</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Individual</td>
+</tr>
+<tr class="row-odd"><td>Security</td>
+<td>Infrastructure Security</td>
+</tr>
+<tr class="row-even"><td>Corporate Governance</td>
+<td>Initiative</td>
+</tr>
+<tr class="row-odd"><td>Corporate Action</td>
+<td>Corporate Action - Insider Activities</td>
+</tr>
+<tr class="row-even"><td>Stock Activities</td>
+<td>Stock Activities - Insider Activities</td>
+</tr>
+<tr class="row-odd"><td>Legal Actions</td>
+<td>Insider Trading</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Economy - Institution</td>
+</tr>
+<tr class="row-odd"><td>Legal Actions</td>
+<td>Legal Actions - Institution</td>
+</tr>
+<tr class="row-even"><td>Real Estate</td>
+<td>Real Estate - Institution</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Institutions</td>
+</tr>
+<tr class="row-even"><td>Real Estate</td>
+<td>Insurance</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Insurance Clause</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Insurance Coverage</td>
+</tr>
+<tr class="row-odd"><td>Insurance</td>
+<td>Insurance Industry</td>
+</tr>
+<tr class="row-even"><td>Insurance</td>
+<td>Insurance Plan</td>
+</tr>
+<tr class="row-odd"><td>Product Development</td>
+<td>Intellectual Property</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Economy - Interest</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Interest</td>
+</tr>
+<tr class="row-even"><td>Bankruptcy</td>
+<td>Bankruptcy - Interest Rate</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Economy - Interest Rate</td>
+</tr>
+<tr class="row-even"><td>Financing Actions</td>
+<td>Financing Actions - Interest Rate</td>
+</tr>
+<tr class="row-odd"><td>Corporate Governance</td>
+<td>Corporate Governance - Investment</td>
+</tr>
+<tr class="row-even"><td>Financing Activities</td>
+<td>Financing Activities - Investment</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Investment</td>
+</tr>
+<tr class="row-even"><td>Real Estate</td>
+<td>Real Estate - Investment</td>
+</tr>
+<tr class="row-odd"><td>Retirement Planning</td>
+<td>Retirement Planning - Investment</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Investment</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Investor</td>
+</tr>
+<tr class="row-even"><td>Contracts</td>
+<td>IPO</td>
+</tr>
+<tr class="row-odd"><td>Stock Activities</td>
+<td>Ipo</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Issues</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Joint Resolutions</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Joint Return</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Judicial Order</td>
+</tr>
+<tr class="row-even"><td>Financial Securities</td>
+<td>Jumbo</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Economy - Labor</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Labor</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Economy - Labor Union</td>
+</tr>
+<tr class="row-even"><td>Employment Actions</td>
+<td>Employment Actions - Labor Union</td>
+</tr>
+<tr class="row-odd"><td>Financial Securities</td>
+<td>Ladder</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Law</td>
+</tr>
+<tr class="row-odd"><td>Real Estate</td>
+<td>Real Estate - Law</td>
+</tr>
+<tr class="row-even"><td>Corporate Governance</td>
+<td>Corporate Governance - Lawsuit</td>
+</tr>
+<tr class="row-odd"><td>Legal Actions</td>
+<td>Legal Actions - Lawsuit</td>
+</tr>
+<tr class="row-even"><td>Employment Actions</td>
+<td>Employment Actions - Layoff</td>
+</tr>
+<tr class="row-odd"><td>Rumors</td>
+<td>Rumors - Layoff</td>
+</tr>
+<tr class="row-even"><td>Financing Actions</td>
+<td>Financing Actions - Lease</td>
+</tr>
+<tr class="row-odd"><td>Real Estate</td>
+<td>Real Estate - Lease</td>
+</tr>
+<tr class="row-even"><td>Real Estate</td>
+<td>Legal</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Legal Action</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Legal Authority</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Legal Bond</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Legal Distinction</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Legal Document</td>
+</tr>
+<tr class="row-even"><td>Legal Actions</td>
+<td>Legal Ethics</td>
+</tr>
+<tr class="row-odd"><td>Mergers And Acquisitions</td>
+<td>Legal Provision</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Legislative Body</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Letter</td>
+</tr>
+<tr class="row-even"><td>Bankruptcy</td>
+<td>Leverage</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Liability</td>
+</tr>
+<tr class="row-even"><td>Insurance</td>
+<td>Life Insurance</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Limited Liability Company</td>
+</tr>
+<tr class="row-even"><td>General Business Actions</td>
+<td>Limiting</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Liquidation</td>
+</tr>
+<tr class="row-even"><td>Legal Actions</td>
+<td>Litigation</td>
+</tr>
+<tr class="row-odd"><td>Bankruptcy</td>
+<td>Bankruptcy - Loan</td>
+</tr>
+<tr class="row-even"><td>Financing Actions</td>
+<td>Financing Actions - Loan</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Loan</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Economy - Loans</td>
+</tr>
+<tr class="row-odd"><td>Real Estate</td>
+<td>Real Estate - Loans</td>
+</tr>
+<tr class="row-even"><td>Disaster</td>
+<td>Man-Made Disaster</td>
+</tr>
+<tr class="row-odd"><td>Employment Actions</td>
+<td>Management</td>
+</tr>
+<tr class="row-even"><td>Corporate Governance</td>
+<td>Management Decisions</td>
+</tr>
+<tr class="row-odd"><td>Corporate Governance</td>
+<td>Management Regulation</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Manager</td>
+</tr>
+<tr class="row-odd"><td>Insurance</td>
+<td>Managing Risk</td>
+</tr>
+<tr class="row-even"><td>Real Estate</td>
+<td>Real Estate - Market</td>
+</tr>
+<tr class="row-odd"><td>Stock Valuation</td>
+<td>Stock Valuation - Market</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Market Concetration</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Market Economics</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Market Industry</td>
+</tr>
+<tr class="row-odd"><td>Corporate Action</td>
+<td>Market-Share</td>
+</tr>
+<tr class="row-even"><td>Product Development</td>
+<td>Marketing</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Markets</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Marriage Tax</td>
+</tr>
+<tr class="row-odd"><td>Financial Securities</td>
+<td>Financial Securities - Measure</td>
+</tr>
+<tr class="row-even"><td>Real Estate</td>
+<td>Real Estate - Measure</td>
+</tr>
+<tr class="row-odd"><td>Insurance</td>
+<td>Medicare</td>
+</tr>
+<tr class="row-even"><td>Mergers And Acquisitions</td>
+<td>Mergers And Acquisitions - Merger</td>
+</tr>
+<tr class="row-odd"><td>Business Concerns</td>
+<td>Mistakes</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Model</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Monetary</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Monetary Policy</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Monetary System</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Monitoring System</td>
+</tr>
+<tr class="row-odd"><td>Bankruptcy</td>
+<td>Bankruptcy - Mortgage</td>
+</tr>
+<tr class="row-even"><td>Financing Actions</td>
+<td>Financing Actions - Mortgage</td>
+</tr>
+<tr class="row-odd"><td>Real Estate</td>
+<td>Real Estate - Mortgage</td>
+</tr>
+<tr class="row-even"><td>Corporate Action</td>
+<td>Name Change</td>
+</tr>
+<tr class="row-odd"><td>Disaster</td>
+<td>Natural Disaster</td>
+</tr>
+<tr class="row-even"><td>Financial Securities</td>
+<td>Negative</td>
+</tr>
+<tr class="row-odd"><td>Financial Securities</td>
+<td>Net</td>
+</tr>
+<tr class="row-even"><td>Collaborations</td>
+<td>Collaborations - Non-Profit</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Non-Profit</td>
+</tr>
+<tr class="row-even"><td>Bankruptcy</td>
+<td>Bankruptcy - Obligation</td>
+</tr>
+<tr class="row-odd"><td>Financial Securities</td>
+<td>Financial Securities - Obligation</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Obligation</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Offense</td>
+</tr>
+<tr class="row-even"><td>Financial Securities</td>
+<td>Option</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Order</td>
+</tr>
+<tr class="row-even"><td>General Business Actions</td>
+<td>Overload</td>
+</tr>
+<tr class="row-odd"><td>Corporate Action</td>
+<td>Corporate Action - Ownership</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Ownership</td>
+</tr>
+<tr class="row-odd"><td>Real Estate</td>
+<td>Real Estate - Ownership</td>
+</tr>
+<tr class="row-even"><td>Financial Securities</td>
+<td>Par Value</td>
+</tr>
+<tr class="row-odd"><td>Contracts</td>
+<td>Contracts - Partnership</td>
+</tr>
+<tr class="row-even"><td>Corporate Action</td>
+<td>Corporate Action - Partnership</td>
+</tr>
+<tr class="row-odd"><td>Bankruptcy</td>
+<td>Bankruptcy - Payment</td>
+</tr>
+<tr class="row-even"><td>Corporate Governance</td>
+<td>Corporate Governance - Payment</td>
+</tr>
+<tr class="row-odd"><td>Financing Actions</td>
+<td>Financing Actions - Payment</td>
+</tr>
+<tr class="row-even"><td>Real Estate</td>
+<td>Real Estate - Payment</td>
+</tr>
+<tr class="row-odd"><td>Rumors</td>
+<td>Rumors - Payment</td>
+</tr>
+<tr class="row-even"><td>Financing Activities</td>
+<td>Payments</td>
+</tr>
+<tr class="row-odd"><td>Legal Actions</td>
+<td>Penalty</td>
+</tr>
+<tr class="row-even"><td>Product Development</td>
+<td>Pharmaceuticals</td>
+</tr>
+<tr class="row-odd"><td>Criminal Actions</td>
+<td>Plagiarism</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Pledge</td>
+</tr>
+<tr class="row-odd"><td>Bankruptcy</td>
+<td>Bankruptcy - Policy</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Economy - Policy</td>
+</tr>
+<tr class="row-odd"><td>Financing Actions</td>
+<td>Financing Actions - Policy</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Policy</td>
+</tr>
+<tr class="row-odd"><td>Corporate Governance</td>
+<td>Portfolio Management</td>
+</tr>
+<tr class="row-even"><td>Corporate Governance</td>
+<td>Position</td>
+</tr>
+<tr class="row-odd"><td>Contracts</td>
+<td>Pre-Contract</td>
+</tr>
+<tr class="row-even"><td>Insurance</td>
+<td>Premium</td>
+</tr>
+<tr class="row-odd"><td>Corporate Action</td>
+<td>Corporate Action - Price</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Economy - Price</td>
+</tr>
+<tr class="row-odd"><td>Stock Valuation</td>
+<td>Pricing</td>
+</tr>
+<tr class="row-even"><td>Insurance</td>
+<td>Printed Document</td>
+</tr>
+<tr class="row-odd"><td>Real Estate</td>
+<td>Processes</td>
+</tr>
+<tr class="row-even"><td>Corporate Action</td>
+<td>Product</td>
+</tr>
+<tr class="row-odd"><td>Rumors</td>
+<td>Product Development</td>
+</tr>
+<tr class="row-even"><td>Product Development</td>
+<td>Product Discontinuation</td>
+</tr>
+<tr class="row-odd"><td>Product Development</td>
+<td>Product Improvement</td>
+</tr>
+<tr class="row-even"><td>Product Development</td>
+<td>Product Development - Product Launch</td>
+</tr>
+<tr class="row-odd"><td>Rumors</td>
+<td>Rumors - Product Launch</td>
+</tr>
+<tr class="row-even"><td>Product Development</td>
+<td>Product Recall</td>
+</tr>
+<tr class="row-odd"><td>Real Estate</td>
+<td>Program</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Property</td>
+</tr>
+<tr class="row-odd"><td>Real Estate</td>
+<td>Real Estate - Property</td>
+</tr>
+<tr class="row-even"><td>Insurance</td>
+<td>Property Insurance</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Proposed Legislation</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Prospectus</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Public Holiday</td>
+</tr>
+<tr class="row-even"><td>Corporate Governance</td>
+<td>Public Issues</td>
+</tr>
+<tr class="row-odd"><td>General Business Actions</td>
+<td>Public Relations</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Qualified Individuals</td>
+</tr>
+<tr class="row-odd"><td>Financial Securities</td>
+<td>Rating</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Ratio</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Real Estate</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Recession</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Record</td>
+</tr>
+<tr class="row-even"><td>Real Estate</td>
+<td>Real Estate - Record</td>
+</tr>
+<tr class="row-odd"><td>Employment Actions</td>
+<td>Recruitment</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Company Financials - Regulation</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Regulation</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Regulation Procedure</td>
+</tr>
+<tr class="row-odd"><td>Legal Actions</td>
+<td>Regulations</td>
+</tr>
+<tr class="row-even"><td>Product Development</td>
+<td>Regulatory</td>
+</tr>
+<tr class="row-odd"><td>Insurance</td>
+<td>Reimbursement Plan</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Relationship</td>
+</tr>
+<tr class="row-odd"><td>Real Estate</td>
+<td>Rent</td>
+</tr>
+<tr class="row-even"><td>Corporate Governance</td>
+<td>Reorganization</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Report</td>
+</tr>
+<tr class="row-even"><td>Real Estate</td>
+<td>Reposession</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Representative</td>
+</tr>
+<tr class="row-even"><td>Product Development</td>
+<td>Research And Development</td>
+</tr>
+<tr class="row-odd"><td>Employment Actions</td>
+<td>Resignation</td>
+</tr>
+<tr class="row-even"><td>Corporate Governance</td>
+<td>Resolution</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Retail Establishment</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Economy - Retirement</td>
+</tr>
+<tr class="row-odd"><td>Insurance</td>
+<td>Insurance - Retirement</td>
+</tr>
+<tr class="row-even"><td>Retirement Planning</td>
+<td>Retirement Security</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Right</td>
+</tr>
+<tr class="row-even"><td>Real Estate</td>
+<td>Real Estate - Right</td>
+</tr>
+<tr class="row-odd"><td>Insurance</td>
+<td>Insurance - Risk</td>
+</tr>
+<tr class="row-even"><td>Stock Valuation</td>
+<td>Stock Valuation - Risk</td>
+</tr>
+<tr class="row-odd"><td>Insurance</td>
+<td>Risk Management</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Rule</td>
+</tr>
+<tr class="row-odd"><td>Corporate Governance</td>
+<td>Rules</td>
+</tr>
+<tr class="row-even"><td>Real Estate</td>
+<td>Sale</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Sale Of Securities</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Sales Amount</td>
+</tr>
+<tr class="row-odd"><td>Bankruptcy</td>
+<td>Bankruptcy - Securities</td>
+</tr>
+<tr class="row-even"><td>Corporate Governance</td>
+<td>Corporate Governance - Securities</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Security</td>
+</tr>
+<tr class="row-even"><td>Rumors</td>
+<td>Sell Off</td>
+</tr>
+<tr class="row-odd"><td>Legal Actions</td>
+<td>Settlement</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Share</td>
+</tr>
+<tr class="row-odd"><td>Corporate Governance</td>
+<td>Shareholders</td>
+</tr>
+<tr class="row-even"><td>Stock Valuation</td>
+<td>Shares</td>
+</tr>
+<tr class="row-odd"><td>Real Estate</td>
+<td>Short</td>
+</tr>
+<tr class="row-even"><td>Contracts</td>
+<td>Signing</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Simple Resolution</td>
+</tr>
+<tr class="row-even"><td>Real Estate</td>
+<td>Situation</td>
+</tr>
+<tr class="row-odd"><td>Financing Activities</td>
+<td>Spin Off</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Standard</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>State Law</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Statute</td>
+</tr>
+<tr class="row-odd"><td>Market Performance</td>
+<td>Stock Activities</td>
+</tr>
+<tr class="row-even"><td>Market Performance</td>
+<td>Stock Activity</td>
+</tr>
+<tr class="row-odd"><td>Stock Activities</td>
+<td>Stock Delisting</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Stock Index</td>
+</tr>
+<tr class="row-odd"><td>Corporate Action</td>
+<td>Corporate Action - Stock Market</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Economy - Stock Market</td>
+</tr>
+<tr class="row-odd"><td>Stock Activities</td>
+<td>Stock Split</td>
+</tr>
+<tr class="row-even"><td>Corporate Governance</td>
+<td>Stocks</td>
+</tr>
+<tr class="row-odd"><td>Corporate Governance</td>
+<td>Store</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Strategy</td>
+</tr>
+<tr class="row-odd"><td>Product Development</td>
+<td>Supplies</td>
+</tr>
+<tr class="row-even"><td>Corporate Action</td>
+<td>Supply</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Survey</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Takeover</td>
+</tr>
+<tr class="row-odd"><td>Mergers And Acquisitions</td>
+<td>Mergers And Acquisitions - Takeover</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Company Financials - Tax</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Economy - Tax</td>
+</tr>
+<tr class="row-even"><td>Financial Securities</td>
+<td>Financial Securities - Tax</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Laws And Regulations - Tax</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Accounting</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Tax Allowance</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Business Income/Revenue</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Tax Collection Method</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Company/Business</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Tax Consumption Tax</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Credit Type</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Tax Deduction</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Definition</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Tax Expense</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Forms</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Tax Government/Business</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Government/Personal</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Tax Gross</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Identifier</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Tax Income</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Income Type</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Company Financials - Tax Individual</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Investment</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Tax Law</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Law/Country</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Tax Law/Definition</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Law/Irs</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Tax Loss</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Method</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Tax Method/Definition</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Mortgage</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Tax Net</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Personal</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Tax Policy</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Process</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Tax Property</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Property Law</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Tax Refund/Returns</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Requirement</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Tax Returns</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Sale</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Tax Season</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Tax Type</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Tax Value</td>
+</tr>
+<tr class="row-even"><td>Corporate Action</td>
+<td>Taxes</td>
+</tr>
+<tr class="row-odd"><td>Company Financials</td>
+<td>Taxpayer</td>
+</tr>
+<tr class="row-even"><td>Product Development</td>
+<td>Tech</td>
+</tr>
+<tr class="row-odd"><td>Business Concerns</td>
+<td>Termination</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Terms And Conditions</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Theory</td>
+</tr>
+<tr class="row-even"><td>Laws And Regulations</td>
+<td>Time</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Tool</td>
+</tr>
+<tr class="row-even"><td>Economy</td>
+<td>Trade</td>
+</tr>
+<tr class="row-odd"><td>Laws And Regulations</td>
+<td>Trading</td>
+</tr>
+<tr class="row-even"><td>Business Concerns</td>
+<td>Tragedy</td>
+</tr>
+<tr class="row-odd"><td>Real Estate</td>
+<td>Transaction</td>
+</tr>
+<tr class="row-even"><td>Financial Securities</td>
+<td>Treasury</td>
+</tr>
+<tr class="row-odd"><td>Economy</td>
+<td>Trend</td>
+</tr>
+<tr class="row-even"><td>Real Estate</td>
+<td>Type</td>
+</tr>
+<tr class="row-odd"><td>Insurance</td>
+<td>Type Of Insurance</td>
+</tr>
+<tr class="row-even"><td>Business Concerns</td>
+<td>Uncertainty</td>
+</tr>
+<tr class="row-odd"><td>Analyst Ratings</td>
+<td>Upgrade</td>
+</tr>
+<tr class="row-even"><td>Company Financials</td>
+<td>Company Financials - Value</td>
+</tr>
+<tr class="row-odd"><td>Real Estate</td>
+<td>Real Estate - Value</td>
+</tr>
+<tr class="row-even"><td>Collaborations</td>
+<td>Values</td>
+</tr>
+<tr class="row-odd"><td>Criminal Actions</td>
+<td>Violation</td>
+</tr>
+<tr class="row-even"><td>Employment Actions</td>
+<td>Employment Actions - Wage</td>
+</tr>
+<tr class="row-odd"><td>Financial Securities</td>
+<td>Financial Securities - Yield</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="story-type">
+<h2>story_type<a class="headerlink" href="#story-type" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>blog</td>
+</tr>
+<tr class="row-even"><td>feed</td>
+</tr>
+<tr class="row-odd"><td>news</td>
+</tr>
+<tr class="row-even"><td>sec_filing</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="aggregations.html" class="btn btn-neutral float-left" title="Field Aggregate Function" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Accern Corp.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
